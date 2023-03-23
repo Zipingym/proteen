@@ -1,9 +1,4 @@
-declare module '*.glb' {
-  const src: string;
-  export default src;
-}
-
-declare module '*.gltf' {
+declare module '*.svg' {
   const src: string;
   export default src;
 }
