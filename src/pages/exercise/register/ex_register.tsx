@@ -48,16 +48,16 @@ const Ex_register = () => {
                     </S.rContent>
                     
                     <S.rElement>
-                    <S.rElementB><pre>78.2        </pre></S.rElementB>
+                    <S.rElementB><pre>78.2     </pre></S.rElementB>
                     <S.rTime>
                     <S.rElementB>01</S.rElementB>
                     <S.rElementS>h</S.rElementS>
                     <S.rElementB>30</S.rElementB>
-                    <S.rElementS><pre>m        </pre></S.rElementS>
+                    <S.rElementS><pre>m         </pre></S.rElementS>
                     </S.rTime> 
                     <S.rKcal>
                     <S.rElementB>150</S.rElementB>
-                    <S.rElementS><pre>kcal        </pre></S.rElementS>
+                    <S.rElementS><pre>kcal</pre></S.rElementS>
                     </S.rKcal>
                     </S.rElement>
                   </S.Record>
