@@ -1,7 +1,7 @@
-import TestComponent from "$/components/test/test"
+import TestComponent from '$/components/test/test';
 
 const TestPage = () => {
-    return <TestComponent/>
-}
+  return <TestComponent />;
+};
 
-export default TestPage
+export default TestPage;
