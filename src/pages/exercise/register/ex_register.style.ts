@@ -160,8 +160,8 @@ export const rContent = styled.div`
 display:flex;
 justify-content:center;
 text-align: center;
-padding-top:5%;
-margin-left:10%;
+padding-top:6%;
+margin-left:12%;
 `
 
 
@@ -179,6 +179,7 @@ justify-content:center;
 text-align: center;
 display:flex;
 margin-top:7%;
+margin-left:-2%;
 `
 
 export const rElementB = styled.h1`
@@ -189,7 +190,7 @@ font-size: 130%;
 `
 
 export const rElementS = styled.h5`
-margin-top:10%;
+margin-top:13%;
 font-family: 'Pretendard';
 font-style: normal;
 font-weight: 300;
