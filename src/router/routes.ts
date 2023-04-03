@@ -17,19 +17,19 @@ const routes: Array<Route> = [
     path: '/exercise/register',
     component: Ex_register,
     footer: false,
-    nav: false,
+    nav: true,
   },
   {
     path: '/exercise/bulletin',
     component: Ex_bulletin,
     footer: false,
-    nav: false,
+    nav: true,
   },
   { path: '/test', component: RealTest },
   { path: '*', component: NotfoundPage },
   { path: '/signup', component: signup, nav: false, footer: false },
   { path: '/signin', component: signin, nav: false, footer: false },
-  { path: '/mypage', component: mypage, nav: false, footer: false},
+  { path: '/mypage', component: mypage, nav: true, footer: false},
 ];
 
 export default routes;
