@@ -12,6 +12,7 @@
     },
     { "source": "/test", "destination": "/index.html" },
     { "source": "/signup", "destination": "/index.html" },
-    { "source": "/signin", "destination": "/index.html" }
+    { "source": "/signin", "destination": "/index.html" },
+    { "source": "/mypage", "destination": "/index.html" }
   ]
 }
