@@ -8,5 +8,4 @@ export const MainPageWrapper = styled.div`
 export const RouterWrapper = styled.div`
   min-width: 100%;
   position: relative;
-  background-color: red;
 `;
