@@ -171,6 +171,11 @@ export const MarginLeft = styled.div`
     margin-left: 0.6rem;
 `
 
+export const UpdateBtnWrapper = styled.div`
+    margin-top: 3.1em;
+    margin-left: 0.9rem;
+`
+
 export const UpdateBtn = styled.div`
 background: #747474;
 border: 1px solid #1DF659;
@@ -179,11 +184,32 @@ border-radius: 8px 8px 8px 0px;
 
     width: 29.8px;
     height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
-export const UpdateBtnIcon = styled.div`
+export const ActiveUpdateBtn = styled.div`
+    margin-top: 0.5rem;
+
+    background: #1DF659;
+    border: 1px solid #747474;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px 8px 8px 0px;
+
+    width: 29.8px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+export const UpdateBtnIcon = styled.img`
 
 `
+
 
 export const TimeContent = styled.div`
     display: flex;

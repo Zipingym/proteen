@@ -66,15 +66,15 @@ const mypage = () => {
                     </S.InfoWrapper>
 
 
-                    <div>
+                    <S.UpdateBtnWrapper>
                         <S.UpdateBtn>
-                            <S.UpdateBtnIcon/>
+                            <S.UpdateBtnIcon src={trashIcon}/>
                         </S.UpdateBtn>
 
-                        <S.UpdateBtn>
-                            <S.UpdateBtnIcon/>
-                        </S.UpdateBtn>                                
-                    </div>
+                        <S.ActiveUpdateBtn>
+                            <S.UpdateBtnIcon src={pencilIcon}/>
+                        </S.ActiveUpdateBtn>                                
+                    </S.UpdateBtnWrapper>
 
 
                     <S.InfoWrapper marginLeft="97%">
