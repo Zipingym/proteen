@@ -29,6 +29,9 @@ export const ProTeenTitle = styled.div`
     letter-spacing: -0.02em;
 
     color: #1DF659;
+    :hover{
+        cursor: pointer;
+    }
 `
 
 export const SignUpTitle = styled.div`
@@ -88,6 +91,7 @@ padding-left: 0.9rem;
 
 font-family: 'Pretendard';
 font-size: 1rem;
+color: #FFFFFF;
 ::placeholder{
     color: #7B7B7B;
 }

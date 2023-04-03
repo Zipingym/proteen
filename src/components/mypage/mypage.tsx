@@ -14,7 +14,6 @@ const mypage = () => {
     return(
         <S.Body>
             
-
             <S.ContentWrapper>
                 <S.MypageTitle>MY PAGE</S.MypageTitle>
                 <S.MypageTitleSub>개인 설정을 수정 및 확인 하세요.</S.MypageTitleSub>

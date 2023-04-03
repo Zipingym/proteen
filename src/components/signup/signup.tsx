@@ -1,12 +1,13 @@
-
+import { useNavigate } from "react-router-dom";
 import * as S from "./signup.style";
 
 const signup = () => {
-    
+    const navigate = useNavigate();
+
     return(
         <S.BackImage>
             <S.BackBlur>
-                <S.ProTeenTitle>ProTeen</S.ProTeenTitle>
+                <S.ProTeenTitle onClick={()=>{navigate('/')}}>ProTeen</S.ProTeenTitle>
                 <S.SignUpTitle>Sign Up</S.SignUpTitle>
                 <S.Explanation>ProTeen과 함께 운동을 시작해보세요.</S.Explanation>
                 
