@@ -7,8 +7,6 @@ export const Body = styled.div`
 
     weight:100%;
     height: 100vh;
-
-    font-family: 'Pretendard';
 `
 
 export const Nav = styled.div`
@@ -55,7 +53,7 @@ margin: 0.3rem 0.4rem;
 `
 
 export const ContentWrapper = styled.div`
-margin-top: 5.7rem;
+padding-top: 5.7rem;
 margin-left: 15.6rem;
 `
 

@@ -13,16 +13,7 @@ const mypage = () => {
 
     return(
         <S.Body>
-            <S.Nav>
-                <S.NavTitle>ProTeen</S.NavTitle>
-                
-                <S.NavBtnWrapper>
-                    <S.NavBtn>sign up</S.NavBtn>
-                </S.NavBtnWrapper>
-                <S.NavBtnWrapper>
-                    <S.NavBtn>sign in</S.NavBtn>
-                </S.NavBtnWrapper>
-            </S.Nav>
+            
 
             <S.ContentWrapper>
                 <S.MypageTitle>MY PAGE</S.MypageTitle>
