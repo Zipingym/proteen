@@ -77,7 +77,9 @@ color: #1DF659;
 `
 
 export const inputTitle = styled.input`
-width: 105%;
+padding-left:5%;
+padding-right:5%;
+width: 100%;
 height: 6%;
 margin-top:3%;
 background: #252523;
@@ -97,7 +99,10 @@ color: white;
 `
 
 export const inputInfo = styled.textarea`
-width: 105%;
+padding-top:5%; 
+padding-left:5%;
+padding-right:5%;
+width: 100%;
 height: 30%;
 margin-top:3%;
 background: #252523;
@@ -130,7 +135,7 @@ border: 1px solid black;
 border-radius: 50px;
 background:#454545;
 color:white;
-margin-left:2%;
+margin-left:2%;r
 margin-bottom:5%;
 
 font-family: 'Pretendard';
@@ -142,7 +147,8 @@ line-height: 14px;
 color: #FFFFFF;
 
 &:hover{
-border:solid #1DF659;
+border: 1px solid #1DF659;
+
 }
 
 `
