@@ -19,6 +19,9 @@ font-weight: 600;
 font-size: 2.2rem;
 letter-spacing: -0.02em;
 color: #1DF659;
+:hover{
+    cursor: pointer;
+}
 `
 
 export const NavBtnWrapper = styled.div`
@@ -38,4 +41,7 @@ font-size: 1.1rem;
 color: #FFFFFF;
 display: table-row;
 margin: 0.3rem 0.4rem;
+:hover{
+    cursor: pointer;
+}
 `

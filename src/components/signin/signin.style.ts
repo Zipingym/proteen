@@ -19,8 +19,23 @@ export const BackBlur = styled.div`
     position: absolute;
 `
 
+export const ProTeenTitle = styled.div`
+    margin-left: 10rem;
+    margin-top: 1.5rem;
+
+    font-family: 'Pretendard';
+    font-weight: 600;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+
+    color: #1DF659;
+    :hover{
+        cursor: pointer;
+    }
+`
+
 export const SignInTitle = styled.div`
-    margin-top: 21rem;
+    margin-top: 18rem;
     margin-left: 10.5rem;
 
     font-family: 'Pretendard';
@@ -99,6 +114,7 @@ color: #FFFFFF;
 `
 
 export const WarningInput = styled.input`
+margin-top: 0.7rem;
 padding-left: 0.9rem;
 
 width: 26rem;
@@ -111,7 +127,9 @@ background: rgba(0, 0, 0, 0.8);
 border: 3px solid #FA0000;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
-    
+    :focus{
+        outline:none;
+    }
 `
 
 export const WarningMsg = styled.div`

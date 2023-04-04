@@ -1,15 +1,17 @@
+import { useNavigate } from 'react-router-dom';
 import * as S from './nav.style';
 
 const NavComponent = () => {
+  const navigate = useNavigate();
   return (
     <S.Nav>
-        <S.NavTitle>ProTeen</S.NavTitle>
+        <S.NavTitle onClick={()=>{navigate('/')}}>ProTeen</S.NavTitle>
         
         <S.NavBtnWrapper>
-            <S.NavBtn>sign up</S.NavBtn>
+            <S.NavBtn onClick={()=>{navigate('/signup')}}>sign up</S.NavBtn>
         </S.NavBtnWrapper>
         <S.NavBtnWrapper>
-            <S.NavBtn>sign in</S.NavBtn>
+            <S.NavBtn onClick={()=>{navigate('/signin')}}>sign in</S.NavBtn>
         </S.NavBtnWrapper>
     </S.Nav>
   );
