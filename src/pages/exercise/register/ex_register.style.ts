@@ -15,7 +15,7 @@ padding-top:8%;
 padding-bottom:10%;
 `;
 
-export const Title = styled.h1`
+ export const Title = styled.h1`
 font-family: 'Pretendard';
 font-style: normal;
 font-weight: 600;
@@ -50,7 +50,7 @@ object-fit: cover;
 `
 
 export const Write = styled.div`
-margin-left:5%;
+margin-left:4.1%;
 margin-top:5%;
 `;
 
@@ -154,7 +154,7 @@ border: 1px solid #1DF659;
 `
 
 export const Record = styled.div`
-width: 105%;
+width: 110%;
 height: 15%;
 margin-top:3%;
 background: #252523;
@@ -185,7 +185,6 @@ justify-content:center;
 text-align: center;
 display:flex;
 margin-top:7%;
-margin-left:-2%;
 `
 
 export const rElementB = styled.h1`
@@ -205,59 +204,39 @@ font-size: 30%;
 
 export const rTime = styled.div`
 display:flex;
+margin-left:10%;
 `
 export const rKcal = styled.div`
 display:flex;
+margin-left:10%;
 `
 
 
 
 export const submit = styled.div`
-display:flex;
-margin-top: 10%;
+float: right;
+margin-top: 15%;
 `
 
-export const submitN = styled.button`
-cursor: pointer;
-margin-right:5%;
-width:100%;
-height:25px;
-border: 1px solid #1DF659;
-border-radius: 5px;
-background:#252525;
-color: #1DF659;
-font-size: 20%;
-
-&:hover{
-    border: 1px solid #252525;
-    border-radius: 5px;
-    background:#1DF659;
-    color: #252525;
-    
-    }
-
-
-`
 export const submitU = styled.button`
-cursor: pointer;
-margin-right:5%;
-width:100%;
-height:25px;
+cursor:pointer;
+padding: 6px 25px 6px 25px;
+background: #252523;
 border: 1px solid #1DF659;
 border-radius: 5px;
-background:#252525;
 color: #1DF659;
-font-size: 20%;
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
 
 &:hover{
-border: 1px solid #252525;
-border-radius: 5px;
-background:#1DF659;
-color: #252525;
-
-}
+    box-shadow : 1px 1px 1px 1px #252523;
+    background: #1DF659;
+    border: 1px solid #252523;
+    border-radius: 5px;
+    color: #252523;
+}}
 `
-
 
 
 
