@@ -1,6 +1,6 @@
 import React from 'react';
 import * as R from './routine.style';
-import routinProfile from '../../assets/img/routinProfile.svg';
+import routinProfile from '../../assets/img/routinprofile.svg';
 import RoutinComponent from './routine_component';
 import data from './routine.json';
 function Routin() {
