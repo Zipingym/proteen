@@ -15,6 +15,6 @@
     { "source": "/signin", "destination": "/index.html" },
     { "source": "/mypage", "destination": "/index.html" },
     { "source": "/routine", "destination": "/index.html" },
-    { "source": "ranking", "destination": "/index.html" }
+    { "source": "/ranking", "destination": "/index.html" }
   ]
 }
