@@ -9,6 +9,8 @@ import signup from '$/components/signup/signup';
 import signin from '$/components/signin/signin';
 import MainPage from '$/pages/main/main';
 import mypage from '$/components/mypage/mypage';
+import routine from '$/pages/routin/routine';
+import ranking from '$/pages/ranking/ranking';
 
 const routes: Array<Route> = [
   { path: '/', component: MainPage, footer: false },
@@ -30,6 +32,8 @@ const routes: Array<Route> = [
   { path: '/signup', component: signup, nav: false, footer: false },
   { path: '/signin', component: signin, nav: false, footer: false },
   { path: '/mypage', component: mypage, nav: true, footer: false},
+  { path: '/routine', component: routine, nav: true, footer: false},
+  { path: '/ranking', component: ranking, nav: true, footer: false},
 ];
 
 export default routes;

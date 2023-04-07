@@ -20,6 +20,7 @@ font-family: 'Pretendard';
 font-style: normal;
 font-weight: 600;
 font-size: 200%;
+margin-top:2%;
 `;
 
 export const T_info = styled.h1`
@@ -48,8 +49,8 @@ object-fit: cover;
 `
 
 export const Write = styled.div`
-margin-left:5%;
-margin-top:10%;
+margin-left:4.1%;
+margin-top:7.5%;
 `;
 
 export const Date = styled.div`
@@ -171,8 +172,8 @@ export const rContent = styled.div`
 display:flex;
 justify-content:center;
 text-align: center;
-padding-top:8%;
-margin-left:13%;
+padding-top:10%;
+margin-left:12%;
 `
 
 
@@ -190,7 +191,6 @@ justify-content:center;
 text-align: center;
 display:flex;
 margin-top:7%;
-margin-left:6%;
 `
 
 export const rElementB = styled.h1`
@@ -207,10 +207,11 @@ font-style: normal;
 font-weight: 300;
 font-size: 30%;
 `
-
 export const rTime = styled.div`
 display:flex;
+margin-left:10%;
 `
 export const rKcal = styled.div`
 display:flex;
+margin-left:10%;
 `

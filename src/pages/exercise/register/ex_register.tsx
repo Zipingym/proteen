@@ -48,24 +48,24 @@ const Ex_register = () => {
                     </S.rContent>
                     
                     <S.rElement>
-                    <S.rElementB><pre>78.2     </pre></S.rElementB>
+                    <S.rElementB>78.2</S.rElementB>
                     <S.rTime>
                     <S.rElementB>01</S.rElementB>
                     <S.rElementS>h</S.rElementS>
                     <S.rElementB>30</S.rElementB>
-                    <S.rElementS><pre>m         </pre></S.rElementS>
+                    <S.rElementS>m</S.rElementS>
                     </S.rTime> 
+
                     <S.rKcal>
                     <S.rElementB>150</S.rElementB>
-                    <S.rElementS><pre>kcal</pre></S.rElementS>
+                    <S.rElementS>kcal</S.rElementS>
                     </S.rKcal>
                     </S.rElement>
+                    <S.submit>  
+                     <S.submitU>업로드</S.submitU>
+                    </S.submit>
                   </S.Record>
 
-                  <S.submit>
-                  <S.submitN><pre>           취소           </pre></S.submitN>
-                  <S.submitU><pre>                          업로드                         </pre></S.submitU>
-                  </S.submit>
                 </S.Write>
             </S.MainContainer>
         </S.AllContainer>

@@ -19,7 +19,7 @@ const Ex_bulletin = () => {
                 <S.Write>
                  <S.Date>
                   <S.cDate>2023.04.02</S.cDate>
-                  <S.cTime><pre>오전 10:00</pre></S.cTime>
+                  <S.cTime>오전 10:00</S.cTime>
                  </S.Date>
                  <S.cTitle>오전 풀업! 오운완</S.cTitle>
 
@@ -47,16 +47,17 @@ const Ex_bulletin = () => {
                     </S.rContent>
                     
                     <S.rElement>
-                    <S.rElementB><pre>78.2      </pre></S.rElementB>
+                    <S.rElementB>78.2</S.rElementB>
                     <S.rTime>
                     <S.rElementB>01</S.rElementB>
                     <S.rElementS>h</S.rElementS>
                     <S.rElementB>30</S.rElementB>
-                    <S.rElementS><pre>m          </pre></S.rElementS>
+                    <S.rElementS>m</S.rElementS>
                     </S.rTime> 
+
                     <S.rKcal>
                     <S.rElementB>150</S.rElementB>
-                    <S.rElementS><pre>kcal      </pre></S.rElementS>
+                    <S.rElementS>kcal</S.rElementS>
                     </S.rKcal>
                     </S.rElement>
                   </S.Record>

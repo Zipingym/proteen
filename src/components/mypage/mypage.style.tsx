@@ -5,7 +5,7 @@ import logoutIcon from "../../assets/img/logoutIcon.svg";
 export const Body = styled.div`
     background: #252525;
 
-    weight:100%;
+    width:100%;
     height: 100vh;
 `
 
