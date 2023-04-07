@@ -31,9 +31,9 @@ const routes: Array<Route> = [
   { path: '*', component: NotfoundPage },
   { path: '/signup', component: signup, nav: false, footer: false },
   { path: '/signin', component: signin, nav: false, footer: false },
-  { path: '/mypage', component: mypage, nav: true, footer: false},
-  { path: '/routine', component: routine, nav: true, footer: false},
-  { path: '/ranking', component: ranking, nav: true, footer: false},
+  { path: '/mypage', component: mypage, nav: true, footer: false },
+  { path: '/routine', component: routine, nav: true, footer: false },
+  { path: '/ranking', component: ranking, nav: true, footer: false },
 ];
 
 export default routes;

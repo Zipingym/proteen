@@ -91,7 +91,7 @@ export const Frame = styled.div`
 export const Frame2 = styled.div`
   display: flex;
   flex-direction: row;
-  :hover{
+  :hover {
     cursor: pointer;
   }
 `;
