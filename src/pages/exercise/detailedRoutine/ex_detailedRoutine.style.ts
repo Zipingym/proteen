@@ -48,7 +48,7 @@ export const info = styled.h3`
 font-family: 'Pretendard';
 font-style: normal;
 font-weight: 250;
-font-size: 50%
+font-size: 100%
 
 `
 
@@ -129,9 +129,10 @@ color: #FFFFFF;
 `
 export const exCounter = styled.h5`
 padding-bottom:2%;
+padding-top:10%;
 font-family: 'Pretendard';
 font-style: normal;
-font-weight: 500;
+font-weight: 400;
 font-size: 200%;
 
 color: #FFFFFF;
@@ -148,10 +149,11 @@ color: #FFFFFF;
 `
 export const exAvgPoint = styled.h5`
 padding-bottom:2%;
+padding-top:10%;
 
 font-family: 'Pretendard';
 font-style: normal;
-font-weight: 500;
+font-weight: 400;
 font-size: 200%;
 
 color: #FFFFFF;
