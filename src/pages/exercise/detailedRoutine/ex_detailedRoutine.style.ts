@@ -171,16 +171,16 @@ width: 6%;
 height: 0px;
 margin-top:-2.3%;
 
-border: 0.8px solid #FFFFFF;
+border: 1px solid #FFFFFF;
 transform: rotate(-90deg);
 `
 export const pointCheckScore = styled.h3`
 margin-top:4%;
-margin-left:1%;
+margin-left:1.5%;
 font-family: 'Inter';
 font-style: normal;
-font-weight: 300;
-font-size: 20px;
+font-weight: 350;
+font-size: 100%;
 line-height: 24px;
 
 color: #FFFFFF;
