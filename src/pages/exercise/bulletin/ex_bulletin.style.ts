@@ -91,7 +91,6 @@ margin-top:10%;
 export const profileImg = styled.img`
 width:10%;
 padding-right:3%;
-
 `
 
 export const profileName = styled.h5`

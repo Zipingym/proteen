@@ -5,10 +5,12 @@ import TestPage from '$/pages/test/App';
 import RealTest from '$/pages/test/Test';
 import Ex_register from '$/pages/exercise/register/ex_register';
 import Ex_bulletin from '$/pages/exercise/bulletin/ex_bulletin';
+import ex_detailedRoutine from '$/pages/exercise/detailedRoutine/ex_detailedRoutine';
 import signup from '$/components/signup/signup';
 import signin from '$/components/signin/signin';
 import MainPage from '$/pages/main/main';
 import mypage from '$/components/mypage/mypage';
+
 
 const routes: Array<Route> = [
   { path: '/', component: MainPage, footer: false },
@@ -22,6 +24,12 @@ const routes: Array<Route> = [
   {
     path: '/exercise/bulletin',
     component: Ex_bulletin,
+    footer: false,
+    nav: true,
+  },
+  {
+    path: '/exercise/detailedRoutine',
+    component: ex_detailedRoutine,
     footer: false,
     nav: true,
   },
