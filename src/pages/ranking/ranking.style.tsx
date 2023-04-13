@@ -5,9 +5,9 @@ export const body = styled.div`
     width: 100%;
     height:100vh;
 
-    padding-left:13%;
-    padding-top:8%;
-    padding-bottom:10%;
+    padding-left:13vw;
+    padding-top:13vh;
+    padding-bottom:8vh;
     box-sizing: border-box;
 `
 export const Title = styled.div`
