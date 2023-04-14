@@ -38,7 +38,12 @@ const MainPage = () => {
             <M.PtTitle data-aos="fade-up">ProTeen</M.PtTitle>
           </M.TitleWrap>
           <M.BtnWrap>
-            <M.StartBtn src={startBtn}></M.StartBtn>
+            <M.StartBtn
+              src={startBtn}
+              onClick={() => {
+                navigate('/routine');
+              }}
+            ></M.StartBtn>
           </M.BtnWrap>
         </M.Main1>
         <M.Main2>
