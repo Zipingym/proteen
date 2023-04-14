@@ -10,7 +10,9 @@ import woonwan from '../../assets/img/ohwoonwan.svg';
 import report from '../../assets/img/report.svg';
 import setting from '../../assets/img/setting.svg';
 import AOS from 'aos';
+import { useNavigate } from 'react-router-dom';
 const MainPage = () => {
+  const navigate = useNavigate();
   let boxStyle = {
     width: '40%',
     height: '200px',
@@ -59,14 +61,29 @@ const MainPage = () => {
             ProTeen과 함께 HOT BODY를 가져보세요
           </M.Text>
           <M.Frame2>
-            <img src={woonwan} data-aos="fade-up"></img>
+            <img
+              src={woonwan}
+              data-aos="fade-up"
+              onClick={() => {
+                navigate('/exercise/bulletin');
+              }}
+            ></img>
             <M.Frame>
               <img
                 src={report}
                 style={{ marginBottom: 10 }}
                 data-aos="fade-up"
+                onClick={() => {
+                  navigate('/exercise/register');
+                }}
               ></img>
-              <img src={setting} data-aos="fade-up"></img>
+              <img
+                src={setting}
+                data-aos="fade-up"
+                onClick={() => {
+                  navigate('/mypage');
+                }}
+              ></img>
             </M.Frame>
           </M.Frame2>
         </M.Main3>
