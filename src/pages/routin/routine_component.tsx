@@ -3,8 +3,10 @@ import styled, { css } from 'styled-components';
 import Routine from './routine';
 import OnBtn from '../../assets/img/onBtn.svg';
 import OffBtn from '../../assets/img/offBtn.svg';
+import { useNavigate } from 'react-router-dom';
 
 function RoutinComponent() {
+  const navigate = useNavigate();
   const [hover, setHover] = useState(false);
   return (
     <ComponentWrap
@@ -14,14 +16,23 @@ function RoutinComponent() {
       <RoutineDate>2023.04.05</RoutineDate>
       <RoutineTitle>크런치 (crunch)</RoutineTitle>
       <RoutineSet>30개 / 2 set</RoutineSet>
-      {hover ? <RoutineBtn src={OnBtn} /> : <RoutineBtn src={OffBtn} />}
+      {hover ? (
+        <RoutineBtn
+          src={OnBtn}
+          onClick={() => {
+            navigate('/exercise/detailedRoutine');
+          }}
+        />
+      ) : (
+        <RoutineBtn src={OffBtn} />
+      )}
     </ComponentWrap>
   );
 }
 export default RoutinComponent;
 const ComponentWrap = styled.div`
   width: 40vw;
-  height: 6vh;
+  height: 10%;
   background-color: #494949;
   color: white;
 

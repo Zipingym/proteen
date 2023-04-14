@@ -134,7 +134,7 @@ border: 1px solid black;
 border-radius: 50px;
 background:#454545;
 color:white;
-margin-left:2%;r
+margin-left:2%;
 margin-bottom:5%;
 
 font-family: 'Pretendard';
