@@ -4,7 +4,6 @@ export const body = styled.div`
   background: #252525;
   width: 100%;
   height: 100vh;
-
   padding-left: 13%;
   padding-top: 8%;
   padding-bottom: 10%;
