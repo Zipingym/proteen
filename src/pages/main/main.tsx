@@ -61,15 +61,29 @@ const MainPage = () => {
             ProTeen과 함께 HOT BODY를 가져보세요
           </M.Text>
           <M.Frame2>
-            <img src={woonwan} data-aos="fade-up" onClick={()=>{navigate('/exercise/bulletin')}}></img>
+            <img
+              src={woonwan}
+              data-aos="fade-up"
+              onClick={() => {
+                navigate('/exercise/bulletin');
+              }}
+            ></img>
             <M.Frame>
               <img
                 src={report}
                 style={{ marginBottom: 10 }}
                 data-aos="fade-up"
-                onClick={()=>{navigate('/exercise/register')}}
+                onClick={() => {
+                  navigate('/exercise/register');
+                }}
               ></img>
-              <img src={setting} data-aos="fade-up" onClick={()=>{navigate('/mypage')}}></img>
+              <img
+                src={setting}
+                data-aos="fade-up"
+                onClick={() => {
+                  navigate('/mypage');
+                }}
+              ></img>
             </M.Frame>
           </M.Frame2>
         </M.Main3>
