@@ -5,6 +5,12 @@ width : 100vw;
 height : 100vh;
 background : #252525;
 `
+
+export const TitleVideoContainer = styled.div`
+    margin-left : 4.2%;
+    margin-top:1.3%;
+`;
+
 export const topContent = styled.div`
 display: flex;
 padding-top:5.3%;
@@ -12,6 +18,12 @@ background: rgba(255, 255, 255, 0.1);
 color: #FFFFFF;
 
 `
+
+export const video = styled.div`
+margin-top:10%;
+margin-left: 5%;
+`
+
 export const topImg1 = styled.img`
 width:65%;
 hegiht:auto;
@@ -52,11 +64,11 @@ font-size: 100%
 
 `
 
-export const topVideo = styled.iframe`
-float: right;
-margin-top:-18%;
-margin-right: 5%;
-`
+// export const topVideo = styled.iframe`
+// float: right;
+// margin-top:-18%;
+// margin-right: 5%;
+// `
 
 export const topBar = styled.div`
 display:flex;
