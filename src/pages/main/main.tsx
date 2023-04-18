@@ -25,16 +25,6 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    api
-      .post('/user/login', {
-        id: 'asdf',
-        password: 'asdf',
-      })
-      .then(console.log)
-      .catch(() => {
-        // console.log()
-      });
-
     AOS.init({
       duration: 1000,
     });
