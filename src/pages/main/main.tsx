@@ -10,6 +10,7 @@ import woonwan from '../../assets/img/ohwoonwan.svg';
 import report from '../../assets/img/report.svg';
 import setting from '../../assets/img/setting.svg';
 import AOS from 'aos';
+import api from '$/api/customAxios';
 import { useNavigate } from 'react-router-dom';
 const MainPage = () => {
   const navigate = useNavigate();
@@ -24,6 +25,16 @@ const MainPage = () => {
   };
 
   useEffect(() => {
+    api
+      .post('/user/login', {
+        id: 'asdf',
+        password: 'asdf',
+      })
+      .then(console.log)
+      .catch(() => {
+        // console.log()
+      });
+
     AOS.init({
       duration: 1000,
     });
