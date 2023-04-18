@@ -18,7 +18,15 @@ const Ex_register = () => {
         <S.T_info>오늘 한 운동을 릴스로 기록해보세요.</S.T_info>
 
         <S.MainContainer>
-          <S.Reels_view src={Ex_img} alt="Error" />
+          <iframe
+            width="560"
+            height="620"
+            src="https://www.youtube.com/embed/kL88ldYiMkM"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
 
           <S.Write>
             <S.InputWrapper height={10}>
