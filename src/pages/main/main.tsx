@@ -27,12 +27,12 @@ const MainPage = () => {
   useEffect(() => {
     api
       .post('/user/login', {
-        id: 'asdf',
-        password: 'asdf',
+        id: '',
+        password: '',
       })
       .then(console.log)
-      .catch(() => {
-        // console.log()
+      .catch((err) => {
+        console.log(err)
       });
 
     AOS.init({
