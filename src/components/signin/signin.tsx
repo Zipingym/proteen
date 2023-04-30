@@ -1,10 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 import * as S from './signin.style';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Input } from '../mypage/mypage.style';
 import api from '$/api/customAxios';
+import axios from 'axios';
 
 const signin = () => {
+  useEffect(() => {
+    axios
+      .get('/user/signin')
+      .then((res) => console.log(res))
+      .catch();
+  }, []);
+
   const navigate = useNavigate();
 
   interface User {
@@ -41,12 +49,19 @@ const signin = () => {
 
   const handleSubmit = () => {
     if (user.id.length > 0 || user.password.length > 0) {
-      api
-        .post('/user/signin', user)
-        .then(console.log)
-        .catch((err) => {
-          console.log(err);
-        });
+      const onSubmit = () => {
+        axios
+          .post('/user/signin', {
+            //id,
+            //password,
+          })
+          .then((res) => {
+            console.log(res.data.token);
+          })
+          .catch(() => {
+            alert('로그인 실패');
+          });
+      };
     }
   };
 
@@ -103,7 +118,7 @@ const signin = () => {
         {!inputValid.pwValid && user.password.length > 0 && (
           <S.WarningMsg>*비밀번호가 올바르지 않습니다.</S.WarningMsg>
         )}
-        <S.SubmitBtn onClick={handleSubmit}>ProTeen 입장</S.SubmitBtn>
+        <S.SubmitBtn onClick={onSubmit}>ProTeen 입장</S.SubmitBtn>
       </S.BackBlur>
     </S.BackImage>
   );
