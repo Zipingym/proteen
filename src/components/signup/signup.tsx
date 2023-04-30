@@ -31,9 +31,7 @@ const signup = () => {
   };
   const onSubmit = (data) => {
     api
-      .post('/user/signup',
-        user
-      )
+      .post('/user/signup', user)
       .then(console.log)
       .catch((err) => {
         console.log(err);

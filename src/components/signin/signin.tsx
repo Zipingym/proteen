@@ -1,8 +1,54 @@
 import { useNavigate } from 'react-router-dom';
 import * as S from './signin.style';
+import { useState } from 'react';
+import { Input } from '../mypage/mypage.style';
+import api from '$/api/customAxios';
 
 const signin = () => {
   const navigate = useNavigate();
+
+  interface User {
+    id: string;
+    password: string;
+  }
+
+  const [user, setUser] = useState<User>({
+    id: '',
+    password: '',
+  });
+
+  interface Input {
+    idValid: boolean;
+    pwValid: boolean;
+  }
+  const [inputValid, setInputValid] = useState<Input>({
+    idValid: true,
+    pwValid: true,
+  });
+
+  const handleUser = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+    const regex = new RegExp('^[a-zA-Z]*$');
+
+    setInputValid({
+      ...inputValid,
+      idValid: regex.test(user.id),
+      pwValid: regex.test(user.password),
+    });
+    console.log(inputValid);
+  };
+
+  const handleSubmit = () => {
+    if (user.id.length > 0 || user.password.length > 0) {
+      api
+        .post('/user/signin', user)
+        .then(console.log)
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
 
   return (
     <S.BackImage>
@@ -16,25 +62,42 @@ const signin = () => {
         </S.ProTeenTitle>
         <S.SignInTitle>Sign In</S.SignInTitle>
         <S.Explanation>ProTeen과 함께 운동을 시작해보세요.</S.Explanation>
-
         <S.ContentWrapper>
           <S.ComponentLabel>Id</S.ComponentLabel>
-          <S.ActiveInput></S.ActiveInput>
+          <S.idInput
+            name="id"
+            value={user.id}
+            onChange={handleUser}
+            style={
+              inputValid.idValid
+                ? { border: '3px solid #494949' }
+                : { border: '3px solid #FF0000' }
+            }
+          ></S.idInput>
         </S.ContentWrapper>
-
+        {!inputValid.idValid && user.id.length > 0 && (
+          <S.WarningMsg>*아이디가 올바르지 않습니다.</S.WarningMsg>
+        )}
+        ㄴ
         <S.ContentWrapper>
           <S.ComponentLabel>Pw</S.ComponentLabel>
-          <S.WarningInput type="password"></S.WarningInput>
+          <S.pwInput
+            type="password"
+            name="password"
+            value={user.password}
+            onChange={handleUser}
+            style={
+              inputValid.pwValid
+                ? { border: '3px solid #494949' }
+                : { border: '3px solid #FF0000' }
+            }
+          ></S.pwInput>
         </S.ContentWrapper>
         <S.GotoSignup>회원정보가 없으십니까?</S.GotoSignup>
-
-        <S.WarningMsg>
-          *아이디, 비밀번호가 올바르지 않습니다.
-          <br />
-          다시 시도해 주세요.
-        </S.WarningMsg>
-
-        <S.SubmitBtn>ProTeen 입장</S.SubmitBtn>
+        {!inputValid.pwValid && user.password.length > 0 && (
+          <S.WarningMsg>*비밀번호가 올바르지 않습니다.</S.WarningMsg>
+        )}
+        <S.SubmitBtn onClick={handleSubmit}>ProTeen 입장</S.SubmitBtn>
       </S.BackBlur>
     </S.BackImage>
   );
