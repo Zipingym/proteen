@@ -93,7 +93,13 @@ const signin = () => {
             }
           ></S.pwInput>
         </S.ContentWrapper>
-        <S.GotoSignup>회원정보가 없으십니까?</S.GotoSignup>
+        <S.GotoSignup
+          onClick={() => {
+            navigate('/signup');
+          }}
+        >
+          회원정보가 없으십니까?
+        </S.GotoSignup>
         {!inputValid.pwValid && user.password.length > 0 && (
           <S.WarningMsg>*비밀번호가 올바르지 않습니다.</S.WarningMsg>
         )}
