@@ -47,21 +47,19 @@ const signin = () => {
     console.log(inputValid);
   };
 
-  const handleSubmit = () => {
+  const onSubmit = () => {
     if (user.id.length > 0 || user.password.length > 0) {
-      const onSubmit = () => {
-        axios
-          .post('/user/signin', {
-            //id,
-            //password,
-          })
-          .then((res) => {
-            console.log(res.data.token);
-          })
-          .catch(() => {
-            alert('로그인 실패');
-          });
-      };
+      axios
+        .post('/user/signin', {
+          //id,
+          //password,
+        })
+        .then((res) => {
+          console.log(res.data.token);
+        })
+        .catch(() => {
+          alert('로그인 실패');
+        });
     }
   };
 
