@@ -10,6 +10,7 @@ import woonwan from '../../assets/img/ohwoonwan.svg';
 import report from '../../assets/img/report.svg';
 import setting from '../../assets/img/setting.svg';
 import AOS from 'aos';
+import api from '$/api/customAxios';
 import { useNavigate } from 'react-router-dom';
 const MainPage = () => {
   const navigate = useNavigate();
@@ -24,6 +25,16 @@ const MainPage = () => {
   };
 
   useEffect(() => {
+    api
+      .post('/user/login', {
+        id: '',
+        password: '',
+      })
+      .then(console.log)
+      .catch((err) => {
+        console.log(err)
+      });
+
     AOS.init({
       duration: 1000,
     });
@@ -38,7 +49,12 @@ const MainPage = () => {
             <M.PtTitle data-aos="fade-up">ProTeen</M.PtTitle>
           </M.TitleWrap>
           <M.BtnWrap>
-            <M.StartBtn src={startBtn}></M.StartBtn>
+            <M.StartBtn
+              src={startBtn}
+              onClick={() => {
+                navigate('/routine');
+              }}
+            ></M.StartBtn>
           </M.BtnWrap>
         </M.Main1>
         <M.Main2>

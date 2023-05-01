@@ -121,6 +121,11 @@ export const HalfSelect = styled.select`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: none;
   border-radius: 15px;
+  color: white;
+  padding-left: 20px;
+`;
+export const HalfContent = styled.option`
+  color: white;
 `;
 
 export const HalfContentWrapper = styled.div`

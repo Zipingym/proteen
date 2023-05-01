@@ -94,7 +94,7 @@ export const InactiveInput = styled.input`
   }
 `;
 
-export const ActiveInput = styled.input`
+export const idInput = styled.input`
   margin-top: 0.7rem;
   padding-left: 0.9rem;
 
@@ -102,51 +102,51 @@ export const ActiveInput = styled.input`
   height: 3rem;
 
   background: #0a0a14;
-  border: 3px solid #494949;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
+  border: 3px solid #494949;
 
   font-family: 'Pretendard';
   font-size: 17px;
   color: #ffffff;
+  outline: none;
 `;
 
-export const WarningInput = styled.input`
+export const pwInput = styled.input`
   margin-top: 0.7rem;
   padding-left: 0.9rem;
 
   width: 26rem;
   height: 3rem;
 
-  font-family: 'Pretendard';
-  font-size: 1rem;
-  color: #ffffff;
-  background: rgba(0, 0, 0, 0.8);
-  border: 3px solid #fa0000;
+  background: #0a0a14;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
-  :focus {
-    outline: none;
-  }
+  border: 3px solid #494949;
+
+  font-family: 'Pretendard';
+  font-size: 17px;
+  color: #ffffff;
+  outline: none;
 `;
 
 export const WarningMsg = styled.div`
   margin-left: 11.2rem;
-  margin-top: 2.6rem;
+  margin-top: 0.7rem;
 
   font-family: 'Pretendard';
-  font-size: 1rem;
+  font-size: 0.8rem;
   line-height: 1.2rem;
   letter-spacing: -0.02rem;
   color: #fa0000;
 `;
 
 export const GotoSignup = styled.div`
-  margin-left: 28.8rem;
+  margin-left: 29.5rem;
   margin-top: 0.8rem;
 
   font-family: 'Pretendard';
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1rem;
   letter-spacing: -0.02em;
   color: #7e7e7e;

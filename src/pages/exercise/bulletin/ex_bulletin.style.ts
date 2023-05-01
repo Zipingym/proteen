@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Body = styled.body`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: #252525;
   color: white;
 `;
@@ -10,8 +10,9 @@ export const Body = styled.body`
 export const AllContainer = styled.div`
   display: black;
   padding-left: 13%;
-  padding-top: 6%;
-  padding-bottom: 10%;
+  padding-top: 5.7%;
+  padding-bottom: 6%;
+  box-sizing: border-box;
 `;
 
 export const Title = styled.h1`
@@ -39,7 +40,18 @@ export const MainContainer = styled.div`
   background: #494949;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
-
+export const ScrollContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 640px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &::-webkit-scrollbar-thumb {
+    display: none;
+  }
+`;
 export const Reels_view = styled.img`
   cursor: pointer;
   padding-top: 0.5%;

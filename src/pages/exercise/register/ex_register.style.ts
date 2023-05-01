@@ -8,10 +8,12 @@ export const Body = styled.body`
 `;
 
 export const AllContainer = styled.div`
-  display: black;
-  padding-left: 13%;
-  padding-top: 8%;
-  padding-bottom: 10%;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Title = styled.h1`
@@ -31,24 +33,29 @@ export const T_info = styled.h1`
 
 export const MainContainer = styled.div`
   display: flex;
-  margin: 0 14%;
-  width: 60%;
-  height: 620px;
-  margin-top: 2.5%;
+  width: 50%;
+  min-width: 700px;
+  padding: 5px;
   background: #494949;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 export const Reels_view = styled.img`
   cursor: pointer;
-  padding-top: 0.5%;
-  padding-left: 0.2%;
+  width: 50%;
+  height: 100%;
   object-fit: cover;
 `;
 
 export const Write = styled.div`
-  margin-left: 4.1%;
-  margin-top: 5%;
+  width: 50%;
+  height: 100%;
+  padding: 4%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
+  /* gap: 0.3em; */
 `;
 
 export const Content = styled.div`
@@ -77,7 +84,6 @@ export const inputTitle = styled.input`
   padding-right: 5%;
   width: 100%;
   height: 6%;
-  margin-top: 3%;
   background: #252523;
   border: none;
   border-radius: 5px;
@@ -128,7 +134,7 @@ border: 1px solid black;
 border-radius: 50px;
 background:#454545;
 color:white;
-margin-left:2%;r
+margin-left:2%;
 margin-bottom:5%;
 
 font-family: 'Pretendard';
@@ -147,9 +153,9 @@ border: 1px solid #1DF659;
 `;
 
 export const Record = styled.div`
-  width: 110%;
-  height: 15%;
-  margin-top: 3%;
+  width: 100%;
+  height: 80%;
+  box-sizing: border-box;
   background: #252523;
   border: none;
   border-radius: 5px;
@@ -169,7 +175,7 @@ export const rTitle = styled.h5`
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 300;
-  font-size: 10%;
+  font-size: 12px;
 `;
 export const rElement = styled.div`
   display: flex;
@@ -191,7 +197,7 @@ export const rElementS = styled.h5`
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 300;
-  font-size: 30%;
+  font-size: 60%;
 `;
 
 export const rTime = styled.div`
@@ -205,12 +211,12 @@ export const rKcal = styled.div`
 
 export const submit = styled.div`
   float: right;
-  margin-top: 15%;
 `;
 
 export const submitU = styled.button`
 cursor:pointer;
 padding: 6px 25px 6px 25px;
+width: 100%;
 background: #252523;
 border: 1px solid #1DF659;
 border-radius: 5px;
@@ -226,4 +232,61 @@ font-size: 10px;
     border-radius: 5px;
     color: #252523;
 }}
+`;
+
+export const Label = styled.div`
+  font-weight: 300;
+  display: flex;
+  gap: 0.2em;
+  h4 {
+    font-size: 12px;
+    font-weight: inherit;
+    color: #eee;
+  }
+  h6 {
+    color: green;
+  }
+`;
+
+export const InputTitle = styled.input`
+  padding: 3% 4%;
+  width: 100%;
+  background: #252523;
+  border: none;
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 90%;
+  color: white;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: solid #1df659;
+  }
+`;
+
+export const InputInfo = styled.textarea`
+  padding: 5%;
+  width: 100%;
+  height: 70%;
+  background: #252523;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  resize: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 90%;
+  color: white;
+
+  &:focus {
+    outline: solid #1df659;
+  }
+`;
+
+export const InputWrapper = styled.div<{ height: number }>`
+  display: flex;
+  height: ${({ height }) => height}%;
+  flex-direction: column;
+  width: 100%;
 `;

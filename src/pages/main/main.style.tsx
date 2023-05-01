@@ -27,7 +27,7 @@ export const Main2 = styled.div`
 `;
 export const Main3 = styled.div`
   width: 100%;
-  height: 150vh;
+  height: 100%;
   background-image: url(/image/bg3.svg);
   background-repeat: no-repeat;
   background-size: cover;
