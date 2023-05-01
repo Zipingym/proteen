@@ -12,57 +12,123 @@ const Ex_bulletin = () => {
       <S.AllContainer>
         <S.Title>Oh! 오운완</S.Title>
         <S.T_info>오늘의 운동을 기록하고 공유하세요.</S.T_info>
+        <S.ScrollContainer>
+          <S.MainContainer>
+            <iframe
+              width="560"
+              height="620"
+              src="https://www.youtube.com/embed/kL88ldYiMkM"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+            <S.Write>
+              <S.Date>
+                <S.cDate>2023.04.02</S.cDate>
+                <S.cTime>오전 10:00</S.cTime>
+              </S.Date>
+              <S.cTitle>오전 풀업! 오운완</S.cTitle>
 
-        <S.MainContainer>
-          <S.Reels_view src={Ex_img} alt="Error" />
+              <S.profile>
+                <S.profileImg src={profile_img} alt="Error" />
+                <S.profileName>Steel Supplements</S.profileName>
+              </S.profile>
+              <S.cBar></S.cBar>
 
-          <S.Write>
-            <S.Date>
-              <S.cDate>2023.04.02</S.cDate>
-              <S.cTime>오전 10:00</S.cTime>
-            </S.Date>
-            <S.cTitle>오전 풀업! 오운완</S.cTitle>
+              <S.cWrite>오늘은 등하는날 ㅎㅎ</S.cWrite>
+              <S.cWrite>나름 정자세로 한다고 했는데 왜 90점ㅇ이냐...</S.cWrite>
+              <S.cWrite>내일은 평균 95점 찍는다!</S.cWrite>
+              <S.cTag># 등 # 풀업 # 헬스 #health # PT # GYM</S.cTag>
+              <S.cBar></S.cBar>
+              <S.Click>
+                <S.iconH src={Icon_heart} alt="Error" />
+                <S.iconB src={Icon_book} alt="Error" />
+              </S.Click>
+              <S.Extag>Pull-up</S.Extag>
+              <S.Record>
+                <S.rContent>
+                  <S.rTitle>평균 점수</S.rTitle>
+                  <S.rTitle>운동 시간</S.rTitle>
+                  <S.rTitle>소모 칼로리</S.rTitle>
+                </S.rContent>
 
-            <S.profile>
-              <S.profileImg src={profile_img} alt="Error" />
-              <S.profileName>Steel Supplements</S.profileName>
-            </S.profile>
-            <S.cBar></S.cBar>
+                <S.rElement>
+                  <S.rElementB>78.2</S.rElementB>
+                  <S.rTime>
+                    <S.rElementB>01</S.rElementB>
+                    <S.rElementS>h</S.rElementS>
+                    <S.rElementB>30</S.rElementB>
+                    <S.rElementS>m</S.rElementS>
+                  </S.rTime>
 
-            <S.cWrite>오늘은 등하는날 ㅎㅎ</S.cWrite>
-            <S.cWrite>나름 정자세로 한다고 했는데 왜 90점ㅇ이냐...</S.cWrite>
-            <S.cWrite>내일은 평균 95점 찍는다!</S.cWrite>
-            <S.cTag># 등 # 풀업 # 헬스 #health # PT # GYM</S.cTag>
-            <S.cBar></S.cBar>
-            <S.Click>
-              <S.iconH src={Icon_heart} alt="Error" />
-              <S.iconB src={Icon_book} alt="Error" />
-            </S.Click>
-            <S.Extag>Pull-up</S.Extag>
-            <S.Record>
-              <S.rContent>
-                <S.rTitle>평균 점수</S.rTitle>
-                <S.rTitle>운동 시간</S.rTitle>
-                <S.rTitle>소모 칼로리</S.rTitle>
-              </S.rContent>
+                  <S.rKcal>
+                    <S.rElementB>150</S.rElementB>
+                    <S.rElementS>kcal</S.rElementS>
+                  </S.rKcal>
+                </S.rElement>
+              </S.Record>
+            </S.Write>
+          </S.MainContainer>
+          <S.MainContainer>
+            <iframe
+              width="560"
+              height="620"
+              src="https://www.youtube.com/embed/kL88ldYiMkM"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
 
-              <S.rElement>
-                <S.rElementB>78.2</S.rElementB>
-                <S.rTime>
-                  <S.rElementB>01</S.rElementB>
-                  <S.rElementS>h</S.rElementS>
-                  <S.rElementB>30</S.rElementB>
-                  <S.rElementS>m</S.rElementS>
-                </S.rTime>
+            <S.Write>
+              <S.Date>
+                <S.cDate>2023.04.02</S.cDate>
+                <S.cTime>오전 10:00</S.cTime>
+              </S.Date>
+              <S.cTitle>오전 풀업! 오운완</S.cTitle>
 
-                <S.rKcal>
-                  <S.rElementB>150</S.rElementB>
-                  <S.rElementS>kcal</S.rElementS>
-                </S.rKcal>
-              </S.rElement>
-            </S.Record>
-          </S.Write>
-        </S.MainContainer>
+              <S.profile>
+                <S.profileImg src={profile_img} alt="Error" />
+                <S.profileName>Steel Supplements</S.profileName>
+              </S.profile>
+              <S.cBar></S.cBar>
+
+              <S.cWrite>오늘은 등하는날 ㅎㅎ</S.cWrite>
+              <S.cWrite>나름 정자세로 한다고 했는데 왜 90점ㅇ이냐...</S.cWrite>
+              <S.cWrite>내일은 평균 95점 찍는다!</S.cWrite>
+              <S.cTag># 등 # 풀업 # 헬스 #health # PT # GYM</S.cTag>
+              <S.cBar></S.cBar>
+              <S.Click>
+                <S.iconH src={Icon_heart} alt="Error" />
+                <S.iconB src={Icon_book} alt="Error" />
+              </S.Click>
+              <S.Extag>Pull-up</S.Extag>
+              <S.Record>
+                <S.rContent>
+                  <S.rTitle>평균 점수</S.rTitle>
+                  <S.rTitle>운동 시간</S.rTitle>
+                  <S.rTitle>소모 칼로리</S.rTitle>
+                </S.rContent>
+
+                <S.rElement>
+                  <S.rElementB>78.2</S.rElementB>
+                  <S.rTime>
+                    <S.rElementB>01</S.rElementB>
+                    <S.rElementS>h</S.rElementS>
+                    <S.rElementB>30</S.rElementB>
+                    <S.rElementS>m</S.rElementS>
+                  </S.rTime>
+
+                  <S.rKcal>
+                    <S.rElementB>150</S.rElementB>
+                    <S.rElementS>kcal</S.rElementS>
+                  </S.rKcal>
+                </S.rElement>
+              </S.Record>
+            </S.Write>
+          </S.MainContainer>
+        </S.ScrollContainer>
       </S.AllContainer>
     </S.Body>
   );
