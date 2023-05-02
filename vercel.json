@@ -10,6 +10,10 @@
       "source": "/exercise/bulletin",
       "destination": "/index.html"
     },
+    {
+      "source": "/exercise/detailedRoutine",
+      "destination": "/index.html"
+    },
     { "source": "/test", "destination": "/index.html" },
     { "source": "/signup", "destination": "/index.html" },
     { "source": "/signin", "destination": "/index.html" },

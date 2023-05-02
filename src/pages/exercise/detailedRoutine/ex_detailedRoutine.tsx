@@ -1,13 +1,12 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import * as S from './ex_detailedRoutine.style';
 import DetailedImg1 from './img/image 5.png';
-import DetailedImg2 from './img/Polygon 2.png'
+import DetailedImg2 from './img/Polygon 2.png';
 import DetailedImg3 from './img/Group 99.png';
+import Youtub from 'react-youtube';
 
 const ex_detailedRoutine = () => {
-
-
   return (
     <S.Body>
       <S.topContent>
@@ -55,6 +54,6 @@ const ex_detailedRoutine = () => {
       </S.bottomContent>
     </S.Body>
   );
-}
+};
 
 export default ex_detailedRoutine;
