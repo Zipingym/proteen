@@ -94,9 +94,9 @@ const Ex_register = () => {
                 <S.ChoseBtn name="exerciseType" onChange={handleChangerUser}>
                   {type.map((type: string) => {
                     return (
-                      <S.CB>
+                      <S.CBvalue={value} key={value}>
                         <pre> {type} </pre>
-                      </S.CB>
+                      </S.CBvalue=>
                     );
                   })}
                 </S.ChoseBtn>
