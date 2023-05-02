@@ -5,36 +5,32 @@ import Ex_img from './img/Group 91.png';
 import axios from 'axios';
 import api from '$/api/customAxios';
 interface Post {
-  request: {
-    title: string;
-    body: string;
-    exerciseType: string;
-    score: number;
-    time: string;
-    calorie: number;
-  };
-  file: string;
+  title: string;
+  body: string;
+  exerciseType: string;
+  score: number;
+  time: string;
+  calorie: number;
 }
 
 const Ex_register = () => {
   const [post, setPost] = useState<Post>({
-    request: {
-      title: '',
-      body: '',
-      exerciseType: 'PULLUP',
-      score: 0,
-      time: '',
-      calorie: 0,
-    },
-    file: '',
+    title: '',
+    body: '',
+    exerciseType: '',
+    score: 0,
+    time: '',
+    calorie: 0,
   });
-  api
-    .post('/user/signup', post)
-    .then(console.log)
-    .catch((err) => {
-      console.log(err);
-      // console.log()
-    });
+  const onSubmit = (data) => {
+    api
+      .post('/user/signup', user)
+      .then(console.log)
+      .catch((err) => {
+        console.log(err);
+        // console.log()
+      });
+  };
   useEffect(() => {
     console.log(post);
   });
@@ -48,6 +44,7 @@ const Ex_register = () => {
   const handleChangerUser = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setPost({ ...post, [name]: value });
+    console.log(name + value);
   };
   return (
     <S.Body>
@@ -74,7 +71,7 @@ const Ex_register = () => {
                   <h6>*</h6>
                 </S.Label>
                 <S.InputTitle
-                  name="request.title"
+                  name="title"
                   type="text"
                   placeholder="제목"
                   onChange={handleChangerUser}
@@ -94,8 +91,13 @@ const Ex_register = () => {
                 <S.ChoseBtn>
                   {type.map((type: string) => {
                     return (
-                      <S.CB value={type} key={type}>
-                        <pre> {type} </pre>
+                      <S.CB
+                        name="exerciseType"
+                        onClick={handleChangerUser}
+                        value={type}
+                        key={type}
+                      >
+                        {type}
                       </S.CB>
                     );
                   })}
