@@ -7,8 +7,8 @@ import axios from 'axios';
 
 const signin = () => {
   useEffect(() => {
-    axios
-      .get('/user/signin')
+    api
+      .get('/user/login')
       .then((res) => console.log(res))
       .catch();
   }, []);
@@ -49,13 +49,13 @@ const signin = () => {
 
   const onSubmit = () => {
     if (user.id.length > 0 || user.password.length > 0) {
-      axios
-        .post('/user/signin', {
-          //id,
-          //password,
+      api
+        .post('/user/login', {
+          id : user.id, 
+          password : user.password
         })
-        .then((res) => {
-          console.log(res.data.token);
+        .then((res:any) => {
+          localStorage.setItem('accessToken',res.data.accessToken)
         })
         .catch(() => {
           alert('로그인 실패');
