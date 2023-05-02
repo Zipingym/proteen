@@ -11,7 +11,6 @@ export const AllContainer = styled.div`
   display: black;
   padding-left: 13%;
   padding-top: 5.7%;
-  padding-bottom: 6%;
   box-sizing: border-box;
 `;
 
@@ -34,7 +33,7 @@ export const T_info = styled.h1`
 export const MainContainer = styled.div`
   display: flex;
   margin: 0 14%;
-  width: 60%;
+  width: 950px;
   height: 620px;
   margin-top: 2.5%;
   background: #494949;
@@ -43,7 +42,7 @@ export const MainContainer = styled.div`
 export const ScrollContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 640px;
+  height: 740px;
   overflow-y: auto;
   &::-webkit-scrollbar {
     display: none;
@@ -84,7 +83,6 @@ export const cTime = styled.h6`
 `;
 
 export const cTitle = styled.h1`
-  margin-top: 3%;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;

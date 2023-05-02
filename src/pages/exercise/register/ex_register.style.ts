@@ -12,9 +12,11 @@ export const AllContainer = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  box-sizing: border-box;
+  align-items: center;
 `;
+export const Container = styled.div``;
 
 export const Title = styled.h1`
   font-family: 'Pretendard';
@@ -29,12 +31,13 @@ export const T_info = styled.h1`
   font-style: lighter;
   font-weight: 350;
   font-size: 100%;
+  margin-bottom: 2%;
 `;
 
 export const MainContainer = styled.div`
   display: flex;
   width: 50%;
-  min-width: 700px;
+  min-width: 900px;
   padding: 5px;
   background: #494949;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -49,13 +52,13 @@ export const Reels_view = styled.img`
 
 export const Write = styled.div`
   width: 50%;
-  height: 100%;
+  height: 600px;
   padding: 4%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 5%;
-  /* gap: 0.3em; */
+  align-items: space-between;
+  gap: 10%;
 `;
 
 export const Content = styled.div`
@@ -128,28 +131,26 @@ export const ChoseBtn = styled.div`
 `;
 
 export const CB = styled.button`
-cursor: pointer;
-box-sizing: border-box;
-border: 1px solid black;
-border-radius: 50px;
-background:#454545;
-color:white;
-margin-left:2%;
-margin-bottom:5%;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 50px;
+  background: #454545;
+  color: white;
+  margin-left: 2%;
+  margin-bottom: 5%;
 
-font-family: 'Pretendard';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 14px;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
 
-color: #FFFFFF;
+  color: #ffffff;
 
-&:hover{
-border: 1px solid #1DF659;
-
-}
-
+  &:hover {
+    border: 1px solid #1df659;
+  }
 `;
 
 export const Record = styled.div`
