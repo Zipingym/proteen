@@ -91,12 +91,12 @@ const Ex_register = () => {
                   placeholder="내용"
                   onChange={handleChangerUser}
                 ></S.InputInfo>
-                <S.ChoseBtn name="exerciseType" onChange={handleChangerUser}>
+                <S.ChoseBtn>
                   {type.map((type: string) => {
                     return (
-                      <S.CBvalue={value} key={value}>
+                      <S.CB value={type} key={type}>
                         <pre> {type} </pre>
-                      </S.CBvalue=>
+                      </S.CB>
                     );
                   })}
                 </S.ChoseBtn>
