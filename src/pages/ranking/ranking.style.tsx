@@ -68,6 +68,7 @@ export const ScrollWrap = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+  scroll-behavior: smooth;
 `;
 export const ScrollBtn = styled.img`
   margin-left: 40%;

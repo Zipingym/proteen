@@ -52,7 +52,7 @@ export const NavBtn = styled.button`
 `;
 
 export const ContentWrapper = styled.div`
-  padding-top: 5.7rem;
+  padding-top: 13vh;
   margin-left: 15.6rem;
 `;
 
@@ -143,16 +143,20 @@ export const Input = styled.input<{ width: string }>`
     outline: none;
     border: 1px solid #1df659;
   }
+  ::placeholder{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.8rem;
+    line-height: 17px;
+    color: #FFFFFF;
+    text-align: center;
+  }
 
   background: #252525;
   border: 1px solid #252525;
   border-radius: 5px;
   width: ${(props) => props.width};
   height: 1.8rem;
-  padding-left: 0.6rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #ffffff;
 `;
 
 export const HorizontalAlign = styled.div`
@@ -207,11 +211,19 @@ export const TimeContent = styled.div`
   align-items: center;
 `;
 
-export const TimeGraph = styled.div`
-  width: 20px;
-  height: 61px;
+export const TimeGraph = styled.div<{height : string}>`
+  width: inherit;
+  height: ${(props)=>props.height};
   background: #252525;
 `;
+
+export const TimeGraphWrapper = styled.div`
+  height: 8vh;
+  width: 20px;
+
+  display: flex;
+  align-items: end;
+`
 
 export const Hr = styled.div`
   width: 2.8rem;
@@ -220,14 +232,34 @@ export const Hr = styled.div`
 `;
 
 export const MarginTop = styled.div`
-  margin-top: 4rem;
+  margin-top: 10vh;
 `;
+
+export const HistoryScrollWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`
 
 export const HistoryWrapper = styled.div`
   margin-top: 1.8rem;
+
+  display: flex;
+  width: 75vw;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
+export const rightScrollBtnImg = styled.img`
+  margin-top: 2rem;
+  margin-left: -3.5vh;
+  z-index: 1;
+`
+
 export const EachHistoryWrapper = styled.div`
+  margin-right: 1vw;
+  
   display: flex;
   flex-direction: column;
 `;
@@ -237,7 +269,6 @@ export const HistoryVideo = styled.video`
 
   width: 199px;
   height: 257px;
-  background: url(${historyVideo});
 `;
 
 export const HistoryTitle = styled.div`
@@ -256,8 +287,9 @@ export const HistoryTitle = styled.div`
 `;
 
 export const LogoutIcon = styled.div`
-  position: relative;
-  left: 93%;
+  position: fixed;
+  bottom: 4vh;
+  right: 3vw;
 
   background: url(${logoutIcon});
   width: 29.09px;

@@ -3,7 +3,14 @@ import * as Ra from './ranking.style';
 import Component from './ranking.component';
 import data from '../../pages/routin/routine.json';
 import Scrollbtn from '../../assets/img/scrollbtn.svg';
+
 function Ranking() {
+
+  const handleScrollBtn = () => {
+    const scrollWarp:Element|any = document.querySelector('.ScrollWrap')
+    scrollWarp.scrollTop = scrollWarp?.scrollTop + 100
+  }
+
   return (
     <Ra.body>
       <Ra.Title>Ranking</Ra.Title>
@@ -24,12 +31,10 @@ function Ranking() {
         <Ra.Index size={'6.5%'}>총 소모 칼로리</Ra.Index>
         <Ra.Index size={'6%'}>출석</Ra.Index>
       </Ra.IndexWrap>
-      <Ra.ScrollWrap>
-        {data.ranking.map((data, idx) => {
-          return <Component></Component>;
-        })}
+      <Ra.ScrollWrap className='ScrollWrap'>
+        <Component></Component>
       </Ra.ScrollWrap>
-      <Ra.ScrollBtn src={Scrollbtn}></Ra.ScrollBtn>
+      <Ra.ScrollBtn src={Scrollbtn} onClick={handleScrollBtn}></Ra.ScrollBtn>
     </Ra.body>
   );
 }
