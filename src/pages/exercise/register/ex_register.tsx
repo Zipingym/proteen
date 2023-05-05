@@ -18,6 +18,7 @@ interface Post {
 
 const Ex_register = () => {
   const [post, setPost] = useState<Post>({
+<<<<<<< Updated upstream
     request: {
       title: '',
       body: '',
@@ -35,19 +36,44 @@ const Ex_register = () => {
       console.log(err);
       // console.log()
     });
+=======
+    title: '',
+    body: '',
+    exerciseType: '',
+    score: 78,
+    time: '01:30',
+    calorie: 0,
+  });
+  const onSubmit = (data) => {
+    api
+      .post('/exercise', post)
+      .then(console.log)
+      .catch((err) => {
+        console.log(err);
+        // console.log()
+      });
+  };
+>>>>>>> Stashed changes
   useEffect(() => {
     console.log(post);
   });
   const [type, setType] = useState([
-    'Pull-up',
-    'Squat',
-    'Lunge',
-    'Plank',
-    'Crunch',
+    'PULLUP',
+    'SQUAT',
+    'LUNGE',
+    'PLANK',
+    'CRUNCH',
   ]);
+  const [btnActive, setBtnActive] = useState('');
   const handleChangerUser = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setPost({ ...post, [name]: value });
+  };
+
+  const toggleActive = (e) => {
+    setBtnActive((prev) => {
+      return e.target.value;
+    });
   };
   return (
     <S.Body>
@@ -92,7 +118,7 @@ const Ex_register = () => {
                   onChange={handleChangerUser}
                 ></S.InputInfo>
                 <S.ChoseBtn>
-                  {type.map((type: string) => {
+                  {type.map((type: string, idx: number) => {
                     return (
                       <S.CB value={type} key={type}>
                         <pre> {type} </pre>
@@ -130,7 +156,7 @@ const Ex_register = () => {
                 </S.Record>
               </S.InputWrapper>
               <S.submit>
-                <S.submitU>업로드</S.submitU>
+                <S.submitU onClick={onSubmit}>업로드</S.submitU>
               </S.submit>
             </S.Write>
           </S.MainContainer>

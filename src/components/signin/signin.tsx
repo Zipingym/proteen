@@ -10,6 +10,11 @@ const signin = () => {
     api
       .get('/user/login')
       .then((res) => console.log(res))
+      .then((res) => {
+        if (res.ACCESS_TOKEN) {
+          localStorage.setItem('login-token', res.ACCESS_TOKEN);
+        }
+      })
       .catch();
   }, []);
 
@@ -51,11 +56,11 @@ const signin = () => {
     if (user.id.length > 0 || user.password.length > 0) {
       api
         .post('/user/login', {
-          id : user.id, 
-          password : user.password
+          id: user.id,
+          password: user.password,
         })
-        .then((res:any) => {
-          localStorage.setItem('accessToken',res.data.accessToken)
+        .then((res: any) => {
+          localStorage.setItem('accessToken', res.data.accessToken);
         })
         .catch(() => {
           alert('로그인 실패');
