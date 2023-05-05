@@ -38,7 +38,15 @@ const Ex_register = () => {
     setPost({ ...post, [name]: value });
     console.log(name + value);
   };
-
+  const onSubmit = (data) => {
+    api
+      .post('/exercise', post)
+      .then(console.log)
+      .catch((err) => {
+        console.log(err);
+        // console.log()
+      });
+  };
   const toggleActive = (e) => {
     setBtnActive((prev) => {
       return e.target.value;
