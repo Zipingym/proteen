@@ -9,6 +9,7 @@ interface User {
   age: number;
   gender: string;
 }
+
 let ages: Number[] = [];
 for (let i = 1; i < 80; i++) {
   ages.push(i);
@@ -24,10 +25,25 @@ const signup = () => {
     age: 0,
     gender: '',
   });
-
+  const [inputValid, setInputValid] = useState({
+    idValid: true,
+    pwValid: true,
+  });
   const handleChangerUser = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
+  };
+  const handleUser = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+    const regex = new RegExp('^[a-zA-Z]*$');
+
+    setInputValid({
+      ...inputValid,
+      idValid: regex.test(user.id),
+      pwValid: regex.test(user.password),
+    });
+    console.log(inputValid);
   };
   const onSubmit = (data) => {
     api
@@ -38,6 +54,7 @@ const signup = () => {
         // console.log()
       });
   };
+
   useEffect(() => {});
   return (
     <S.BackImage>
@@ -102,18 +119,34 @@ const signup = () => {
             placeholder="아이디를 입력해 주세요."
             name="id"
             type="text"
-            onChange={handleChangerUser}
+            onChange={handleUser}
+            style={
+              inputValid.idValid
+                ? { border: '3px solid #494949' }
+                : { border: '3px solid #FF0000' }
+            }
           ></S.InactiveInput>
+          {!inputValid.idValid && user.id.length > 0 && (
+            <S.WarningMsg>*아이디가 올바르지 않습니다.</S.WarningMsg>
+          )}
         </S.ContentWrapper>
 
         <S.ContentWrapper>
           <S.ComponentLabel>Password</S.ComponentLabel>
           <S.InactiveInput
             name="password"
-            onChange={handleChangerUser}
+            onChange={handleUser}
             type="password"
             placeholder="비밀번호를 입력해 주세요."
+            style={
+              inputValid.pwValid
+                ? { border: '3px solid #494949' }
+                : { border: '3px solid #FF0000' }
+            }
           ></S.InactiveInput>
+          {!inputValid.pwValid && user.password.length > 0 && (
+            <S.WarningMsg>*비밀번호가 올바르지 않습니다.</S.WarningMsg>
+          )}
         </S.ContentWrapper>
 
         <S.SubmitBtn onClick={onSubmit}>ProTeen 가입</S.SubmitBtn>

@@ -111,7 +111,15 @@ export const ActiveInput = styled.input`
   font-size: 17px;
   color: #ffffff;
 `;
+export const WarningMsg = styled.div`
+  margin-top: 0.7rem;
 
+  font-family: 'Pretendard';
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+  letter-spacing: -0.02rem;
+  color: #fa0000;
+`;
 export const HalfSelect = styled.select`
   margin-top: 0.7rem;
 

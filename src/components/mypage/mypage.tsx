@@ -2,6 +2,7 @@ import * as S from './mypage.style';
 //import Image, {ImageProps} from "next/image";
 import trashIcon from '../../assets/img/trashIcon.svg';
 import pencilIcon from '../../assets/img/pencilIcon.svg';
+import axios from 'axios';
 
 /* interface ImgProps {
     src : string,
@@ -10,6 +11,9 @@ import pencilIcon from '../../assets/img/pencilIcon.svg';
 } */
 
 const mypage = () => {
+  // 파라메타로 토큰 넣어줘야함
+  const userData = axios.get('http://dev.ec2.proteen.degaja.com:8080/user/myinfo')
+  console.log(userData)
   return (
     <S.Body>
       <S.ContentWrapper>
@@ -34,7 +38,7 @@ const mypage = () => {
                   <span className="Star">*</span>
                   <span className="Content">name</span>
                 </S.StyledLabelWithStar>
-                <S.Input width="4.3rem" />
+                <S.Input width="4.3rem" placeholder={userData.name}/>
 
                 <S.HorizontalAlign>
                   <div>
@@ -42,14 +46,14 @@ const mypage = () => {
                       <span className="Star">*</span>
                       <span className="Content">age</span>
                     </S.StyledLabelWithStar>
-                    <S.Input width="3.8rem" />
+                    <S.Input width="3.8rem" >userData.age</S.Input>
                   </div>
                   <S.MarginLeft>
                     <S.StyledLabelWithStar>
                       <span className="Star">*</span>
                       <span className="Content">gender</span>
                     </S.StyledLabelWithStar>
-                    <S.Input width="3.8rem" />
+                    <S.Input width="3.8rem" >userData.gender</S.Input>
                   </S.MarginLeft>
                 </S.HorizontalAlign>
               </S.NameAgeGenderWrapper>
