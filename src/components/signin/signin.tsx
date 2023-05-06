@@ -8,8 +8,16 @@ import axios from 'axios';
 const signin = () => {
   useEffect(() => {
     api
-      .get('/user/login')
-      .then((res) => console.log(res))
+      .get<{
+        accessToken: 'string';
+        refreshToken: 'string';
+      }>('/user/login')
+      .then((res) => {
+        console.log(res);
+        if (res.data.accessToken) {
+          localStorage.setItem('login-token', res.data.accessToken);
+        }
+      })
       .catch();
   }, []);
 
@@ -51,11 +59,11 @@ const signin = () => {
     if (user.id.length > 0 || user.password.length > 0) {
       api
         .post('/user/login', {
-          id : user.id, 
-          password : user.password
+          id: user.id,
+          password: user.password,
         })
-        .then((res:any) => {
-          localStorage.setItem('accessToken',res.data.accessToken)
+        .then((res: any) => {
+          localStorage.setItem('accessToken', res.data.accessToken);
         })
         .catch(() => {
           alert('로그인 실패');

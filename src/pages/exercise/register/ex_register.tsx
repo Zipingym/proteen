@@ -22,30 +22,36 @@ const Ex_register = () => {
     time: '',
     calorie: 0,
   });
+  useEffect(() => {
+    console.log(post);
+  });
+  const [type, setType] = useState([
+    'PULLUP',
+    'SQUAT',
+    'LUNGE',
+    'PLANK',
+    'CRUNCH',
+  ]);
+  const [btnActive, setBtnActive] = useState('');
+  const handleChangerUser = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setPost({ ...post, [name]: value });
+    console.log(name + value);
+  };
   const onSubmit = (data: any) => {
     api
-      .post('/user/signup', post)
+      .post('/exercise', post)
       .then(console.log)
       .catch((err) => {
         console.log(err);
         // console.log()
       });
   };
-  useEffect(() => {
-    console.log(post);
-  });
-  const [type, setType] = useState([
-    'Pull-up',
-    'Squat',
-    'Lunge',
-    'Plank',
-    'Crunch',
-  ]);
-  const handleChangerUser = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setPost({ ...post, [name]: value });
-    console.log(name + value);
-  };
+  // const toggleActive = (e) => {
+  //   setBtnActive((prev) => {
+  //     return e.target.value;
+  //   });
+  // };
   return (
     <S.Body>
       <S.AllContainer>
@@ -90,7 +96,7 @@ const Ex_register = () => {
                   onChange={handleChangerUser}
                 ></S.InputInfo>
                 <S.ChoseBtn>
-                  {type.map((type: string) => {
+                  {type.map((type: string, idx: number) => {
                     return (
                       <S.CB
                         name="exerciseType"
@@ -134,7 +140,7 @@ const Ex_register = () => {
                 </S.Record>
               </S.InputWrapper>
               <S.submit>
-                <S.submitU>업로드</S.submitU>
+                <S.submitU onClick={onSubmit}>업로드</S.submitU>
               </S.submit>
             </S.Write>
           </S.MainContainer>

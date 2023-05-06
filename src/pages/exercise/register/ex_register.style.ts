@@ -151,6 +151,9 @@ export const CB = styled.button`
   &:hover {
     border: 1.5px solid #1df659;
   }
+  &.active {
+    border: 1.5px solid #1df659;
+  }
 `;
 
 export const Record = styled.div`
