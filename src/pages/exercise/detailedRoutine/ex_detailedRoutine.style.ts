@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const Body = styled.body`
-  width: 100vw;
   height: 100vh;
   background: #252525;
+  position: relative;
+  display: flex;
 `;
 export const topContent = styled.div`
   display: flex;
-  padding-top: 5.3%;
+  height: 60%;
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
 `;
@@ -17,11 +18,15 @@ export const topImg1 = styled.img`
 `;
 
 export const exTitle = styled.div`
-  margin-left: 5%;
-  margin-top: 2%;
+  padding: 1.5rem;
+  width: 100%;
+  height: 100%;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 export const routine = styled.h5`
@@ -36,8 +41,6 @@ export const topImg2 = styled.img`
 `;
 
 export const title = styled.h1`
-  margin-top: 5%;
-  margin-bottom: 2%;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
@@ -52,7 +55,8 @@ export const info = styled.h3`
 
 export const topVideo = styled.iframe`
   float: right;
-  margin-top: 2%;
+  width: 100%;
+  height: 70%;
 `;
 
 export const topBar = styled.div`
@@ -81,8 +85,7 @@ export const BottomImg1 = styled.img`
 
 export const bottomContent = styled.div`
   display: block;
-  margin-left: 46%;
-  margin-top: -15.5%;
+  height: 40%;
 `;
 export const btmTitle = styled.h3`
   font-family: 'Pretendard';
@@ -179,4 +182,22 @@ export const pointCheckScore = styled.h3`
   line-height: 24px;
 
   color: #ffffff;
+`;
+
+export const WebcamWrapper = styled.div`
+  position: relative;
+  height: calc(100% - 5rem);
+  top: 5rem;
+`;
+
+export const Contents = styled.div`
+  width: 100%;
+  position: relative;
+  height: calc(100% - 5rem);
+  top: 5rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
 `;
