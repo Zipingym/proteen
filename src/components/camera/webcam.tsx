@@ -35,11 +35,19 @@ const Webcam = (props: {
     canvasCtx.globalCompositeOperation = 'source-over';
     if (props.skeleton.length > 0) {
       const landmarks = props.skeleton;
-      drawConnectors(canvasCtx, landmarks, POSE_CONNECTIONS, {
-        color: '#00FF00',
-        lineWidth: 4,
-      });
-      drawLandmarks(canvasCtx, landmarks, {
+      //@ts-expect-error
+      (drawConnectors ?? window.drawConnectors)(
+        canvasCtx,
+        landmarks,
+        //@ts-expect-error
+        POSE_CONNECTIONS ?? window.POSE_CONNECTIONS,
+        {
+          color: '#00FF00',
+          lineWidth: 4,
+        }
+      );
+      //@ts-expect-error
+      (drawLandmarks ?? window.drawLandmarks)(canvasCtx, landmarks, {
         color: '#FF0000',
         lineWidth: 2,
       });
