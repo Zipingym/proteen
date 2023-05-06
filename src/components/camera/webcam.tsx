@@ -23,24 +23,16 @@ const Webcam = (props: {
     const canvasElement = canvasRef.current;
     const canvasCtx = canvasElement.getContext('2d')!;
     const image = props.videoRef.current;
-
     canvasElement.height =
       (image.videoHeight * canvasElement.width) / image.videoWidth;
-
     canvasCtx.save();
     canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
-
-    // Only overwrite existing pixels.
     canvasCtx.globalCompositeOperation = 'source-in';
     canvasCtx.fillStyle = '#00FF00';
     canvasCtx.fillRect(0, 0, canvasElement.width, canvasElement.height);
-
-    // Only overwrite missing pixels.
     canvasCtx.globalCompositeOperation = 'destination-atop';
     canvasCtx.drawImage(image, 0, 0, canvasElement.width, canvasElement.height);
-
     canvasCtx.globalCompositeOperation = 'source-over';
-
     if (props.skeleton.length > 0) {
       const landmarks = props.skeleton;
       drawConnectors(canvasCtx, landmarks, POSE_CONNECTIONS, {
@@ -99,6 +91,7 @@ const Webcam = (props: {
       <canvas
         ref={canvasRef}
         style={{
+          display: isWebcam ? 'block' : 'none',
           height: '100%',
           borderRadius: '10px',
           transform: 'scaleX(-1)',
