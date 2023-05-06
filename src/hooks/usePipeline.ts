@@ -10,7 +10,7 @@ import Vector3 from '@zipingym/pose-input/dist/interface/Vector';
 import model from '$static/model/work.tflite';
 import * as tflite from '@tensorflow/tfjs-tflite';
 
-tflite.setWasmPath('http://localhost:8000/tf/');
+tflite.setWasmPath(`${window.location.origin}/tf/`);
 let globalJoint: null | MpJointPosition = null;
 
 const usePipeline: () => [
