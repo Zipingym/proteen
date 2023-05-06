@@ -1,13 +1,22 @@
 import React, { useEffect, useRef } from 'react';
 import * as S from './ex_detailedRoutine.style';
 import DetailedImg2 from './img/Polygon 2.png';
-import useWebcam from '$/hooks/useWebcam';
+import '@tensorflow/tfjs-backend-webgl';
 import Webcam from '$/components/camera/webcam';
 import FeedBack from './feedback';
+import usePipeline from '$/hooks/usePipeline';
 
 const ex_detailedRoutine = () => {
   const canvasRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
   const videoRef = useRef<HTMLVideoElement>(document.createElement('video'));
+  const [init, send] = usePipeline((value) => {
+    console.log(value);
+  });
+  useEffect(() => {
+    init().then(() => {
+      console.log('INIT');
+    });
+  }, [init]);
   return (
     <S.Body>
       <S.WebcamWrapper>
