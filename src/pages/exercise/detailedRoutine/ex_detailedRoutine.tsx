@@ -6,11 +6,13 @@ import Webcam from '$/components/camera/webcam';
 import FeedBack from './feedback';
 import usePipeline from '$/hooks/usePipeline';
 import { NormalizedLandmarkList } from '@mediapipe/drawing_utils';
+import useExerciseScore from '$/hooks/useExerciseScore';
 
 const ex_detailedRoutine = () => {
   const videoRef = useRef<HTMLVideoElement>(document.createElement('video'));
   const [skeleton, setSkeleton] = useState<NormalizedLandmarkList>(new Array());
   const [init, send] = usePipeline();
+  const [input, score] = useExerciseScore();
   useEffect(() => {
     init();
   }, [init]);
@@ -27,15 +29,19 @@ const ex_detailedRoutine = () => {
         intervalId = setInterval(() => {
           send(videoRef.current).then((value) => {
             setSkeleton(value.landmarks);
+            input(value.joint, value.accuracy);
           });
         }, 1000 / 60);
-      }, 1000);
+      }, 3000);
       return () => {
         clearTimeout(timer);
         clearInterval(intervalId);
       };
     }
   }, [isPlay]);
+  useEffect(() => {
+    console.log(score);
+  }, [score]);
   return (
     <S.Body>
       <S.WebcamWrapper>
@@ -63,13 +69,7 @@ const ex_detailedRoutine = () => {
             />
           </S.exTitle>
         </S.topContent>
-        <FeedBack
-          comment={''}
-          currentCount={0}
-          maxCount={0}
-          averageScore={0}
-          currentScore={0}
-        />
+        <FeedBack maxCount={0} score={score} />
       </S.Contents>
     </S.Body>
   );
