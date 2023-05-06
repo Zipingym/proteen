@@ -8,6 +8,7 @@ import api from '$/api/customAxios';
 import Score from './mypageScore';
 import History from './mypageHistory';
 import rightScrollBtn from '../../assets/img/rightScrollBtn.svg';
+import { UserData } from './Types';
 
 /* interface ImgProps {
     src : string,
@@ -16,35 +17,40 @@ import rightScrollBtn from '../../assets/img/rightScrollBtn.svg';
 } */
 
 const mypage = () => {
-  const token = localStorage.getItem('accessToken')
-  const [userData,setUserData] = useState<UserData|null>();
+  const token = localStorage.getItem('accessToken');
+  const [userData, setUserData] = useState<UserData>({
+    userId: 0,
+    id: '',
+    password: '',
+    name: '',
+    age: 0,
+    gender: '',
+  });
   const [isLoading, setIsLoading] = useState(true);
 
   const handleHistoryScroll = () => {
-    const obj:Element|any = document.querySelector('.HistoryWrapper')
+    const obj: Element | any = document.querySelector('.HistoryWrapper');
     obj.scrollLeft += 100;
-  }
+  };
 
-  useEffect(()=>{
-    api.get('/user/myinfo',{
-      headers:{
-        Authorization : `Bearer ${token}`
-    }})
-    .then((res)=>{
-      setUserData(res.data)
-      setIsLoading(false)
-    })
-
-  },[])
-
+  useEffect(() => {
+    api
+      .get('/user/myinfo', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setUserData(res.data);
+        setIsLoading(false);
+      });
+  }, []);
 
   // const {age, gender, id, name, password}:any = userData.data
 
-  if(isLoading){
-    return <p>loding.....</p>
+  if (isLoading) {
+    return <p>loding.....</p>;
   }
-
-
 
   return (
     <S.Body>
@@ -70,7 +76,7 @@ const mypage = () => {
                   <span className="Star">*</span>
                   <span className="Content">name</span>
                 </S.StyledLabelWithStar>
-                <S.Input width="4.3rem" placeholder={userData.name} disabled/>
+                <S.Input width="4.3rem" placeholder={userData.name} disabled />
 
                 <S.HorizontalAlign>
                   <div>
@@ -78,14 +84,22 @@ const mypage = () => {
                       <span className="Star">*</span>
                       <span className="Content">age</span>
                     </S.StyledLabelWithStar>
-                    <S.Input width="3.8rem" placeholder={userData.age} disabled/>
+                    <S.Input
+                      width="3.8rem"
+                      placeholder={String(userData.age)}
+                      disabled
+                    />
                   </div>
                   <S.MarginLeft>
                     <S.StyledLabelWithStar>
                       <span className="Star">*</span>
                       <span className="Content">gender</span>
                     </S.StyledLabelWithStar>
-                    <S.Input width="3.8rem" placeholder={userData.gender} disabled/>
+                    <S.Input
+                      width="3.8rem"
+                      placeholder={userData.gender}
+                      disabled
+                    />
                   </S.MarginLeft>
                 </S.HorizontalAlign>
               </S.NameAgeGenderWrapper>
@@ -109,14 +123,17 @@ const mypage = () => {
         </S.StyledLabel>
 
         <S.HistoryScrollWrapper>
-          <S.HistoryWrapper className='HistoryWrapper'>
-            <History/>
+          <S.HistoryWrapper className="HistoryWrapper">
+            <History />
           </S.HistoryWrapper>
-          <S.rightScrollBtnImg src={rightScrollBtn} onClick={handleHistoryScroll}/>
+          <S.rightScrollBtnImg
+            src={rightScrollBtn}
+            onClick={handleHistoryScroll}
+          />
         </S.HistoryScrollWrapper>
       </S.ContentWrapper>
 
-      <S.LogoutIcon/>
+      <S.LogoutIcon />
     </S.Body>
   );
 };

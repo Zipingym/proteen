@@ -22,9 +22,9 @@ const Ex_register = () => {
     time: '',
     calorie: 0,
   });
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     api
-      .post('/user/signup', user)
+      .post('/user/signup', post)
       .then(console.log)
       .catch((err) => {
         console.log(err);
@@ -86,6 +86,7 @@ const Ex_register = () => {
                   name="body"
                   type="text"
                   placeholder="내용"
+                  //@ts-expect-error
                   onChange={handleChangerUser}
                 ></S.InputInfo>
                 <S.ChoseBtn>
@@ -93,6 +94,7 @@ const Ex_register = () => {
                     return (
                       <S.CB
                         name="exerciseType"
+                        //@ts-expect-error
                         onClick={handleChangerUser}
                         value={type}
                         key={type}
