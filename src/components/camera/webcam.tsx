@@ -31,6 +31,12 @@ const Webcam = (props: {
               />
             );
           })}
+          <DevideInfo
+            name={'파일'}
+            onClick={() => {
+              alert('해당 기능은 현재 구현되지 않았습니다');
+            }}
+          />
         </div>
       )}
       <video
@@ -55,6 +61,6 @@ export default Webcam;
 const Title = styled.div`
   margin-top: 10px;
   color: #ffffff;
-  font-size: 25px; 
+  font-size: 25px;
   font-weight: 300;
-`
+`;
