@@ -13,24 +13,15 @@ import * as tflite from '@tensorflow/tfjs-tflite';
 tflite.setWasmPath('http://localhost:8000/tf/');
 let globalJoint: null | MpJointPosition = null;
 
-const usePipeline: (
-  onResult: (value: {
-    joint: Array<Vector3>;
-    result: Array<number>;
-    accuracy: Array<number>;
-    landmarks: NormalizedLandmarkList;
-  }) => void
-) => [
+const usePipeline: () => [
   () => Promise<void>,
-  (buffer: HTMLVideoElement | HTMLImageElement | HTMLCanvasElement) => void
-] = (
-  onResult: (value: {
+  (buffer: HTMLVideoElement | HTMLImageElement | HTMLCanvasElement) => Promise<{
     joint: Array<Vector3>;
     result: Array<number>;
     accuracy: Array<number>;
     landmarks: NormalizedLandmarkList;
-  }) => void
-) => {
+  }>
+] = () => {
   const [pipeline] = useState(new CustomExercisePipeline());
 
   const initalize = useCallback(async () => {
@@ -51,8 +42,8 @@ const usePipeline: (
   }, [pipeline]);
 
   const send = useCallback(
-    (buffer: HTMLVideoElement | HTMLImageElement | HTMLCanvasElement) => {
-      pipeline.run(buffer).then(onResult);
+    async (buffer: HTMLVideoElement | HTMLImageElement | HTMLCanvasElement) => {
+      return await pipeline.run(buffer);
     },
     [pipeline]
   );

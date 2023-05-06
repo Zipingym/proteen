@@ -1,15 +1,59 @@
 import useWebcam from '$/hooks/useWebcam';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MutableRefObject, useRef } from 'react';
 import DevideInfo from './deviceInfo';
 import styled from 'styled-components';
+import {
+  NormalizedLandmarkList,
+  drawConnectors,
+  drawLandmarks,
+} from '@mediapipe/drawing_utils';
+import { POSE_CONNECTIONS } from '@mediapipe/pose';
 
 const Webcam = (props: {
   videoRef: MutableRefObject<HTMLVideoElement>;
-  canvasRef: MutableRefObject<HTMLCanvasElement>;
+  skeleton: NormalizedLandmarkList;
+  onPlay: () => void;
 }) => {
   const [isWebcam, setIsWebcam] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
   const [devides, setVideo] = useWebcam();
+
+  useEffect(() => {
+    const canvasElement = canvasRef.current;
+    const canvasCtx = canvasElement.getContext('2d')!;
+    const image = props.videoRef.current;
+
+    canvasElement.height =
+      (image.videoHeight * canvasElement.width) / image.videoWidth;
+
+    canvasCtx.save();
+    canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+
+    // Only overwrite existing pixels.
+    canvasCtx.globalCompositeOperation = 'source-in';
+    canvasCtx.fillStyle = '#00FF00';
+    canvasCtx.fillRect(0, 0, canvasElement.width, canvasElement.height);
+
+    // Only overwrite missing pixels.
+    canvasCtx.globalCompositeOperation = 'destination-atop';
+    canvasCtx.drawImage(image, 0, 0, canvasElement.width, canvasElement.height);
+
+    canvasCtx.globalCompositeOperation = 'source-over';
+
+    if (props.skeleton.length > 0) {
+      const landmarks = props.skeleton;
+      drawConnectors(canvasCtx, landmarks, POSE_CONNECTIONS, {
+        color: '#00FF00',
+        lineWidth: 4,
+      });
+      drawLandmarks(canvasCtx, landmarks, {
+        color: '#FF0000',
+        lineWidth: 2,
+      });
+      canvasCtx.restore();
+    }
+  }, [props.skeleton]);
 
   return (
     <div style={{ height: '100%', padding: '1rem', boxSizing: 'border-box' }}>
@@ -42,16 +86,24 @@ const Webcam = (props: {
       <video
         ref={props.videoRef}
         style={{
-          display: isWebcam ? 'block' : 'none',
+          display: isWebcam ? 'none' : 'none',
           height: '100%',
           borderRadius: '10px',
           transform: 'scaleX(-1)',
         }}
         onPlay={() => {
           setIsWebcam(true);
+          props.onPlay();
         }}
       ></video>
-      {/* <canvas ref={props.canvasRef}></canvas> */}
+      <canvas
+        ref={canvasRef}
+        style={{
+          height: '100%',
+          borderRadius: '10px',
+          transform: 'scaleX(-1)',
+        }}
+      ></canvas>
     </div>
   );
 };

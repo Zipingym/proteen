@@ -1,26 +1,49 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './ex_detailedRoutine.style';
 import DetailedImg2 from './img/Polygon 2.png';
 import '@tensorflow/tfjs-backend-webgl';
 import Webcam from '$/components/camera/webcam';
 import FeedBack from './feedback';
 import usePipeline from '$/hooks/usePipeline';
+import { NormalizedLandmarkList } from '@mediapipe/drawing_utils';
 
 const ex_detailedRoutine = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
   const videoRef = useRef<HTMLVideoElement>(document.createElement('video'));
-  const [init, send] = usePipeline((value) => {
-    console.log(value);
-  });
+  const [skeleton, setSkeleton] = useState<NormalizedLandmarkList>(new Array());
+  const [init, send] = usePipeline();
   useEffect(() => {
-    init().then(() => {
-      console.log('INIT');
-    });
+    init();
   }, [init]);
+  const [isPlay, setIsPlay] = useState(false);
+  const onPlay = useCallback(() => {
+    if (isPlay === false) {
+      setIsPlay(true);
+    }
+  }, [isPlay]);
+  useEffect(() => {
+    if (isPlay) {
+      let intervalId: NodeJS.Timer;
+      let timer = setTimeout(() => {
+        intervalId = setInterval(() => {
+          send(videoRef.current).then((value) => {
+            setSkeleton(value.landmarks);
+          });
+        }, 1000 / 60);
+      }, 1000);
+      return () => {
+        clearTimeout(timer);
+        clearInterval(intervalId);
+      };
+    }
+  }, [isPlay]);
   return (
     <S.Body>
       <S.WebcamWrapper>
-        <Webcam canvasRef={canvasRef} videoRef={videoRef}></Webcam>
+        <Webcam
+          skeleton={skeleton}
+          videoRef={videoRef}
+          onPlay={onPlay}
+        ></Webcam>
       </S.WebcamWrapper>
 
       <S.Contents>
