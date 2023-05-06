@@ -1,11 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import styled from 'styled-components';
 import * as S from './ex_detailedRoutine.style';
-import DetailedImg1 from './img/image 5.png';
 import DetailedImg2 from './img/Polygon 2.png';
-import DetailedImg3 from './img/Group 99.png';
 import useWebcam from '$/hooks/useWebcam';
 import Webcam from '$/components/camera/webcam';
+import FeedBack from './feedback';
 
 const ex_detailedRoutine = () => {
   const canvasRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
@@ -33,23 +31,13 @@ const ex_detailedRoutine = () => {
             />
           </S.exTitle>
         </S.topContent>
-        <S.bottomContent>
-          <S.btmTitle>Feed Back</S.btmTitle>
-          <S.btmInfo>자세가 좋아요! 이대로 조금만 더!</S.btmInfo>
-          <S.exPoint>
-            <S.exPoint1>
-              <S.exCount>운동 갯수</S.exCount>
-              <S.exCounter>15/30</S.exCounter>
-            </S.exPoint1>
-            <S.exPoint2>
-              <S.exAvg>평균점수</S.exAvg>
-              <S.exAvgPoint>78.2</S.exAvgPoint>
-            </S.exPoint2>
-          </S.exPoint>
-          <S.exBar></S.exBar>
-          <S.pointCheckBar></S.pointCheckBar>
-          <S.pointCheckScore>74.2</S.pointCheckScore>
-        </S.bottomContent>
+        <FeedBack
+          comment={''}
+          currentCount={0}
+          maxCount={0}
+          averageScore={0}
+          currentScore={0}
+        />
       </S.Contents>
     </S.Body>
   );
