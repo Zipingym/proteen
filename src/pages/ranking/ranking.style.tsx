@@ -27,12 +27,12 @@ export const ChoseBtn = styled.div`
   margin-bottom: 2%;
 `;
 
-export const CB = styled.button`
+export const CB = styled.button<{isFocus:boolean}>`
   width: 8%;
   height: 30px;
   cursor: pointer;
   box-sizing: border-box;
-  border: 1px solid black;
+  ${props => props.isFocus ? "border : solid #1df659; transition: 0.5s;" : "border : 1px solid black"};
   border-radius: 50px;
   background: #454545;
   color: white;
@@ -46,10 +46,11 @@ export const CB = styled.button`
 
   color: #ffffff;
 
-  &:hover {
-    border: solid #1df659;
+  /* &:hover {
+    border: solid #ffffff;
     transition: 0.5s;
-  }
+  } */
+  
 `;
 export const IndexWrap = styled.div`
   display: flex;
