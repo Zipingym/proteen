@@ -1,20 +1,44 @@
 import React from 'react';
 import styled from 'styled-components';
 import test from '../../assets/img/bgimg.svg';
-function RankingComponent() {
+import {useEffect, useState } from 'react';
+import api from '$/api/customAxios';
+import { sort } from 'fast-sort';
+
+interface RankingData {
+  name	:string
+  total_calories:number
+  avg_Score	:number
+}
+
+//props에 왜 any만 들어갈 수 있지
+function RankingComponent({exercise}:any) {
+  const [rankingData, setRankingData] = useState<RankingData[]>()
+
+  useEffect(()=>{
+    api.get(`/exercise/ranking?exerciseType=${exercise}`)
+    .then((res)=>{
+      //여기 왜 type으로 any만 들어갈수 있을까?
+      setRankingData(sort<any>(res.data).desc((data) => data.avg_Score))
+    })
+  },[exercise])
+
   return (
     <div>
-      <ComponentWrap>
-        <RankingNumber>1</RankingNumber>
-        <Profile src={test}></Profile>
-        <Nickname>Steel Supplements</Nickname>
-        <ContentWrap>
-          <Score>78.2</Score>
-          <Time>01h30m</Time>
-          <Kcal>150kcal</Kcal>
-          <Attendance>100</Attendance>
-        </ContentWrap>
-      </ComponentWrap>
+    {
+      rankingData?.map((data,index)=>(
+        <ComponentWrap>
+          <RankingNumber>{index+1}</RankingNumber>
+          <Profile src={test}></Profile>
+          <Nickname>{data.name}</Nickname>
+          <ContentWrap>
+            <Score>{(data.avg_Score).toString().slice(0,6)}</Score>
+            <Time>01h30m</Time>
+            <Kcal>{data.total_calories}</Kcal>
+          </ContentWrap>
+        </ComponentWrap>
+      ))
+    }
     </div>
   );
 }
@@ -45,25 +69,26 @@ const Profile = styled.img`
   margin-left: 5%;
 `;
 const Nickname = styled.div`
+  width: 12%;
   font-size: 1.2em;
   color: white;
-  margin-left: 5%;
+  margin-left: 11%;
 `;
 const Score = styled.div`
   font-size: 1.2em;
   color: white;
+  width: 20%;
 `;
 const Time = styled.div`
   font-size: 1.2em;
   color: white;
+  width: 20%;
 `;
 const Kcal = styled.div`
   font-size: 1.2em;
   color: white;
-`;
-const Attendance = styled.div`
-  font-size: 1.2em;
-  color: white;
+  margin-left: 2rem;
+  width: 20%;
 `;
 const ContentWrap = styled.div`
   width: 50%;
