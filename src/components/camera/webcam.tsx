@@ -2,6 +2,7 @@ import useWebcam from '$/hooks/useWebcam';
 import { useState } from 'react';
 import { MutableRefObject, useRef } from 'react';
 import DevideInfo from './deviceInfo';
+import styled from 'styled-components';
 
 const Webcam = (props: {
   videoRef: MutableRefObject<HTMLVideoElement>;
@@ -14,6 +15,7 @@ const Webcam = (props: {
     <div style={{ height: '100%', padding: '1rem', boxSizing: 'border-box' }}>
       {isWebcam ? null : (
         <div style={{ width: '700px' }}>
+          <Title>Camera</Title>
           {devides.map((device, idx) => {
             return (
               <DevideInfo
@@ -49,3 +51,10 @@ const Webcam = (props: {
 };
 
 export default Webcam;
+
+const Title = styled.div`
+  margin-top: 10px;
+  color: #ffffff;
+  font-size: 25px; 
+  font-weight: 300;
+`
