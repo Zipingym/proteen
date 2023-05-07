@@ -10,7 +10,7 @@ import useFileInput from '$/hooks/useFileInput';
 const Webcam = (props: {
   videoRef: MutableRefObject<HTMLVideoElement>;
   skeleton: NormalizedLandmarkList;
-  onPlay: () => void;
+  onPlay: (count: number) => void;
 }) => {
   const [device, setDevice] = useState<number>(-2);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -35,14 +35,14 @@ const Webcam = (props: {
       } else {
         props.videoRef.current.src = URL.createObjectURL(fileData);
         props.videoRef.current.muted = true;
-        props.onPlay();
+        props.onPlay(countVal);
       }
     } else {
       setWebcam(props.videoRef.current, device, {
         width: 540,
         height: 540,
       });
-      props.onPlay();
+      props.onPlay(countVal);
     }
   };
 

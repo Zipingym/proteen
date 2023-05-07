@@ -9,6 +9,7 @@ import { NormalizedLandmarkList } from '@mediapipe/drawing_utils';
 import useExerciseScore from '$/hooks/useExerciseScore';
 
 const ex_detailedRoutine = () => {
+  const [maxCount, setMaxCount] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(document.createElement('video'));
   const [skeleton, setSkeleton] = useState<NormalizedLandmarkList>(new Array());
   const [init, send] = usePipeline();
@@ -17,11 +18,15 @@ const ex_detailedRoutine = () => {
     init();
   }, [init]);
   const [isPlay, setIsPlay] = useState(false);
-  const onPlay = useCallback(() => {
-    if (isPlay === false) {
-      setIsPlay(true);
-    }
-  }, [isPlay]);
+  const onPlay = useCallback(
+    (count: number) => {
+      if (isPlay === false) {
+        setIsPlay(true);
+        setMaxCount(count);
+      }
+    },
+    [isPlay]
+  );
   useEffect(() => {
     if (isPlay) {
       let intervalId: NodeJS.Timer;
@@ -70,7 +75,7 @@ const ex_detailedRoutine = () => {
             />
           </S.exTitle>
         </S.topContent>
-        <FeedBack maxCount={0} score={score} />
+        <FeedBack maxCount={maxCount} score={score} />
       </S.Contents>
     </S.Body>
   );
