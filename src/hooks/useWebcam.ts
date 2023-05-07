@@ -32,7 +32,6 @@ const useWebcam: () => [
         })
         .then((stream) => {
           element.srcObject = stream;
-          element.play();
         })
         .catch((error) => {
           alert("Can't use Webcam");

@@ -3,106 +3,115 @@ import { useEffect, useState } from 'react';
 import { MutableRefObject, useRef } from 'react';
 import DevideInfo from './deviceInfo';
 import styled from 'styled-components';
-import {
-  NormalizedLandmarkList,
-  drawConnectors,
-  drawLandmarks,
-} from '@mediapipe/drawing_utils';
-import { POSE_CONNECTIONS } from '@mediapipe/pose';
+import { NormalizedLandmarkList } from '@mediapipe/drawing_utils';
+import useMpDrawutil from '$/hooks/useMpDrawutil';
+import useFileInput from '$/hooks/useFileInput';
 
 const Webcam = (props: {
   videoRef: MutableRefObject<HTMLVideoElement>;
   skeleton: NormalizedLandmarkList;
   onPlay: () => void;
 }) => {
-  const [isWebcam, setIsWebcam] = useState(false);
+  const [device, setDevice] = useState<number>(-2);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [countVal, setCountVal] = useState(10);
   const canvasRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
-  const [devides, setVideo] = useWebcam();
+  const [devideList, setWebcam] = useWebcam();
+  const mpDrawutil = useMpDrawutil(canvasRef.current, props.videoRef.current);
+  const [fileSelect, fileData] = useFileInput('video/*');
 
   useEffect(() => {
-    const canvasElement = canvasRef.current;
-    const canvasCtx = canvasElement.getContext('2d')!;
-    const image = props.videoRef.current;
-    canvasElement.height =
-      (image.videoHeight * canvasElement.width) / image.videoWidth;
-    canvasCtx.save();
-    canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
-    canvasCtx.globalCompositeOperation = 'source-in';
-    canvasCtx.fillStyle = '#00FF00';
-    canvasCtx.fillRect(0, 0, canvasElement.width, canvasElement.height);
-    canvasCtx.globalCompositeOperation = 'destination-atop';
-    canvasCtx.drawImage(image, 0, 0, canvasElement.width, canvasElement.height);
-    canvasCtx.globalCompositeOperation = 'source-over';
-    if (props.skeleton.length > 0) {
-      const landmarks = props.skeleton;
-      //@ts-expect-error
-      (drawConnectors ?? window.drawConnectors)(
-        canvasCtx,
-        landmarks,
-        //@ts-expect-error
-        POSE_CONNECTIONS ?? window.POSE_CONNECTIONS,
-        {
-          color: '#00FF00',
-          lineWidth: 4,
-        }
-      );
-      //@ts-expect-error
-      (drawLandmarks ?? window.drawLandmarks)(canvasCtx, landmarks, {
-        color: '#FF0000',
-        lineWidth: 2,
-      });
-      canvasCtx.restore();
-    }
+    mpDrawutil(props.skeleton);
   }, [props.skeleton]);
 
+  const onStart = () => {
+    if (device === -2) {
+      alert('입력기기가 선택되지 않았습니다');
+      return;
+    } else if (device === -1) {
+      if (fileData === null) {
+        alert('파일이 선택되지 않았습니다');
+        return;
+      } else {
+        props.videoRef.current.src = URL.createObjectURL(fileData);
+        props.videoRef.current.muted = true;
+        props.onPlay();
+      }
+    } else {
+      setWebcam(props.videoRef.current, device, {
+        width: 540,
+        height: 540,
+      });
+      props.onPlay();
+    }
+  };
+
   return (
-    <div style={{ height: '100%', padding: '1rem', boxSizing: 'border-box' }}>
-      {isWebcam ? null : (
+    <div
+      style={{
+        height: '100%',
+        padding: '1rem',
+        boxSizing: 'border-box',
+        position: 'relative',
+      }}
+    >
+      {isPlaying ? null : (
         <div style={{ width: '700px' }}>
           <Title>Camera</Title>
-          {devides.map((device, idx) => {
+          {devideList.map((deviceInfo, idx) => {
             return (
               <DevideInfo
-                name={device.label}
+                name={deviceInfo.label}
                 onClick={() => {
-                  setVideo(props.videoRef.current, idx, {
-                    width: 540,
-                    height: 540,
-                    frameRate: 60,
-                  });
+                  setDevice(idx);
                 }}
                 key={idx}
+                focus={idx == device}
               />
             );
           })}
           <DevideInfo
-            name={'파일'}
+            name={fileData === null ? '파일' : `파일 (${fileData.name})`}
             onClick={() => {
-              alert('해당 기능은 현재 구현되지 않았습니다');
+              setDevice(-1);
+              fileSelect();
             }}
+            focus={device == -1}
           />
+          <Input
+            type="range"
+            min={1}
+            max={100}
+            value={countVal}
+            onChange={(e) => {
+              setCountVal(Number(e.target.value));
+            }}
+          ></Input>
+          <InputVal>{countVal}</InputVal>
+          <Button onClick={onStart}> 분석 시작 </Button>
         </div>
       )}
       <video
         ref={props.videoRef}
         style={{
-          display: isWebcam ? 'none' : 'none',
+          display: 'none',
           height: '100%',
           borderRadius: '10px',
           transform: 'scaleX(-1)',
         }}
         onPlay={() => {
-          setIsWebcam(true);
-          props.onPlay();
+          setIsPlaying(true);
         }}
       ></video>
       <canvas
         ref={canvasRef}
         style={{
-          display: isWebcam ? 'block' : 'none',
+          display: isPlaying ? 'block' : 'none',
           height: '100%',
           borderRadius: '10px',
           transform: 'scaleX(-1)',
+          minWidth: '700px',
+          maxWidth: '1100px',
         }}
       ></canvas>
     </div>
@@ -116,4 +125,47 @@ const Title = styled.div`
   color: #ffffff;
   font-size: 25px;
   font-weight: 300;
+`;
+
+const Button = styled.button`
+  width: 500px;
+  height: 80px;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #3b3b3b;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ddd;
+  font-size: 32px;
+  cursor: pointer;
+
+  &:focus {
+  }
+  &:hover {
+  }
+`;
+
+const Input = styled.input`
+  width: 500px;
+  height: 80px;
+  position: absolute;
+  bottom: 150px;
+  left: 50px;
+`;
+
+const InputVal = styled.div`
+  width: 100px;
+  height: 80px;
+  position: absolute;
+  bottom: 150px;
+  right: 50px;
+  color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
 `;

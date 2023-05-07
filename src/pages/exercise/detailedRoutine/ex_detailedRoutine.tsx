@@ -26,6 +26,7 @@ const ex_detailedRoutine = () => {
     if (isPlay) {
       let intervalId: NodeJS.Timer;
       let timer = setTimeout(() => {
+        videoRef.current.play();
         intervalId = setInterval(() => {
           send(videoRef.current).then((value) => {
             setSkeleton(value.landmarks);
