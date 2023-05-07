@@ -8,8 +8,16 @@ import axios from 'axios';
 const signin = () => {
   useEffect(() => {
     api
-      .get('/user/login')
-      .then((res) => console.log(res))
+      .get<{
+        accessToken: 'string';
+        refreshToken: 'string';
+      }>('/user/login')
+      .then((res) => {
+        console.log(res);
+        if (res.data.accessToken) {
+          localStorage.setItem('login-token', res.data.accessToken);
+        }
+      })
       .catch();
   }, []);
 

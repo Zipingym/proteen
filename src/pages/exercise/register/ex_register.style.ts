@@ -133,7 +133,7 @@ export const ChoseBtn = styled.div`
 export const CB = styled.button`
   cursor: pointer;
   box-sizing: border-box;
-  border: 1px solid black;
+  border: 1.5px solid black;
   border-radius: 50px;
   background: #454545;
   color: white;
@@ -149,7 +149,10 @@ export const CB = styled.button`
   color: #ffffff;
 
   &:hover {
-    border: 1px solid #1df659;
+    border: 1.5px solid #1df659;
+  }
+  &.active {
+    border: 1.5px solid #1df659;
   }
 `;
 

@@ -5,50 +5,53 @@ import Ex_img from './img/Group 91.png';
 import axios from 'axios';
 import api from '$/api/customAxios';
 interface Post {
-  request: {
-    title: string;
-    body: string;
-    exerciseType: string;
-    score: number;
-    time: string;
-    calorie: number;
-  };
-  file: string;
+  title: string;
+  body: string;
+  exerciseType: string;
+  score: number;
+  time: string;
+  calorie: number;
 }
 
 const Ex_register = () => {
   const [post, setPost] = useState<Post>({
-    request: {
-      title: '',
-      body: '',
-      exerciseType: 'PULLUP',
-      score: 0,
-      time: '',
-      calorie: 0,
-    },
-    file: '',
+    title: '',
+    body: '',
+    exerciseType: '',
+    score: 0,
+    time: '',
+    calorie: 0,
   });
-  api
-    .post('/user/signup', post)
-    .then(console.log)
-    .catch((err) => {
-      console.log(err);
-      // console.log()
-    });
   useEffect(() => {
     console.log(post);
   });
   const [type, setType] = useState([
-    'Pull-up',
-    'Squat',
-    'Lunge',
-    'Plank',
-    'Crunch',
+    'PULLUP',
+    'SQUAT',
+    'LUNGE',
+    'PLANK',
+    'CRUNCH',
   ]);
+  const [btnActive, setBtnActive] = useState('');
   const handleChangerUser = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setPost({ ...post, [name]: value });
+    console.log(name + value);
   };
+  const onSubmit = (data: any) => {
+    api
+      .post('/exercise', post)
+      .then(console.log)
+      .catch((err) => {
+        console.log(err);
+        // console.log()
+      });
+  };
+  // const toggleActive = (e) => {
+  //   setBtnActive((prev) => {
+  //     return e.target.value;
+  //   });
+  // };
   return (
     <S.Body>
       <S.AllContainer>
@@ -74,7 +77,7 @@ const Ex_register = () => {
                   <h6>*</h6>
                 </S.Label>
                 <S.InputTitle
-                  name="request.title"
+                  name="title"
                   type="text"
                   placeholder="제목"
                   onChange={handleChangerUser}
@@ -89,13 +92,20 @@ const Ex_register = () => {
                   name="body"
                   type="text"
                   placeholder="내용"
+                  //@ts-expect-error
                   onChange={handleChangerUser}
                 ></S.InputInfo>
                 <S.ChoseBtn>
-                  {type.map((type: string) => {
+                  {type.map((type: string, idx: number) => {
                     return (
-                      <S.CB value={type} key={type}>
-                        <pre> {type} </pre>
+                      <S.CB
+                        name="exerciseType"
+                        //@ts-expect-error
+                        onClick={handleChangerUser}
+                        value={type}
+                        key={type}
+                      >
+                        {type}
                       </S.CB>
                     );
                   })}
@@ -130,7 +140,7 @@ const Ex_register = () => {
                 </S.Record>
               </S.InputWrapper>
               <S.submit>
-                <S.submitU>업로드</S.submitU>
+                <S.submitU onClick={onSubmit}>업로드</S.submitU>
               </S.submit>
             </S.Write>
           </S.MainContainer>

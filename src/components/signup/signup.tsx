@@ -45,7 +45,7 @@ const signup = () => {
     });
     console.log(inputValid);
   };
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     api
       .post('/user/signup', user)
       .then(console.log)
@@ -86,6 +86,7 @@ const signup = () => {
               name="age"
               type="number"
               placeholder="나이를 선택해 주세요."
+              //@ts-expect-error
               onChange={handleChangerUser}
             >
               {ages.map((value: any) => (
@@ -101,6 +102,7 @@ const signup = () => {
             <S.HalfSelect
               name="gender"
               type="text"
+              //@ts-expect-error
               onChange={handleChangerUser} // 왜 에러나죠ㅠ
               placeholder="성별을 선택해 주세요."
             >
