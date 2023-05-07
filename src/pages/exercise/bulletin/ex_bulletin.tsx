@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import * as S from './ex_bulletin.style';
 import Ex_img from '../register/img/Group 91.png';
 import profile_img from './img/Ellipse 15.png';
 import Icon_heart from './img/mdi_cards-heart-outline.png';
 import Icon_book from './img/material-symbols_bookmark-outline-rounded.png';
+import api from '$/api/customAxios';
+import axios from 'axios';
 
 const Ex_bulletin = () => {
+  useEffect(() => {
+    api
+      .get('/exercise/get/list')
+      .then((res) => console.log(res))
+      .then((res) => {
+        if (res.ACCESS_TOKEN) {
+          localStorage.setItem('login-token', res.ACCESS_TOKEN);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <S.Body>
       <S.AllContainer>

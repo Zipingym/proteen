@@ -4,6 +4,8 @@ import * as S from './ex_register.style';
 import Ex_img from './img/Group 91.png';
 import axios from 'axios';
 import api from '$/api/customAxios';
+
+import upload_icon from '../../../assets/img/upload_icon.svg';
 interface Post {
   title: string;
   body: string;
@@ -22,9 +24,6 @@ const Ex_register = () => {
     time: '',
     calorie: 0,
   });
-  useEffect(() => {
-    console.log(post);
-  });
   const [type, setType] = useState([
     'PULLUP',
     'SQUAT',
@@ -33,6 +32,12 @@ const Ex_register = () => {
     'CRUNCH',
   ]);
   const [btnActive, setBtnActive] = useState('');
+  const [file, setFile] = useState({});
+
+  useEffect(() => {
+    console.log(post);
+  });
+
   const handleChangerUser = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setPost({ ...post, [name]: value });
@@ -47,6 +52,7 @@ const Ex_register = () => {
         // console.log()
       });
   };
+  //const video
   const toggleActive = (e) => {
     setBtnActive((prev) => {
       return e.target.value;
@@ -60,7 +66,7 @@ const Ex_register = () => {
           <S.T_info>오늘 한 운동을 릴스로 기록해보세요.</S.T_info>
 
           <S.MainContainer>
-            <iframe
+            {/* <iframe
               width="560"
               height="620"
               src="https://www.youtube.com/embed/kL88ldYiMkM"
@@ -68,7 +74,8 @@ const Ex_register = () => {
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
-            ></iframe>
+            ></iframe> */}
+            <S.VideoSubmit type="file" accept="video/*"></S.VideoSubmit>
 
             <S.Write>
               <S.InputWrapper height={10}>
