@@ -35,7 +35,7 @@ function RankingComponent({exercise}:any) {
           <Nickname>{data.name}</Nickname>
           <ContentWrap>
             <Score>{(data.avg_Score).toString().slice(0,6)}</Score>
-            <Time>{(data.total_Time)/3600}h{(data.total_Time)%3600}m</Time>
+            <Time>{data.total_Time>3600 ? Math.round((data.total_Time)/3600)+"h" : ""}{(data.total_Time)/60}m</Time>
             <Kcal>{data.total_calories}</Kcal>
             <Kcal>{data.attendance}</Kcal>
           </ContentWrap>
@@ -83,11 +83,15 @@ const Score = styled.div`
   width: 20%;
 `;
 const Time = styled.div`
+  display: flex;
+  justify-content: center;
   font-size: 1.2em;
   color: white;
   width: 20%;
 `;
 const Kcal = styled.div`
+  display: flex;
+  justify-content: center;
   font-size: 1.2em;
   color: white;
   margin-left: 2rem;

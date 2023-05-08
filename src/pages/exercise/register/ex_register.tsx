@@ -70,8 +70,30 @@ const Ex_register = () => {
         // console.log()
       });
   };
+  const thumbnailInput = useRef();
   const VideoUpload = (e: any) => {
     setFileUrl(URL.createObjectURL(e.target.files[0]));
+    try {
+      const formData = new FormData(); // formData 생성
+      console;
+      formData.append('file', e.target.files[0]); // 이미지 파일 값 할당
+      const config = {
+        headers: {
+          'Authorization': `Bearer ${'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODM2MzU4NTQsInVzZXJJZCI6MTV9.2NP_IdcAAKdesbnLhtTVjvQ5JrAnH3JJGrFv1GU7J-8'}`, // 토큰 넣어주기
+          'Content-Type': 'multipart/form-data', // 데이터 형식 지정
+        },
+      };
+      // 이미지 업로드 중
+      api
+        .post(`/exercise/upload/video/12`, formData, config)
+        .then(() => {
+          console.log('video_success');
+        })
+        .catch((err) => {
+          console.log('어림도없다');
+          console.log(err);
+        }); // api 통신
+    } catch (error) {}
   };
   const videoInput = useRef();
 
@@ -110,6 +132,7 @@ const Ex_register = () => {
                   style={{ display: 'none' }}
                   accept="video/*"
                   onChange={VideoUpload}
+                  multiple
                   ref={videoInput}
                 ></S.VideoSubmit>
               </>
