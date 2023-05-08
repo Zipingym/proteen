@@ -21,7 +21,7 @@ export const BackBlur = styled.div`
 
 export const ProTeenTitle = styled.div`
   margin-left: 10rem;
-  margin-top: 1.5rem;
+  margin-top: 2%;
 
   font-family: 'Pretendard';
   font-weight: 600;
@@ -35,9 +35,8 @@ export const ProTeenTitle = styled.div`
 `;
 
 export const SignUpTitle = styled.div`
-  margin-top: 12rem;
   margin-left: 10.1rem;
-
+  margin-top: 10%;
   font-family: 'Pretendard';
   font-weight: 400;
   font-size: 2.2rem;
@@ -65,7 +64,6 @@ export const ComponentLabel = styled.div`
   font-weight: 400;
   font-size: 1.2rem;
   letter-spacing: -0.02em;
-
   color: #ffffff;
 `;
 
@@ -77,9 +75,9 @@ export const ContentWrapper = styled.div`
 export const InactiveInput = styled.input`
   margin-top: 0.7rem;
 
-  background: rgba(37, 37, 37, 0.8);
+  background: #0a0a14;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border: none;
+  outline: 0;
   border-radius: 15px;
 
   width: 26rem;
@@ -90,8 +88,12 @@ export const InactiveInput = styled.input`
   font-family: 'Pretendard';
   font-size: 1rem;
   color: #ffffff;
+
   ::placeholder {
     color: #7b7b7b;
+  }
+
+  ::focus {
   }
 `;
 

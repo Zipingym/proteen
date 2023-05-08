@@ -7,22 +7,24 @@ import axios from 'axios';
 import api from '$/api/customAxios';
 
 import upload_icon from '../../../assets/img/upload_icon.svg';
+import { title } from '../detailedRoutine/ex_detailedRoutine.style';
 interface Post {
   title: string;
   body: string;
   exerciseType: string;
   score: number;
-  time: string;
+  time: number;
   calorie: number;
 }
 
 const Ex_register = () => {
+  const token = localStorage.getItem('accessToken');
   const [post, setPost] = useState<Post>({
     title: '',
     body: '',
     exerciseType: '',
     score: 0,
-    time: '',
+    time: 0,
     calorie: 0,
   });
   const [type, setType] = useState([
@@ -46,9 +48,21 @@ const Ex_register = () => {
   };
 
   const onSubmit = (data: any) => {
+    console.log(post);
+    setPost({
+      title: '',
+      body: '',
+      exerciseType: '',
+      score: 0,
+      time: 0,
+      calorie: 0,
+    });
     api
-      .post('/exercise', post)
-      .then(console.log)
+      .post('/exercise', {}, { headers: { Authorization: `Bearer ${token}` } })
+      .then(() => {
+        console.log('success');
+        alert('운동 기록 업로드에 성공하였습니다');
+      })
       .catch((err) => {
         console.log(err);
         // console.log()
@@ -64,6 +78,7 @@ const Ex_register = () => {
   }, [fileUrl]);
 
   const onClickVideoUpload = () => {
+    //@ts-expect-error
     videoInput.current.click();
   };
   return (
@@ -111,6 +126,7 @@ const Ex_register = () => {
                   type="text"
                   placeholder="제목"
                   onChange={handleChangerUser}
+                  value={post.title}
                 ></S.InputTitle>
               </S.InputWrapper>
               <S.InputWrapper height={40}>
@@ -124,6 +140,7 @@ const Ex_register = () => {
                   placeholder="내용"
                   //@ts-expect-error
                   onChange={handleChangerUser}
+                  value={post.body}
                 ></S.InputInfo>
                 <S.ChoseBtn>
                   {type.map((type: string, idx: number) => {

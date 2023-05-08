@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Body = styled.body`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: #252525;
   color: white;
 `;
