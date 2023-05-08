@@ -6,21 +6,6 @@ import api from '$/api/customAxios';
 import axios from 'axios';
 
 const signin = () => {
-  useEffect(() => {
-    api
-      .get<{
-        accessToken: 'string';
-        refreshToken: 'string';
-      }>('/user/login')
-      .then((res) => {
-        console.log(res);
-        if (res.data.accessToken) {
-          localStorage.setItem('login-token', res.data.accessToken);
-        }
-      })
-      .catch();
-  }, []);
-
   const navigate = useNavigate();
 
   interface User {
@@ -64,6 +49,7 @@ const signin = () => {
         })
         .then((res: any) => {
           localStorage.setItem('accessToken', res.data.accessToken);
+          navigate('/')
         })
         .catch(() => {
           alert('로그인 실패');
@@ -99,7 +85,7 @@ const signin = () => {
         {!inputValid.idValid && user.id.length > 0 && (
           <S.WarningMsg>*아이디가 올바르지 않습니다.</S.WarningMsg>
         )}
-        ㄴ
+        
         <S.ContentWrapper>
           <S.ComponentLabel>Pw</S.ComponentLabel>
           <S.pwInput

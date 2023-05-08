@@ -9,6 +9,8 @@ interface RankingData {
   name	:string
   total_calories:number
   avg_Score	:number
+  attendance:number
+  total_Time:number
 }
 
 //props에 왜 any만 들어갈 수 있지
@@ -33,8 +35,9 @@ function RankingComponent({exercise}:any) {
           <Nickname>{data.name}</Nickname>
           <ContentWrap>
             <Score>{(data.avg_Score).toString().slice(0,6)}</Score>
-            <Time>01h30m</Time>
+            <Time>{(data.total_Time)/3600}h{(data.total_Time)%3600}m</Time>
             <Kcal>{data.total_calories}</Kcal>
+            <Kcal>{data.attendance}</Kcal>
           </ContentWrap>
         </ComponentWrap>
       ))
