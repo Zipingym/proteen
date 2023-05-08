@@ -8,7 +8,7 @@ export const Body = styled.body`
 `;
 export const topContent = styled.div`
   display: flex;
-  height: 60%;
+  height: 100%;
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
 `;
@@ -54,6 +54,8 @@ export const info = styled.h3`
 `;
 
 export const topVideo = styled.iframe`
+  display: flex;
+  align-items: center;
   float: right;
   width: 100%;
   height: 70%;
