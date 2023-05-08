@@ -9,14 +9,60 @@ import api from '$/api/customAxios';
 import axios from 'axios';
 
 const Ex_bulletin = () => {
+  interface GetItem {
+    createDateTime: string;
+    modifiedDateTime: string;
+    exerciseId: number;
+    title: string;
+    body: string;
+    exerciseType: string;
+    videoUrl: string;
+    score: number;
+    time: number;
+    calorie: number;
+    user: {
+      createDateTime: string;
+      modifiedDateTime: string;
+      userId: number;
+      id: string;
+      password: string;
+      name: string;
+      age: number;
+      gender: string;
+    };
+  }
+
+  const [getItem, setGetItem] = useState<GetItem>({
+    createDateTime: '',
+    modifiedDateTime: '',
+    exerciseId: 0,
+    title: '',
+    body: '',
+    exerciseType: '',
+    videoUrl: '',
+    score: 0,
+    time: 0,
+    calorie: 0,
+    user: {
+      createDateTime: '',
+      modifiedDateTime: '',
+      userId: 0,
+      id: '',
+      password: '',
+      name: '',
+      age: 0,
+      gender: '',
+    },
+  });
+  const token = localStorage.getItem('accessToken');
   useEffect(() => {
     api
-      .get('/exercise/get/list')
-      .then((res) => console.log(res))
+      .get('/exercise/get/list', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((res) => {
-        if (res.ACCESS_TOKEN) {
-          localStorage.setItem('login-token', res.ACCESS_TOKEN);
-        }
+        console.log(res);
+        setGetItem(res.data);
       })
       .catch((err) => {
         console.log(err);
