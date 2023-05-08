@@ -38,7 +38,7 @@ const signup = () => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
     const regex = new RegExp(
-      /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{10,}$/
+      /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{5,}$/
     );
 
     setInputValid({

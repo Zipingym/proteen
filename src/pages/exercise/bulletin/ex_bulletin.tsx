@@ -87,7 +87,7 @@ const Ex_bulletin = () => {
             ></iframe>
             <S.Write>
               <S.Date>
-                <S.cDate></S.cDate>
+                <S.cDate>{getItem.createDateTime}</S.cDate>
                 <S.cTime>오전 10:00</S.cTime>
               </S.Date>
               <S.cTitle>{getItem.title}</S.cTitle>
