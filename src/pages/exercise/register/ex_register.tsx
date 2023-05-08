@@ -49,19 +49,19 @@ const Ex_register = () => {
 
   const onSubmit = (data: any) => {
     console.log(post);
-    setPost({
-      title: '',
-      body: '',
-      exerciseType: '',
-      score: 0,
-      time: 0,
-      calorie: 0,
-    });
     api
       .post('/exercise', {}, { headers: { Authorization: `Bearer ${token}` } })
       .then(() => {
         console.log('success');
         alert('운동 기록 업로드에 성공하였습니다');
+        setPost({
+          title: '',
+          body: '',
+          exerciseType: '',
+          score: 0,
+          time: 0,
+          calorie: 0,
+        });
       })
       .catch((err) => {
         console.log(err);

@@ -89,7 +89,7 @@ const Ex_bulletin = () => {
                 <S.cDate>2023.04.02</S.cDate>
                 <S.cTime>오전 10:00</S.cTime>
               </S.Date>
-              <S.cTitle>오전 풀업! 오운완</S.cTitle>
+              <S.cTitle>{getItem.title}</S.cTitle>
 
               <S.profile>
                 <S.profileImg src={profile_img} alt="Error" />

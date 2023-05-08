@@ -5,7 +5,7 @@ import logoutIcon from '../../assets/img/logoutIcon.svg';
 export const Body = styled.div`
   background: #252525;
 
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 `;
 
@@ -143,12 +143,12 @@ export const Input = styled.input<{ width: string }>`
     outline: none;
     border: 1px solid #1df659;
   }
-  ::placeholder{
+  ::placeholder {
     font-style: normal;
     font-weight: 600;
     font-size: 0.8rem;
     line-height: 17px;
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: center;
   }
 
@@ -211,9 +211,9 @@ export const TimeContent = styled.div`
   align-items: center;
 `;
 
-export const TimeGraph = styled.div<{height : string}>`
+export const TimeGraph = styled.div<{ height: string }>`
   width: inherit;
-  height: ${(props)=>props.height};
+  height: ${(props) => props.height};
   background: #252525;
 `;
 
@@ -223,7 +223,7 @@ export const TimeGraphWrapper = styled.div`
 
   display: flex;
   align-items: end;
-`
+`;
 
 export const Hr = styled.div`
   width: 2.8rem;
@@ -238,7 +238,7 @@ export const MarginTop = styled.div`
 export const HistoryScrollWrapper = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 export const HistoryWrapper = styled.div`
   margin-top: 1.8rem;
@@ -255,11 +255,11 @@ export const rightScrollBtnImg = styled.img`
   margin-top: 2rem;
   margin-left: -3.5vh;
   z-index: 1;
-`
+`;
 
 export const EachHistoryWrapper = styled.div`
   margin-right: 1vw;
-  
+
   display: flex;
   flex-direction: column;
 `;
