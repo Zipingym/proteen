@@ -43,13 +43,28 @@ const mypage = () => {
       .then((res) => {
         setUserData(res.data);
         setIsLoading(false);
-      });
+      })
+      .catch((error)=>{
+        console.error(error)
+      })
   }, []);
 
   // const {age, gender, id, name, password}:any = userData.data
 
+  if(token == null){
+    return (
+      <S.Body>
+        <S.Message>please signin first</S.Message>
+      </S.Body>
+    )
+  }
+
   if (isLoading) {
-    return <p>loding.....</p>;
+    return (
+      <S.Body>
+        <S.Message>loading.....</S.Message>
+      </S.Body>
+    )
   }
 
   return (
@@ -63,7 +78,7 @@ const mypage = () => {
             <S.StyledLabel weight="600" size="1rem">
               Profile
             </S.StyledLabel>
-            <S.InfoBox>
+            <S.InfoBox location="center">
               <S.PictureNameWrapper>
                 <S.ProfilePicture />
                 <S.StyledLabel weight="600" size="1rem">
@@ -110,7 +125,7 @@ const mypage = () => {
             <S.StyledLabel weight="400" size="1rem">
               Time
             </S.StyledLabel>
-            <S.InfoBox>
+            <S.InfoBox location="start">
               <Score></Score>
             </S.InfoBox>
           </S.InfoWrapper>

@@ -20,7 +20,7 @@ const Score = () => {
   }, []);
 
   return (
-    <>
+    <S.TimeWrapper>
       {scoreData?.map((data) => (
         <S.TimeContent key={data.exerciseId}>
           <S.TimeGraphWrapper>
@@ -32,7 +32,7 @@ const Score = () => {
           </S.StyledLabel>
         </S.TimeContent>
       ))}
-    </>
+    </S.TimeWrapper>
   );
 };
 
