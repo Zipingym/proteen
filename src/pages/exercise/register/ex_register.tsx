@@ -50,7 +50,9 @@ const Ex_register = () => {
   const onSubmit = (data: any) => {
     console.log(post);
     api
-      .post('/exercise', {}, { headers: { Authorization: `Bearer ${token}` } })
+      .post('/exercise', post, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then(() => {
         console.log('success');
         alert('운동 기록 업로드에 성공하였습니다');
