@@ -1,11 +1,24 @@
 import { exerciseInfo } from '$/util/analysis';
 import { useEffect, useState } from 'react';
 import * as S from './feedback.style';
+import { useNavigate } from 'react-router-dom';
 
 const FeedBack = (props: { maxCount: number; score: exerciseInfo }) => {
   const [comment, setComment] = useState('한번만!');
   const [currentCount, setCurrentCount] = useState(0);
   const [scroeSum, setScoreSum] = useState(0);
+  const navigate = useNavigate();
+
+  const onEnd = () => {
+    navigate('', {
+      state: {
+        average: isNaN(scroeSum / currentCount)
+          ? 0
+          : Math.round((scroeSum / currentCount) * 10) / 10,
+        count: currentCount,
+      },
+    });
+  };
   // const [currentScore, setCurrentScore] = useState(0);
 
   useEffect(() => {
@@ -34,6 +47,7 @@ const FeedBack = (props: { maxCount: number; score: exerciseInfo }) => {
       </S.exPoint>
       <S.exBar></S.exBar>
       <S.pointCheckBar></S.pointCheckBar>
+      <S.EndButton onClick={onEnd}>완료!</S.EndButton>
       {/* <S.pointCheckScore>{currentScore}</S.pointCheckScore> */}
     </S.bottomContent>
   );

@@ -4,6 +4,7 @@ export const bottomContent = styled.div`
   display: block;
   height: 40%;
   padding: 1.5rem;
+  position: relative;
 `;
 export const btmTitle = styled.h3`
   font-family: 'Pretendard';
@@ -101,4 +102,10 @@ export const pointCheckScore = styled.h3`
   line-height: 24px;
 
   color: #ffffff;
+`;
+
+export const EndButton = styled.button`
+  position: absolute;
+  right: 50px;
+  top: 100px;
 `;
