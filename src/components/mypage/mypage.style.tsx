@@ -63,6 +63,18 @@ export const MypageTitle = styled.div`
   color: #ffffff;
 `;
 
+export const Message = styled.div`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #ffffff;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+`
+
+
 export const MypageTitleSub = styled.div`
   margin-top: 1rem;
 
@@ -86,11 +98,17 @@ export const StyledLabel = styled.div<Text>`
   color: #ffffff;
 `;
 
+export const TimeWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 0 5%;
+`
+
 export const InfoWrapper = styled.div<{ marginLeft: string }>`
   margin-left: calc(100% - ${(props) => props.marginLeft});
 `;
 
-export const InfoBox = styled.div`
+export const InfoBox = styled.div<{location : string}>`
   margin-top: 0.8rem;
 
   width: 25rem;
@@ -100,8 +118,12 @@ export const InfoBox = styled.div`
   border-radius: 20px;
 
   display: flex;
-  justify-content: center;
+  justify-content: ${(props) => props.location};
   align-items: center;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const PictureNameWrapper = styled.div`
@@ -245,6 +267,7 @@ export const HistoryWrapper = styled.div`
 
   display: flex;
   width: 75vw;
+  height: 35vh;
   overflow: scroll;
   &::-webkit-scrollbar {
     display: none;
@@ -253,7 +276,7 @@ export const HistoryWrapper = styled.div`
 
 export const rightScrollBtnImg = styled.img`
   margin-top: 2rem;
-  margin-left: -3.5vh;
+  margin-left: -2vh;
   z-index: 1;
 `
 
@@ -267,13 +290,13 @@ export const EachHistoryWrapper = styled.div`
 export const HistoryVideo = styled.video`
   margin-top: 0.3rem;
 
-  width: 199px;
-  height: 257px;
+  width: 12vw;
+  height: 26vh;
 `;
 
 export const HistoryTitle = styled.div`
-  width: 199px;
-  height: 43px;
+  width: 12vw;
+  height: 5vh;
   background: #494949;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 0px 0px 5px 5px;
