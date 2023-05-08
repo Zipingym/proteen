@@ -30,8 +30,9 @@ const signin = () => {
   const handleUser = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
-    const regex = new RegExp('^[a-zA-Z]*$');
-
+    const regex = new RegExp(
+      /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{10,}$/
+    );
     setInputValid({
       ...inputValid,
       idValid: regex.test(user.id),
@@ -41,19 +42,22 @@ const signin = () => {
   };
 
   const onSubmit = () => {
-    if (user.id.length > 0 || user.password.length > 0) {
+    if (inputValid.idValid && inputValid.pwValid) {
       api
         .post('/user/login', {
           id: user.id,
           password: user.password,
         })
         .then((res: any) => {
+          alert('로그인에 성공하셨습니다');
           localStorage.setItem('accessToken', res.data.accessToken);
-          navigate('/')
+          navigate('/');
         })
         .catch(() => {
           alert('로그인 실패');
         });
+    } else {
+      alert('형식에 맞추어 아이디, 비밀번호를 재입력해 주세요.');
     }
   };
 
@@ -83,9 +87,12 @@ const signin = () => {
           ></S.idInput>
         </S.ContentWrapper>
         {!inputValid.idValid && user.id.length > 0 && (
-          <S.WarningMsg>*아이디가 올바르지 않습니다.</S.WarningMsg>
+          <S.WarningMsg>
+            *아이디가 올바르지 않습니다.
+            <br /> (영문,숫자,특수기호 모두 포함 5자이상)
+          </S.WarningMsg>
         )}
-        
+
         <S.ContentWrapper>
           <S.ComponentLabel>Pw</S.ComponentLabel>
           <S.pwInput
@@ -108,7 +115,10 @@ const signin = () => {
           회원정보가 없으십니까?
         </S.GotoSignup>
         {!inputValid.pwValid && user.password.length > 0 && (
-          <S.WarningMsg>*비밀번호가 올바르지 않습니다.</S.WarningMsg>
+          <S.WarningMsg>
+            *비밀번호가 올바르지 않습니다.
+            <br /> (영문,숫자,특수기호 모두 포함 5자이상)
+          </S.WarningMsg>
         )}
         <S.SubmitBtn onClick={onSubmit}>ProTeen 입장</S.SubmitBtn>
       </S.BackBlur>
