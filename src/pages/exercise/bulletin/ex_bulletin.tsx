@@ -62,7 +62,8 @@ const Ex_bulletin = () => {
       })
       .then((res) => {
         console.log(res);
-        setGetItem(res.data);
+        setGetItem(res.data[0]);
+        console.log(getItem);
       })
       .catch((err) => {
         console.log(err);
@@ -86,7 +87,7 @@ const Ex_bulletin = () => {
             ></iframe>
             <S.Write>
               <S.Date>
-                <S.cDate>2023.04.02</S.cDate>
+                <S.cDate></S.cDate>
                 <S.cTime>오전 10:00</S.cTime>
               </S.Date>
               <S.cTitle>{getItem.title}</S.cTitle>
