@@ -25,6 +25,15 @@ const MainPage = () => {
   };
 
   useEffect(() => {
+    api
+      .post('/user/login', {
+        id: '',
+        password: '',
+      })
+      .then(console.log)
+      .catch((err) => {
+        console.log(err);
+      });
 
     AOS.init({
       duration: 1000,
@@ -51,20 +60,35 @@ const MainPage = () => {
         <M.Main2>
           <M.Dumbel src={dumbel} data-aos="fade-up" />
           <div>
-            <M.Text size={'1.5em'} margin={'0.5em'} data-aos="fade-up">
+            <M.Text
+              size={'1.8em'}
+              margin={'0.5em'}
+              weight={300}
+              data-aos="fade-up"
+            >
               정확한 운동, 정확한 자세를
             </M.Text>
-            <M.Text size={'1.5em'} margin={'2em'} data-aos="fade-up">
+            <M.Text
+              size={'1.8em'}
+              margin={'1.5em'}
+              weight={300}
+              data-aos="fade-up"
+            >
               고민하는 당신을 위해,
             </M.Text>
-            <M.Text size={'3em'} margin={'0.5em'} data-aos="fade-up">
+            <M.Text
+              size={'3.5em'}
+              margin={'0.5em'}
+              weight={500}
+              data-aos="fade-up"
+            >
               ProTeen이 당신을 찾아갑니다!
             </M.Text>
           </div>
         </M.Main2>
         <M.Main3>
           <img src={fire} style={{ margin: 100 }} data-aos="fade-up"></img>
-          <M.Text size={'1.5em'} margin={'0'} data-aos="fade-up">
+          <M.Text size={'1.5em'} margin={'0'} weight={500} data-aos="fade-up">
             ProTeen과 함께 HOT BODY를 가져보세요
           </M.Text>
           <M.Frame2>

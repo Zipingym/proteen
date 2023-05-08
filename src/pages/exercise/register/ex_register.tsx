@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import * as S from './ex_register.style';
 import Ex_img from './img/Group 91.png';
+import Video from '../../../assets/img/video.svg';
 import axios from 'axios';
 import api from '$/api/customAxios';
+
+import upload_icon from '../../../assets/img/upload_icon.svg';
 interface Post {
   title: string;
   body: string;
@@ -22,9 +25,6 @@ const Ex_register = () => {
     time: '',
     calorie: 0,
   });
-  useEffect(() => {
-    console.log(post);
-  });
   const [type, setType] = useState([
     'PULLUP',
     'SQUAT',
@@ -33,11 +33,18 @@ const Ex_register = () => {
     'CRUNCH',
   ]);
   const [btnActive, setBtnActive] = useState('');
+  const [fileUrl, setFileUrl] = useState<string>('');
+
+  useEffect(() => {
+    console.log(post);
+  });
+
   const handleChangerUser = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setPost({ ...post, [name]: value });
     console.log(name + value);
   };
+
   const onSubmit = (data: any) => {
     api
       .post('/exercise', post)
@@ -47,11 +54,18 @@ const Ex_register = () => {
         // console.log()
       });
   };
-  // const toggleActive = (e) => {
-  //   setBtnActive((prev) => {
-  //     return e.target.value;
-  //   });
-  // };
+  const VideoUpload = (e: any) => {
+    setFileUrl(URL.createObjectURL(e.target.files[0]));
+  };
+  const videoInput = useRef();
+
+  useEffect(() => {
+    console.log(fileUrl == '');
+  }, [fileUrl]);
+
+  const onClickVideoUpload = () => {
+    videoInput.current.click();
+  };
   return (
     <S.Body>
       <S.AllContainer>
@@ -60,7 +74,7 @@ const Ex_register = () => {
           <S.T_info>오늘 한 운동을 릴스로 기록해보세요.</S.T_info>
 
           <S.MainContainer>
-            <iframe
+            {/* <iframe
               width="560"
               height="620"
               src="https://www.youtube.com/embed/kL88ldYiMkM"
@@ -68,7 +82,23 @@ const Ex_register = () => {
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
-            ></iframe>
+            ></iframe> */}
+            {fileUrl == '' ? (
+              <>
+                <S.VideoSubmit_btn onClick={onClickVideoUpload}>
+                  <img src={Video} alt=""></img>
+                </S.VideoSubmit_btn>
+                <S.VideoSubmit
+                  type="file"
+                  style={{ display: 'none' }}
+                  accept="video/*"
+                  onChange={VideoUpload}
+                  ref={videoInput}
+                ></S.VideoSubmit>
+              </>
+            ) : (
+              <video src={fileUrl} controls width="450px" />
+            )}
 
             <S.Write>
               <S.InputWrapper height={10}>

@@ -65,10 +65,15 @@ export const BtnWrap = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
-export const Text = styled.div<{ size: string; margin: string }>`
+export const Text = styled.div<{
+  size: string;
+  margin: string;
+  weight: number;
+}>`
   font-size: ${(props) => props.size};
   color: white;
   margin-bottom: ${(props) => props.margin};
+  font-weight: ${(props) => props.weight};
 `;
 
 export const StartBtn = styled.img`
