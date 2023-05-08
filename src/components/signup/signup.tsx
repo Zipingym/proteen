@@ -29,6 +29,7 @@ const signup = () => {
     idValid: true,
     pwValid: true,
   });
+
   const handleChangerUser = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -36,7 +37,9 @@ const signup = () => {
   const handleUser = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
-    const regex = new RegExp('^[a-zA-Z]*$');
+    const regex = new RegExp(
+      /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{10,}$/
+    );
 
     setInputValid({
       ...inputValid,
@@ -46,15 +49,19 @@ const signup = () => {
     console.log(inputValid);
   };
   const onSubmit = (data: any) => {
-    api
-      .post('/user/signup', user)
-      .then(()=>{
-        navigate('/')
-      })
-      .catch((err) => {
-        console.log(err);
-        // console.log()
-      });
+    if (inputValid.idValid && inputValid.pwValid) {
+      api
+        .post('/user/signup', user)
+        .then(() => {
+          navigate('/');
+        })
+        .catch((err) => {
+          console.log(err);
+          // console.log()
+        });
+    } else {
+      alert('형식에 맞추어 아이디, 비밀번호를 재입력해 주세요.');
+    }
   };
 
   useEffect(() => {});
@@ -131,7 +138,10 @@ const signup = () => {
             }
           ></S.InactiveInput>
           {!inputValid.idValid && user.id.length > 0 && (
-            <S.WarningMsg>*아이디가 올바르지 않습니다.</S.WarningMsg>
+            <S.WarningMsg>
+              *아이디가 올바르지 않습니다.
+              <br /> (영문,숫자,특수기호 모두 포함 5자이상)
+            </S.WarningMsg>
           )}
         </S.ContentWrapper>
 
@@ -149,7 +159,11 @@ const signup = () => {
             }
           ></S.InactiveInput>
           {!inputValid.pwValid && user.password.length > 0 && (
-            <S.WarningMsg>*비밀번호가 올바르지 않습니다.</S.WarningMsg>
+            <S.WarningMsg>
+              {' '}
+              *비밀번호가 올바르지 않습니다.
+              <br /> (영문,숫자,특수기호 모두 포함 5자이상)
+            </S.WarningMsg>
           )}
         </S.ContentWrapper>
 
