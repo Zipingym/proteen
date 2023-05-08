@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import * as S from './ex_register.style';
 import Ex_img from './img/Group 91.png';
+import Video from '../../../assets/img/video.svg';
 import axios from 'axios';
 import api from '$/api/customAxios';
 
@@ -32,7 +33,7 @@ const Ex_register = () => {
     'CRUNCH',
   ]);
   const [btnActive, setBtnActive] = useState('');
-  const [file, setFile] = useState({});
+  const [fileUrl, setFileUrl] = useState<string>('');
 
   useEffect(() => {
     console.log(post);
@@ -43,6 +44,7 @@ const Ex_register = () => {
     setPost({ ...post, [name]: value });
     console.log(name + value);
   };
+
   const onSubmit = (data: any) => {
     api
       .post('/exercise', post)
@@ -52,11 +54,17 @@ const Ex_register = () => {
         // console.log()
       });
   };
-  //const video
-  const toggleActive = (e) => {
-    setBtnActive((prev) => {
-      return e.target.value;
-    });
+  const VideoUpload = (e: any) => {
+    setFileUrl(URL.createObjectURL(e.target.files[0]));
+  };
+  const videoInput = useRef();
+
+  useEffect(() => {
+    console.log(fileUrl == '');
+  }, [fileUrl]);
+
+  const onClickVideoUpload = () => {
+    videoInput.current.click();
   };
   return (
     <S.Body>
@@ -75,7 +83,22 @@ const Ex_register = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             ></iframe> */}
-            <S.VideoSubmit type="file" accept="video/*"></S.VideoSubmit>
+            {fileUrl == '' ? (
+              <>
+                <S.VideoSubmit_btn onClick={onClickVideoUpload}>
+                  <img src={Video} alt=""></img>
+                </S.VideoSubmit_btn>
+                <S.VideoSubmit
+                  type="file"
+                  style={{ display: 'none' }}
+                  accept="video/*"
+                  onChange={VideoUpload}
+                  ref={videoInput}
+                ></S.VideoSubmit>
+              </>
+            ) : (
+              <video src={fileUrl} controls width="450px" />
+            )}
 
             <S.Write>
               <S.InputWrapper height={10}>

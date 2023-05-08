@@ -53,6 +53,19 @@ export const VideoSubmit = styled.input`
   width: 560px;
   height: 620px;
 `;
+export const VideoSubmit_btn = styled.div`
+  width: 560px;
+  height: 620px;
+  background-color: #252525;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+export const Btn_img = styled.image`
+  width: 50px;
+`;
 export const Write = styled.div`
   width: 50%;
   height: 600px;
