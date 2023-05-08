@@ -25,19 +25,11 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    api
-      .post('/user/login', {
-        id: '',
-        password: '',
-      })
-      .then(console.log)
-      .catch((err) => {
-        console.log(err);
-      });
 
     AOS.init({
       duration: 1000,
     });
+
   });
   return (
     <div>
