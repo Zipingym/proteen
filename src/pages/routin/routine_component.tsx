@@ -52,11 +52,12 @@ const ComponentWrap = styled.div`
 `;
 const RoutineDate = styled.div``;
 const RoutineTitle = styled.div`
-  margin-left: 40%;
+  margin-left: 30%;
 `;
 const RoutineSet = styled.div`
   margin-left: 5%;
 `;
 const RoutineBtn = styled.img`
   margin-left: 5%;
+  margin-right: 5%;
 `;

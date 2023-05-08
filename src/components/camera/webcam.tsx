@@ -10,7 +10,7 @@ import useFileInput from '$/hooks/useFileInput';
 const Webcam = (props: {
   videoRef: MutableRefObject<HTMLVideoElement>;
   skeleton: NormalizedLandmarkList;
-  onPlay: () => void;
+  onPlay: (count: number) => void;
 }) => {
   const [device, setDevice] = useState<number>(-2);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -35,14 +35,14 @@ const Webcam = (props: {
       } else {
         props.videoRef.current.src = URL.createObjectURL(fileData);
         props.videoRef.current.muted = true;
-        props.onPlay();
+        props.onPlay(countVal);
       }
     } else {
       setWebcam(props.videoRef.current, device, {
         width: 540,
         height: 540,
       });
-      props.onPlay();
+      props.onPlay(countVal);
     }
   };
 
@@ -80,7 +80,7 @@ const Webcam = (props: {
           />
           <Input
             type="range"
-            min={1}
+            min={0}
             max={100}
             value={countVal}
             onChange={(e) => {
@@ -121,13 +121,17 @@ const Webcam = (props: {
 export default Webcam;
 
 const Title = styled.div`
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-left: 15px;
   color: #ffffff;
   font-size: 25px;
-  font-weight: 300;
+  font-weight: 400;
 `;
 
 const Button = styled.button`
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
   width: 500px;
   height: 80px;
   position: absolute;
@@ -143,9 +147,36 @@ const Button = styled.button`
   font-size: 32px;
   cursor: pointer;
 
-  &:focus {
+  &:before,
+  &:after {
+    position: absolute;
+    content: '';
+    right: 0;
+    bottom: 0;
+    background: #1df659;
+    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
+      -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+      inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
+      inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+    transition: all 0.3s ease;
+  }
+  &:before {
+    height: 0%;
+    width: 2px;
+  }
+  &:after {
+    width: 0%;
+    height: 2px;
+  }
+  &:hover:before {
+    height: 100%;
+  }
+  &:hover:after {
+    width: 100%;
   }
   &:hover {
+    background: black;
+    color: #1df659;
   }
 `;
 

@@ -56,9 +56,10 @@ function Ranking() {
         <Ra.Index size={'2.5%'}>랭킹</Ra.Index>
         <Ra.Index size={'4%'}>프로필</Ra.Index>
         <Ra.Index size={'8%'}>닉네임</Ra.Index>
-        <Ra.Index size={'23%'}>평균점수</Ra.Index>
-        <Ra.Index size={'11%'}>운동시간</Ra.Index>
-        <Ra.Index size={'10%'}>총 소모 칼로리</Ra.Index>
+        <Ra.Index size={'20%'}>평균점수</Ra.Index>
+        <Ra.Index size={'8%'}>운동시간</Ra.Index>
+        <Ra.Index size={'8%'}>총 소모 칼로리</Ra.Index>
+        <Ra.Index size={'8%'}>연속 출석</Ra.Index>
       </Ra.IndexWrap>
       <Ra.ScrollWrap className='ScrollWrap'>
         <Component exercise={currentExercise}></Component>

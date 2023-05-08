@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import * as S from './signup.style';
 import api from '$/api/customAxios';
@@ -48,7 +48,9 @@ const signup = () => {
   const onSubmit = (data: any) => {
     api
       .post('/user/signup', user)
-      .then(console.log)
+      .then(()=>{
+        navigate('/')
+      })
       .catch((err) => {
         console.log(err);
         // console.log()

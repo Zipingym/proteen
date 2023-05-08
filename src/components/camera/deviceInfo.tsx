@@ -17,13 +17,16 @@ export default DevideInfo;
 
 const Camera = styled.div`
   color: #ffffff;
-  font-size: 35px;
+  font-size: 110%;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
 `;
 
 const CameraWrapper = styled.div<{ focus: boolean }>`
   margin-left: 2%;
-  width: 650px;
-  height: 100px;
+  width: 30%;
+  height: 50px;
   background-color: #3b3b3b;
   border-radius: 5px;
   margin-top: 30px;
@@ -32,7 +35,8 @@ const CameraWrapper = styled.div<{ focus: boolean }>`
   padding-left: 5%;
   cursor: pointer;
 
-  ${({ focus }) => (focus ? 'outline: 1px solid #1df659;' : '')}
+  ${({ focus }) =>
+    focus ? 'outline: 1px solid #1df659;     background-color: black;' : ''}
   :hover {
     > div {
       color: #1df659;
