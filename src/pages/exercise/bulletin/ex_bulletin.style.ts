@@ -8,6 +8,7 @@ export const Body = styled.body`
 `;
 
 export const AllContainer = styled.div`
+  width: 100%;
   display: black;
   padding-left: 13%;
   padding-top: 5.7%;
@@ -59,6 +60,7 @@ export const Reels_view = styled.img`
 `;
 
 export const Write = styled.div`
+  width: 15vw;
   margin-left: 4.1%;
   margin-top: 7.5%;
 `;
