@@ -25,11 +25,9 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-
     AOS.init({
       duration: 1000,
     });
-
   });
   return (
     <div>
@@ -97,7 +95,12 @@ const MainPage = () => {
                 style={{ marginBottom: 10 }}
                 data-aos="fade-up"
                 onClick={() => {
-                  navigate('/exercise/register');
+                  navigate('/exercise/register', {
+                    state: {
+                      average: 0,
+                      count: 0,
+                    },
+                  });
                 }}
               ></img>
               <img
