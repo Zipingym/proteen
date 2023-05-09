@@ -10,7 +10,7 @@ const FeedBack = (props: { maxCount: number; score: exerciseInfo }) => {
   const navigate = useNavigate();
 
   const onEnd = () => {
-    navigate('', {
+    navigate('/exercise/register', {
       state: {
         average: isNaN(scroeSum / currentCount)
           ? 0

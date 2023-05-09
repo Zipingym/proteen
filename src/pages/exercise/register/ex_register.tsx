@@ -5,6 +5,7 @@ import Ex_img from './img/Group 91.png';
 import Video from '../../../assets/img/video.svg';
 import axios from 'axios';
 import api from '$/api/customAxios';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import upload_icon from '../../../assets/img/upload_icon.svg';
 import { title } from '../detailedRoutine/ex_detailedRoutine.style';
@@ -18,6 +19,7 @@ interface Post {
 }
 
 const Ex_register = () => {
+  const location = useLocation();
   const token = localStorage.getItem('accessToken');
   const [post, setPost] = useState<Post>({
     title: '',
@@ -191,21 +193,18 @@ const Ex_register = () => {
                 <S.Record>
                   <S.rContent>
                     <S.rTitle>평균 점수</S.rTitle>
-                    <S.rTitle>운동 시간</S.rTitle>
+                    <S.rTitle>운동 횟수</S.rTitle>
                     <S.rTitle>소모 칼로리</S.rTitle>
                   </S.rContent>
 
                   <S.rElement>
-                    <S.rElementB>78.2</S.rElementB>
+                    <S.rElementB>{location.state.average}</S.rElementB>
                     <S.rTime>
-                      <S.rElementB>01</S.rElementB>
-                      <S.rElementS>h</S.rElementS>
-                      <S.rElementB>30</S.rElementB>
-                      <S.rElementS>m</S.rElementS>
+                      <S.rElementB>{location.state.count}</S.rElementB>
                     </S.rTime>
 
                     <S.rKcal>
-                      <S.rElementB>150</S.rElementB>
+                      <S.rElementB>{location.state.average * 0.4}</S.rElementB>
                       <S.rElementS>kcal</S.rElementS>
                     </S.rKcal>
                   </S.rElement>
