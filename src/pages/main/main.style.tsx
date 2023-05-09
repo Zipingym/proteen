@@ -90,10 +90,10 @@ export const Frame = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin: 10%;
   margin-left: 10px;
 `;
 export const Frame2 = styled.div`
+  margin-top: 10%;
   display: flex;
   flex-direction: row;
   :hover {

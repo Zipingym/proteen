@@ -9,6 +9,7 @@ import dumbel from '../../assets/img/dumbel.svg';
 import woonwan from '../../assets/img/ohwoonwan.svg';
 import report from '../../assets/img/report.svg';
 import setting from '../../assets/img/setting.svg';
+import rankingBtn from "../../assets/img/rankingBtn.svg";
 import AOS from 'aos';
 import api from '$/api/customAxios';
 import { useNavigate } from 'react-router-dom';
@@ -92,7 +93,7 @@ const MainPage = () => {
             <M.Frame>
               <img
                 src={report}
-                style={{ marginBottom: 10 }}
+                style={{ marginBottom: 17 }}
                 data-aos="fade-up"
                 onClick={() => {
                   navigate('/exercise/register', {
@@ -112,6 +113,11 @@ const MainPage = () => {
               ></img>
             </M.Frame>
           </M.Frame2>
+            <img style={{ marginTop: 10, marginBottom : 50 }}
+              data-aos="fade-up"
+              src={rankingBtn}
+              onClick={()=>{navigate('/ranking')}}
+            />          
         </M.Main3>
         {/* <M.Main2>
                 <M.Bgimg1 src={bg2} />
