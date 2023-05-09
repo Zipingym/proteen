@@ -83,14 +83,21 @@ export const exBar = styled.div`
   margin-top: 3%;
   background: linear-gradient(90deg, #1df659 0%, #9fadfe 100%);
   border-radius: 10px;
+  position:relative;
 `;
-export const pointCheckBar = styled.div`
+
+
+interface pointerCheckBar{
+  score:number
+}
+export const pointCheckBar = styled.div<pointerCheckBar>`
   position: absolute;
-  width: 60px;
-  margin-top: -2.3%;
-  height: 0px;
-  border: 1px solid #ffffff;
-  transform: rotate(-90deg);
+  height:60px;
+  width:3px;
+  background-color:white;
+  top: -30%;
+  left:${(props) => props.score + "%"};
+  /* transform: rotate(-90deg); */
 `;
 export const pointCheckScore = styled.h3`
   margin-top: 4%;
