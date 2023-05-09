@@ -191,23 +191,20 @@ const Ex_register = () => {
                   <h6>*</h6>
                 </S.Label>
                 <S.Record>
-                  <S.rContent>
-                    <S.rTitle>평균 점수</S.rTitle>
-                    <S.rTitle>운동 횟수</S.rTitle>
-                    <S.rTitle>소모 칼로리</S.rTitle>
-                  </S.rContent>
-
-                  <S.rElement>
-                    <S.rElementB>{location.state.average}</S.rElementB>
-                    <S.rTime>
+                  <S.ContentWrapper>
+                    <S.rContent>
+                      <S.rTitle>평균 점수</S.rTitle>
+                      <S.rElementB>{location.state.average}</S.rElementB>
+                    </S.rContent>
+                    <S.rContent>
+                      <S.rTitle>운동 횟수</S.rTitle>
                       <S.rElementB>{location.state.count}</S.rElementB>
-                    </S.rTime>
-
-                    <S.rKcal>
+                    </S.rContent>
+                    <S.rContent>
+                      <S.rTitle>소모 칼로리</S.rTitle>
                       <S.rElementB>{location.state.average * 0.4}</S.rElementB>
-                      <S.rElementS>kcal</S.rElementS>
-                    </S.rKcal>
-                  </S.rElement>
+                    </S.rContent>
+                  </S.ContentWrapper>
                 </S.Record>
               </S.InputWrapper>
               <S.submit>

@@ -186,15 +186,19 @@ export const Record = styled.div`
 
 export const rContent = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
   padding-top: 6%;
-  margin-left: 12%;
+
+  width: 60px;
 `;
 
 export const rTitle = styled.h5`
+  width: 60px;
   display: flex;
-  margin-right: 15%;
+  align-items: center;
+  justify-content: center;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 300;
@@ -209,6 +213,8 @@ export const rElement = styled.div`
 `;
 
 export const rElementB = styled.h1`
+  margin-top: 15px;
+  width: 60px;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
@@ -312,4 +318,11 @@ export const InputWrapper = styled.div<{ height: number }>`
   height: ${({ height }) => height}%;
   flex-direction: column;
   width: 100%;
+`;
+
+export const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  box-sizing: border-box;
 `;
