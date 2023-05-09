@@ -3,36 +3,44 @@ import { useEffect, useState } from 'react';
 import * as S from './feedback.style';
 import { useNavigate } from 'react-router-dom';
 
-const FeedBack = (props: { maxCount: number; score: exerciseInfo }) => {
+const FeedBack = (props: {
+  maxCount: number;
+  score: exerciseInfo;
+  videoUrl: string;
+  record: MediaRecorder;
+}) => {
   const [comment, setComment] = useState('한번만!');
   const [currentCount, setCurrentCount] = useState(0);
-  const [scores,setScores] = useState<number[]>([])
+  const [scores, setScores] = useState<number[]>([]);
   const [scroeSum, setScoreSum] = useState(0);
   const navigate = useNavigate();
 
   const onEnd = () => {
-    navigate('/exercise/register', {
-      state: {
-        average: isNaN(scroeSum / currentCount)
-          ? 0
-          : Math.round((scroeSum / currentCount) * 10) / 10,
-        count: currentCount,
-      },
-    });
+    props.record.stop();
   };
+  useEffect(() => {
+    if (props.videoUrl != '') {
+      navigate('/exercise/register', {
+        state: {
+          average: isNaN(scroeSum / currentCount)
+            ? 0
+            : Math.round((scroeSum / currentCount) * 10) / 10,
+          count: currentCount,
+          video: props.videoUrl,
+        },
+      });
+    }
+  }, [props.videoUrl]);
   // const [currentScore, setCurrentScore] = useState(0);
 
   useEffect(() => {
-    if (props.score.score > 0){
-      setScores((prev) => [...prev,Math.round(props.score.score)])
+    if (props.score.score > 0) {
+      setScores((prev) => [...prev, Math.round(props.score.score)]);
     }
     setCurrentCount(currentCount + props.score.count);
     setScoreSum(scroeSum + props.score.score * props.score.count);
   }, [props.score]);
 
-  useEffect(() => {
-    console.log(scores);
-  },[scores])
   return (
     <S.bottomContent>
       <S.btmTitle>Feed Back</S.btmTitle>
@@ -54,11 +62,9 @@ const FeedBack = (props: { maxCount: number; score: exerciseInfo }) => {
         </S.exPoint2>
       </S.exPoint>
       <S.exBar>
-        {
-          scores.map((score) => (
-            <S.pointCheckBar score={score} ></S.pointCheckBar>
-            ))
-          }
+        {scores.map((score) => (
+          <S.pointCheckBar score={score}></S.pointCheckBar>
+        ))}
       </S.exBar>
       <S.EndButton onClick={onEnd}>완료!</S.EndButton>
       {/* <S.pointCheckScore>{currentScore}</S.pointCheckScore> */}

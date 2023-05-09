@@ -24,51 +24,39 @@ const ex_detailedRoutine = () => {
   const [skeleton, setSkeleton] = useState<NormalizedLandmarkList>(new Array());
   const [init, send] = usePipeline();
   const [input, score] = useExerciseScore();
-  const [recorder, setRecorder] = useState(
-    new MediaRecorder(canvasRef.current.captureStream(30))
-  );
-  const [recordResult, setRecordResult] = useState(new Array());
+  const [resultUrl, setResultUrl] = useState('');
   useEffect(() => {
     init();
   }, [init]);
   const [isPlay, setIsPlay] = useState(false);
+  const [recorder, setRecorder] = useState(
+    new MediaRecorder(videoRef.current.captureStream(30))
+  );
+
   const onPlay = useCallback(
     (count: number) => {
       if (isPlay === false) {
         setIsPlay(true);
         setMaxCount(count);
-        setRecorder(
-          //@ts-expect-error
-          () => new MediaRecorder(videoRef.current.captureStream(30))
-        );
-        setRecordResult(() => new Array());
         const record = new MediaRecorder(videoRef.current.captureStream(30), {
           audioBitsPerSecond: 128000,
           videoBitsPerSecond: 2500000,
         });
-        const result = [];
-        record.ondataavailable = (event) => {
-          console.log(event.data);
+
+        const result: Array<Blob> = [];
+        record.ondataavailable = (event: BlobEvent) => {
           result.push(event.data);
+        };
+        setRecorder(record);
+        record.onstop = () => {
+          const blob = new Blob(result, {
+            type: 'video/webm',
+          });
+          setResultUrl(window.URL.createObjectURL(blob));
         };
 
         setTimeout(() => {
           record.start();
-          setTimeout(() => {
-            record.stop();
-            setTimeout(() => {
-              console.log(result);
-              const blob = new Blob(result, {
-                type: 'video/webm',
-              });
-              downloadFile(window.URL.createObjectURL(blob));
-              document.body.innerHTML = '';
-              const video = document.createElement('video');
-              video.src = window.URL.createObjectURL(blob);
-              video.play();
-              document.body.appendChild(video);
-            }, 1000);
-          }, 5000);
         }, 5000);
       }
     },
@@ -92,12 +80,6 @@ const ex_detailedRoutine = () => {
       };
     }
   }, [isPlay]);
-  useEffect(() => {
-    recorder.ondataavailable = (event) => {
-      console.log(event.data);
-      setRecordResult([...recordResult, event.data]);
-    };
-  }, [recorder]);
   return (
     <S.Body>
       <S.WebcamWrapper>
@@ -126,7 +108,12 @@ const ex_detailedRoutine = () => {
             />
           </S.exTitle>
         </S.topContent>
-        <FeedBack maxCount={maxCount} score={score} />
+        <FeedBack
+          maxCount={maxCount}
+          score={score}
+          videoUrl={resultUrl}
+          record={recorder}
+        />
       </S.Contents>
     </S.Body>
   );
