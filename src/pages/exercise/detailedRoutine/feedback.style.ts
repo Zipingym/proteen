@@ -107,5 +107,51 @@ export const pointCheckScore = styled.h3`
 export const EndButton = styled.button`
   position: absolute;
   right: 50px;
-  top: 100px;
+  top: 170px;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  width: 8vw;
+  height: 5vh;
+  transform: translateX(-50%);
+  background-color: #3b3b3b;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ddd;
+  font-size: 20px;
+  cursor: pointer;
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: '';
+    right: 0;
+    bottom: 0;
+    background: #1df659;
+    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
+      -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+      inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
+      inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+    transition: all 0.3s ease;
+  }
+  &:before {
+    height: 0%;
+    width: 2px;
+  }
+  &:after {
+    width: 0%;
+    height: 2px;
+  }
+  &:hover:before {
+    height: 100%;
+  }
+  &:hover:after {
+    width: 100%;
+  }
+  &:hover {
+    background: black;
+    color: #1df659;
+  }
 `;
