@@ -203,7 +203,9 @@ const Ex_register = () => {
                     </S.rContent>
                     <S.rContent>
                       <S.rTitle>소모 칼로리</S.rTitle>
-                      <S.rElementB>{location.state.average * 0.4}</S.rElementB>
+                      <S.rElementB>
+                        {Math.round(location.state.average * 0.4)}
+                      </S.rElementB>
                     </S.rContent>
                   </S.ContentWrapper>
                 </S.Record>
