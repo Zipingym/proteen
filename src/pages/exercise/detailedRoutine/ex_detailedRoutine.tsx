@@ -7,13 +7,27 @@ import FeedBack from './feedback';
 import usePipeline from '$/hooks/usePipeline';
 import { NormalizedLandmarkList } from '@mediapipe/drawing_utils';
 import useExerciseScore from '$/hooks/useExerciseScore';
+import useRecord from '$/hooks/useRecord';
 
+function downloadFile(url: string) {
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `test.webm`;
+  a.click();
+  a.remove();
+  window.URL.revokeObjectURL(url);
+}
 const ex_detailedRoutine = () => {
   const [maxCount, setMaxCount] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(document.createElement('video'));
+  const canvasRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));
   const [skeleton, setSkeleton] = useState<NormalizedLandmarkList>(new Array());
   const [init, send] = usePipeline();
   const [input, score] = useExerciseScore();
+  const [recorder, setRecorder] = useState(
+    new MediaRecorder(canvasRef.current.captureStream(30))
+  );
+  const [recordResult, setRecordResult] = useState(new Array());
   useEffect(() => {
     init();
   }, [init]);
@@ -23,9 +37,42 @@ const ex_detailedRoutine = () => {
       if (isPlay === false) {
         setIsPlay(true);
         setMaxCount(count);
+        setRecorder(
+          //@ts-expect-error
+          () => new MediaRecorder(videoRef.current.captureStream(30))
+        );
+        setRecordResult(() => new Array());
+        const record = new MediaRecorder(videoRef.current.captureStream(30), {
+          audioBitsPerSecond: 128000,
+          videoBitsPerSecond: 2500000,
+        });
+        const result = [];
+        record.ondataavailable = (event) => {
+          console.log(event.data);
+          result.push(event.data);
+        };
+
+        setTimeout(() => {
+          record.start();
+          setTimeout(() => {
+            record.stop();
+            setTimeout(() => {
+              console.log(result);
+              const blob = new Blob(result, {
+                type: 'video/webm',
+              });
+              downloadFile(window.URL.createObjectURL(blob));
+              document.body.innerHTML = '';
+              const video = document.createElement('video');
+              video.src = window.URL.createObjectURL(blob);
+              video.play();
+              document.body.appendChild(video);
+            }, 1000);
+          }, 5000);
+        }, 5000);
       }
     },
-    [isPlay]
+    [isPlay, videoRef]
   );
   useEffect(() => {
     if (isPlay) {
@@ -46,14 +93,18 @@ const ex_detailedRoutine = () => {
     }
   }, [isPlay]);
   useEffect(() => {
-    console.log(score);
-  }, [score]);
+    recorder.ondataavailable = (event) => {
+      console.log(event.data);
+      setRecordResult([...recordResult, event.data]);
+    };
+  }, [recorder]);
   return (
     <S.Body>
       <S.WebcamWrapper>
         <Webcam
           skeleton={skeleton}
           videoRef={videoRef}
+          canvasRef={canvasRef}
           onPlay={onPlay}
         ></Webcam>
       </S.WebcamWrapper>

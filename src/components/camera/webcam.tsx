@@ -9,6 +9,7 @@ import useFileInput from '$/hooks/useFileInput';
 
 const Webcam = (props: {
   videoRef: MutableRefObject<HTMLVideoElement>;
+  canvasRef: MutableRefObject<HTMLCanvasElement>;
   skeleton: NormalizedLandmarkList;
   onPlay: (count: number) => void;
 }) => {
