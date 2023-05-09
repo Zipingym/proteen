@@ -23,7 +23,7 @@ const NavComponent = () => {
         </S.NavBtn>
       </S.NavBtnWrapper>
       <S.NavBtnWrapper>
-      <S.NavBtn onClick={()=>{localStorage.removeItem('accessToken'); setToken(null)}}>
+      <S.NavBtn onClick={()=>{localStorage.removeItem('accessToken'); setToken(null); navigate('/')}}>
         logout
       </S.NavBtn>
     </S.NavBtnWrapper>
