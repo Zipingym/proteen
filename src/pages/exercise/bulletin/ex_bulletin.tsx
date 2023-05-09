@@ -10,48 +10,32 @@ import axios from 'axios';
 
 const Ex_bulletin = () => {
   interface GetItem {
-    createDateTime: string;
-    modifiedDateTime: string;
-    exerciseId: number;
-    title: string;
     body: string;
+    createDate: string;
+    createTime: string;
+    exerciseId: number;
     exerciseType: string;
-    videoUrl: string;
     score: number;
     time: number;
-    calorie: number;
+    title: string;
+    videoUrl: string;
     user: {
-      createDateTime: string;
-      modifiedDateTime: string;
-      userId: number;
       id: string;
-      password: string;
-      name: string;
-      age: number;
-      gender: string;
     };
   }
 
   const [getItem, setGetItem] = useState<GetItem>({
-    createDateTime: '',
-    modifiedDateTime: '',
-    exerciseId: 0,
-    title: '',
     body: '',
+    createDate: '',
+    createTime: '',
+    exerciseId: 0,
     exerciseType: '',
-    videoUrl: '',
     score: 0,
     time: 0,
-    calorie: 0,
+    title: '',
+    videoUrl: '',
     user: {
-      createDateTime: '',
-      modifiedDateTime: '',
-      userId: 0,
       id: '',
-      password: '',
-      name: '',
-      age: 0,
-      gender: '',
     },
   });
   const token = localStorage.getItem('accessToken');
@@ -62,13 +46,13 @@ const Ex_bulletin = () => {
       })
       .then((res) => {
         console.log(res);
-        setGetItem(res.data[0]);
-        console.log(getItem);
+        setGetItem(() => res.data[0]);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+  console.log(getItem);
   return (
     <S.Body>
       <S.AllContainer>
@@ -77,7 +61,7 @@ const Ex_bulletin = () => {
         <S.ScrollContainer>
           <S.MainContainer>
             <iframe
-              width="560"
+              width="500"
               height="620"
               src="https://www.youtube.com/embed/kL88ldYiMkM"
               title="YouTube video player"
@@ -87,27 +71,25 @@ const Ex_bulletin = () => {
             ></iframe>
             <S.Write>
               <S.Date>
-                <S.cDate>{getItem.createDateTime}</S.cDate>
-                <S.cTime>{getItem.time}</S.cTime>
+                <S.cDate>{getItem.createDate}</S.cDate>
+                <S.cTime>{getItem.createTime}</S.cTime>
               </S.Date>
               <S.cTitle>{getItem.title}</S.cTitle>
 
               <S.profile>
                 <S.profileImg src={profile_img} alt="Error" />
-                <S.profileName>Steel Supplements</S.profileName>
+                <S.profileName>{getItem.user.id}</S.profileName>
               </S.profile>
               <S.cBar></S.cBar>
 
-              <S.cWrite>오늘은 등하는날 ㅎㅎ</S.cWrite>
-              <S.cWrite>나름 정자세로 한다고 했는데 왜 90점ㅇ이냐...</S.cWrite>
-              <S.cWrite>내일은 평균 95점 찍는다!</S.cWrite>
+              <S.cWrite></S.cWrite>
               <S.cTag># 등 # 풀업 # 헬스 #health # PT # GYM</S.cTag>
               <S.cBar></S.cBar>
               <S.Click>
                 <S.iconH src={Icon_heart} alt="Error" />
                 <S.iconB src={Icon_book} alt="Error" />
               </S.Click>
-              <S.Extag>Pull-up</S.Extag>
+              <S.Extag>{getItem.exerciseType}</S.Extag>
               <S.Record>
                 <S.rContent>
                   <S.rTitle>평균 점수</S.rTitle>
@@ -142,30 +124,27 @@ const Ex_bulletin = () => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             ></iframe>
-
             <S.Write>
               <S.Date>
-                <S.cDate>2023.04.02</S.cDate>
-                <S.cTime>오전 10:00</S.cTime>
+                <S.cDate>{getItem.createDate}</S.cDate>
+                <S.cTime>{getItem.createTime}</S.cTime>
               </S.Date>
-              <S.cTitle>오전 풀업! 오운완</S.cTitle>
+              <S.cTitle>{getItem.title}</S.cTitle>
 
               <S.profile>
                 <S.profileImg src={profile_img} alt="Error" />
-                <S.profileName>Steel Supplements</S.profileName>
+                <S.profileName>{getItem.user.id}</S.profileName>
               </S.profile>
               <S.cBar></S.cBar>
 
-              <S.cWrite>오늘은 등하는날 ㅎㅎ</S.cWrite>
-              <S.cWrite>나름 정자세로 한다고 했는데 왜 90점ㅇ이냐...</S.cWrite>
-              <S.cWrite>내일은 평균 95점 찍는다!</S.cWrite>
+              <S.cWrite></S.cWrite>
               <S.cTag># 등 # 풀업 # 헬스 #health # PT # GYM</S.cTag>
               <S.cBar></S.cBar>
               <S.Click>
                 <S.iconH src={Icon_heart} alt="Error" />
                 <S.iconB src={Icon_book} alt="Error" />
               </S.Click>
-              <S.Extag>Pull-up</S.Extag>
+              <S.Extag>{getItem.exerciseType}</S.Extag>
               <S.Record>
                 <S.rContent>
                   <S.rTitle>평균 점수</S.rTitle>
