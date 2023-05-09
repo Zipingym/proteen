@@ -61,6 +61,61 @@ const Ex_bulletin = () => {
         <S.ScrollContainer>
           <S.MainContainer>
             <iframe
+              width="500"
+              height="620"
+              src="https://www.youtube.com/embed/kL88ldYiMkM"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+            <S.Write>
+              <S.Date>
+                <S.cDate>{getItem.createDate}</S.cDate>
+                <S.cTime>{getItem.createTime}</S.cTime>
+              </S.Date>
+              <S.cTitle>{getItem.title}</S.cTitle>
+
+              <S.profile>
+                <S.profileImg src={profile_img} alt="Error" />
+                <S.profileName>{getItem.user.id}</S.profileName>
+              </S.profile>
+              <S.cBar></S.cBar>
+
+              <S.cWrite></S.cWrite>
+              <S.cTag># 등 # 풀업 # 헬스 #health # PT # GYM</S.cTag>
+              <S.cBar></S.cBar>
+              <S.Click>
+                <S.iconH src={Icon_heart} alt="Error" />
+                <S.iconB src={Icon_book} alt="Error" />
+              </S.Click>
+              <S.Extag>{getItem.exerciseType}</S.Extag>
+              <S.Record>
+                <S.rContent>
+                  <S.rTitle>평균 점수</S.rTitle>
+                  <S.rTitle>운동 시간</S.rTitle>
+                  <S.rTitle>소모 칼로리</S.rTitle>
+                </S.rContent>
+
+                <S.rElement>
+                  <S.rElementB>78.2</S.rElementB>
+                  <S.rTime>
+                    <S.rElementB>01</S.rElementB>
+                    <S.rElementS>h</S.rElementS>
+                    <S.rElementB>30</S.rElementB>
+                    <S.rElementS>m</S.rElementS>
+                  </S.rTime>
+
+                  <S.rKcal>
+                    <S.rElementB>150</S.rElementB>
+                    <S.rElementS>kcal</S.rElementS>
+                  </S.rKcal>
+                </S.rElement>
+              </S.Record>
+            </S.Write>
+          </S.MainContainer>
+          <S.MainContainer>
+            <iframe
               width="560"
               height="620"
               src="https://www.youtube.com/embed/kL88ldYiMkM"
