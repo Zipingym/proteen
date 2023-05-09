@@ -100,8 +100,9 @@ const Ex_register = () => {
   const videoInput = useRef();
 
   useEffect(() => {
-    console.log(fileUrl == '');
-  }, [fileUrl]);
+    // console.log(fileUrl == '');
+    setFileUrl(location.state.video);
+  }, [location.state.video]);
 
   const onClickVideoUpload = () => {
     //@ts-expect-error
