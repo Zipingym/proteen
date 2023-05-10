@@ -8,28 +8,24 @@ import Icon_book from './img/material-symbols_bookmark-outline-rounded.png';
 import api from '$/api/customAxios';
 import axios from 'axios';
 
-const Ex_bulletin = () => {
-  interface GetItem {
-    data: [
-      {
-        body: string;
-        createDate: string;
-        createTime: string;
-        exerciseId: number;
-        exerciseType: string;
-        score: number;
-        time: number;
-        title: string;
-        videoUrl: string;
-        user: {
-          id: string;
-        };
-      }
-    ];
-  }
+interface GetItem {
+      body: string;
+      createDate: string;
+      createTime: string;
+      exerciseId: number;
+      exerciseType: string;
+      score: number;
+      time: number;
+      title: string;
+      videoUrl: string;
+      user: {
+        id: string;
+      };
+}
 
-  const [getItem, setGetItem] = useState<GetItem>({
-    data: [
+const Ex_bulletin = () => {
+  
+const [getItem, setGetItem] = useState<GetItem[]>([
       {
         body: '',
         createDate: '',
@@ -43,33 +39,37 @@ const Ex_bulletin = () => {
         user: {
           id: '',
         },
-      },
-    ],
-  });
-  const token = localStorage.getItem('accessToken');
+      }
+  ]);
+
   useEffect(() => {
+    const token = localStorage.getItem('accessToken');
     api
       .get('/exercise/get/list', {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
         setGetItem(() => res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-  console.log(getItem);
+
+  useEffect(() => {
+    console.log(getItem);
+  },[getItem])
+
   return (
     <S.Body>
       <S.AllContainer>
         <S.Title>Oh! 오운완</S.Title>
         <S.T_info>오늘의 운동을 기록하고 공유하세요.</S.T_info>
         <S.ScrollContainer>
-          {getItem.data &&
-            getItem.data.map((data: any, idx: number) =>  (
-              <S.MainContainer key={idx}>
+          { getItem[0].title &&
+          getItem.map((data: any, idx: number) => {
+            return ( <S.MainContainer key={idx}>
                   <iframe
                     width="560"
                     height="620"
@@ -83,18 +83,18 @@ const Ex_bulletin = () => {
                   <S.Write>
                     <S.Date>
                       <S.cDate key={idx}>
-                        {getItem.data[idx].createDate}
+                        {data.createDate}
                       </S.cDate>
                       <S.cTime key={idx}>
-                        {getItem.data[idx].createTime}
+                        {data.createTime}
                       </S.cTime>
                     </S.Date>
-                    <S.cTitle key={idx}>{getItem.data[idx].title}</S.cTitle>
+                    <S.cTitle key={idx}>{data.title}</S.cTitle>
 
                     <S.profile>
                       <S.profileImg src={profile_img} alt="Error" />
                       <S.profileName key={idx}>
-                        {getItem.data[idx].user.id}
+                        {data.user.id}
                       </S.profileName>
                     </S.profile>
                     <S.cBar></S.cBar>
@@ -107,7 +107,7 @@ const Ex_bulletin = () => {
                       <S.iconB src={Icon_book} alt="Error" />
                     </S.Click>
                     <S.Extag key={idx}>
-                      {getItem.data[idx].exerciseType}
+                      {data.exerciseType}
                     </S.Extag>
                     <S.Record>
                       <S.rContent>
@@ -133,7 +133,7 @@ const Ex_bulletin = () => {
                     </S.Record>
                   </S.Write>
                 </S.MainContainer>
-              );
+              )}
             )}
         </S.ScrollContainer>
       </S.AllContainer>
