@@ -58,13 +58,18 @@ export const info = styled.h3`
   font-size: 100%;
 `;
 
+export const IFrameContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+`;
+
 export const topVideo = styled.iframe`
   margin-top: 2%;
-  margin-left: 18%;
   display: flex;
   align-items: center;
   float: right;
-  width: 95%;
+  width: 100%;
   height: 60%;
 `;
 
