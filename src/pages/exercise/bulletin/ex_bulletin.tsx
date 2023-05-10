@@ -10,33 +10,41 @@ import axios from 'axios';
 
 const Ex_bulletin = () => {
   interface GetItem {
-    body: string;
-    createDate: string;
-    createTime: string;
-    exerciseId: number;
-    exerciseType: string;
-    score: number;
-    time: number;
-    title: string;
-    videoUrl: string;
-    user: {
-      id: string;
-    };
+    data: [
+      {
+        body: string;
+        createDate: string;
+        createTime: string;
+        exerciseId: number;
+        exerciseType: string;
+        score: number;
+        time: number;
+        title: string;
+        videoUrl: string;
+        user: {
+          id: string;
+        };
+      }
+    ];
   }
 
   const [getItem, setGetItem] = useState<GetItem>({
-    body: '',
-    createDate: '',
-    createTime: '',
-    exerciseId: 0,
-    exerciseType: '',
-    score: 0,
-    time: 0,
-    title: '',
-    videoUrl: '',
-    user: {
-      id: '',
-    },
+    data: [
+      {
+        body: '',
+        createDate: '',
+        createTime: '',
+        exerciseId: 0,
+        exerciseType: '',
+        score: 0,
+        time: 0,
+        title: '',
+        videoUrl: '',
+        user: {
+          id: '',
+        },
+      },
+    ],
   });
   const token = localStorage.getItem('accessToken');
   useEffect(() => {
@@ -46,7 +54,7 @@ const Ex_bulletin = () => {
       })
       .then((res) => {
         console.log(res);
-        setGetItem(() => res.data[0]);
+        setGetItem(() => res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -59,116 +67,74 @@ const Ex_bulletin = () => {
         <S.Title>Oh! 오운완</S.Title>
         <S.T_info>오늘의 운동을 기록하고 공유하세요.</S.T_info>
         <S.ScrollContainer>
-          <S.MainContainer>
-            <iframe
-              width="500"
-              height="620"
-              src="https://www.youtube.com/embed/kL88ldYiMkM"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
-            <S.Write>
-              <S.Date>
-                <S.cDate>{getItem.createDate}</S.cDate>
-                <S.cTime>{getItem.createTime}</S.cTime>
-              </S.Date>
-              <S.cTitle>{getItem.title}</S.cTitle>
+          {getItem.data &&
+            getItem.data.map((data: any, idx: number) =>  (
+              <S.MainContainer key={idx}>
+                  <iframe
+                    width="560"
+                    height="620"
+                    src="https://www.youtube.com/embed/kL88ldYiMkM"
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
 
-              <S.profile>
-                <S.profileImg src={profile_img} alt="Error" />
-                <S.profileName>{getItem.user.id}</S.profileName>
-              </S.profile>
-              <S.cBar></S.cBar>
+                  <S.Write>
+                    <S.Date>
+                      <S.cDate key={idx}>
+                        {getItem.data[idx].createDate}
+                      </S.cDate>
+                      <S.cTime key={idx}>
+                        {getItem.data[idx].createTime}
+                      </S.cTime>
+                    </S.Date>
+                    <S.cTitle key={idx}>{getItem.data[idx].title}</S.cTitle>
 
-              <S.cWrite></S.cWrite>
-              <S.cTag># 등 # 풀업 # 헬스 #health # PT # GYM</S.cTag>
-              <S.cBar></S.cBar>
-              <S.Click>
-                <S.iconH src={Icon_heart} alt="Error" />
-                <S.iconB src={Icon_book} alt="Error" />
-              </S.Click>
-              <S.Extag>{getItem.exerciseType}</S.Extag>
-              <S.Record>
-                <S.rContent>
-                  <S.rTitle>평균 점수</S.rTitle>
-                  <S.rTitle>운동 시간</S.rTitle>
-                  <S.rTitle>소모 칼로리</S.rTitle>
-                </S.rContent>
+                    <S.profile>
+                      <S.profileImg src={profile_img} alt="Error" />
+                      <S.profileName key={idx}>
+                        {getItem.data[idx].user.id}
+                      </S.profileName>
+                    </S.profile>
+                    <S.cBar></S.cBar>
 
-                <S.rElement>
-                  <S.rElementB>78.2</S.rElementB>
-                  <S.rTime>
-                    <S.rElementB>01</S.rElementB>
-                    <S.rElementS>h</S.rElementS>
-                    <S.rElementB>30</S.rElementB>
-                    <S.rElementS>m</S.rElementS>
-                  </S.rTime>
+                    <S.cWrite></S.cWrite>
+                    <S.cTag># 등 # 풀업 # 헬스 #health # PT # GYM</S.cTag>
+                    <S.cBar></S.cBar>
+                    <S.Click>
+                      <S.iconH src={Icon_heart} alt="Error" />
+                      <S.iconB src={Icon_book} alt="Error" />
+                    </S.Click>
+                    <S.Extag key={idx}>
+                      {getItem.data[idx].exerciseType}
+                    </S.Extag>
+                    <S.Record>
+                      <S.rContent>
+                        <S.rTitle>평균 점수</S.rTitle>
+                        <S.rTitle>운동 시간</S.rTitle>
+                        <S.rTitle>소모 칼로리</S.rTitle>
+                      </S.rContent>
 
-                  <S.rKcal>
-                    <S.rElementB>150</S.rElementB>
-                    <S.rElementS>kcal</S.rElementS>
-                  </S.rKcal>
-                </S.rElement>
-              </S.Record>
-            </S.Write>
-          </S.MainContainer>
-          <S.MainContainer>
-            <iframe
-              width="560"
-              height="620"
-              src="https://www.youtube.com/embed/kL88ldYiMkM"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
-            <S.Write>
-              <S.Date>
-                <S.cDate>{getItem.createDate}</S.cDate>
-                <S.cTime>{getItem.createTime}</S.cTime>
-              </S.Date>
-              <S.cTitle>{getItem.title}</S.cTitle>
+                      <S.rElement>
+                        <S.rElementB>78.2</S.rElementB>
+                        <S.rTime>
+                          <S.rElementB>01</S.rElementB>
+                          <S.rElementS>h</S.rElementS>
+                          <S.rElementB>30</S.rElementB>
+                          <S.rElementS>m</S.rElementS>
+                        </S.rTime>
 
-              <S.profile>
-                <S.profileImg src={profile_img} alt="Error" />
-                <S.profileName>{getItem.user.id}</S.profileName>
-              </S.profile>
-              <S.cBar></S.cBar>
-
-              <S.cWrite></S.cWrite>
-              <S.cTag># 등 # 풀업 # 헬스 #health # PT # GYM</S.cTag>
-              <S.cBar></S.cBar>
-              <S.Click>
-                <S.iconH src={Icon_heart} alt="Error" />
-                <S.iconB src={Icon_book} alt="Error" />
-              </S.Click>
-              <S.Extag>{getItem.exerciseType}</S.Extag>
-              <S.Record>
-                <S.rContent>
-                  <S.rTitle>평균 점수</S.rTitle>
-                  <S.rTitle>운동 시간</S.rTitle>
-                  <S.rTitle>소모 칼로리</S.rTitle>
-                </S.rContent>
-
-                <S.rElement>
-                  <S.rElementB>78.2</S.rElementB>
-                  <S.rTime>
-                    <S.rElementB>01</S.rElementB>
-                    <S.rElementS>h</S.rElementS>
-                    <S.rElementB>30</S.rElementB>
-                    <S.rElementS>m</S.rElementS>
-                  </S.rTime>
-
-                  <S.rKcal>
-                    <S.rElementB>150</S.rElementB>
-                    <S.rElementS>kcal</S.rElementS>
-                  </S.rKcal>
-                </S.rElement>
-              </S.Record>
-            </S.Write>
-          </S.MainContainer>
+                        <S.rKcal>
+                          <S.rElementB>150</S.rElementB>
+                          <S.rElementS>kcal</S.rElementS>
+                        </S.rKcal>
+                      </S.rElement>
+                    </S.Record>
+                  </S.Write>
+                </S.MainContainer>
+              );
+            )}
         </S.ScrollContainer>
       </S.AllContainer>
     </S.Body>

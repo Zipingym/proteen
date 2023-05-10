@@ -33,7 +33,7 @@ export const T_info = styled.h1`
 
 export const MainContainer = styled.div`
   display: flex;
-  margin: 0 14%;
+  margin: 0 8%;
   width: 950px;
   height: 620px;
   margin-top: 2.5%;
@@ -60,7 +60,7 @@ export const Reels_view = styled.img`
 `;
 
 export const Write = styled.div`
-  width: 15vw;
+  width: 18vw;
   margin-left: 4.1%;
   margin-top: 7.5%;
 `;
