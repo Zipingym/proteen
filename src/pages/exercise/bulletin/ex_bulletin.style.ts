@@ -81,7 +81,6 @@ export const cTime = styled.h6`
   font-style: normal;
   font-weight: 300;
   font-size: 50%;
-  margin-top: 1%;
 `;
 
 export const cTitle = styled.h1`
