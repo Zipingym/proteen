@@ -9,37 +9,36 @@ import api from '$/api/customAxios';
 import axios from 'axios';
 
 interface GetItem {
-      body: string;
-      createDate: string;
-      createTime: string;
-      exerciseId: number;
-      exerciseType: string;
-      score: number;
-      time: number;
-      title: string;
-      videoUrl: string;
-      user: {
-        id: string;
-      };
+  body: string;
+  createDate: string;
+  createTime: string;
+  exerciseId: number;
+  exerciseType: string;
+  score: number;
+  time: number;
+  title: string;
+  videoUrl: string;
+  user: {
+    id: string;
+  };
 }
 
 const Ex_bulletin = () => {
-  
-const [getItem, setGetItem] = useState<GetItem[]>([
-      {
-        body: '',
-        createDate: '',
-        createTime: '',
-        exerciseId: 0,
-        exerciseType: '',
-        score: 0,
-        time: 0,
-        title: '',
-        videoUrl: '',
-        user: {
-          id: '',
-        },
-      }
+  const [getItem, setGetItem] = useState<GetItem[]>([
+    {
+      body: '',
+      createDate: '',
+      createTime: '',
+      exerciseId: 0,
+      exerciseType: '',
+      score: 0,
+      time: 0,
+      title: '',
+      videoUrl: '',
+      user: {
+        id: '',
+      },
+    },
   ]);
 
   useEffect(() => {
@@ -59,7 +58,7 @@ const [getItem, setGetItem] = useState<GetItem[]>([
 
   useEffect(() => {
     console.log(getItem);
-  },[getItem])
+  }, [getItem]);
 
   return (
     <S.Body>
@@ -67,9 +66,10 @@ const [getItem, setGetItem] = useState<GetItem[]>([
         <S.Title>Oh! 오운완</S.Title>
         <S.T_info>오늘의 운동을 기록하고 공유하세요.</S.T_info>
         <S.ScrollContainer>
-          { getItem[0].title &&
-          getItem.map((data: any, idx: number) => {
-            return ( <S.MainContainer key={idx}>
+          {getItem[0].title &&
+            getItem.map((data: any, idx: number) => {
+              return (
+                <S.MainContainer>
                   <iframe
                     width="560"
                     height="620"
@@ -82,33 +82,25 @@ const [getItem, setGetItem] = useState<GetItem[]>([
 
                   <S.Write>
                     <S.Date>
-                      <S.cDate key={idx}>
-                        {data.createDate}
-                      </S.cDate>
-                      <S.cTime key={idx}>
-                        {data.createTime}
-                      </S.cTime>
+                      <S.cDate key={idx}>{data.createDate}</S.cDate>
+                      <S.cTime key={idx}>{data.createTime}</S.cTime>
                     </S.Date>
                     <S.cTitle key={idx}>{data.title}</S.cTitle>
 
                     <S.profile>
                       <S.profileImg src={profile_img} alt="Error" />
-                      <S.profileName key={idx}>
-                        {data.user.id}
-                      </S.profileName>
+                      <S.profileName key={idx}>{data.user.id}</S.profileName>
                     </S.profile>
                     <S.cBar></S.cBar>
 
-                    <S.cWrite></S.cWrite>
+                    <S.cWrite key={idx}>{data.body}</S.cWrite>
                     <S.cTag># 등 # 풀업 # 헬스 #health # PT # GYM</S.cTag>
                     <S.cBar></S.cBar>
                     <S.Click>
                       <S.iconH src={Icon_heart} alt="Error" />
                       <S.iconB src={Icon_book} alt="Error" />
                     </S.Click>
-                    <S.Extag key={idx}>
-                      {data.exerciseType}
-                    </S.Extag>
+                    <S.Extag key={idx}>{data.exerciseType}</S.Extag>
                     <S.Record>
                       <S.rContent>
                         <S.rTitle>평균 점수</S.rTitle>
@@ -133,8 +125,8 @@ const [getItem, setGetItem] = useState<GetItem[]>([
                     </S.Record>
                   </S.Write>
                 </S.MainContainer>
-              )}
-            )}
+              );
+            })}
         </S.ScrollContainer>
       </S.AllContainer>
     </S.Body>

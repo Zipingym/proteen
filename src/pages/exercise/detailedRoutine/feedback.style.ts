@@ -83,20 +83,19 @@ export const exBar = styled.div`
   margin-top: 3%;
   background: linear-gradient(90deg, #1df659 0%, #9fadfe 100%);
   border-radius: 10px;
-  position:relative;
+  position: relative;
 `;
 
-
-interface pointerCheckBar{
-  score:number
+interface pointerCheckBar {
+  score: number;
 }
 export const pointCheckBar = styled.div<pointerCheckBar>`
   position: absolute;
-  height:60px;
-  width:3px;
-  background-color:white;
+  height: 60px;
+  width: 3px;
+  background-color: white;
   top: -30%;
-  left:${(props) => props.score + "%"};
+  left: ${(props) => props.score + '%'};
   /* transform: rotate(-90deg); */
 `;
 export const pointCheckScore = styled.h3`
@@ -112,6 +111,8 @@ export const pointCheckScore = styled.h3`
 `;
 
 export const EndButton = styled.button`
+  margin-left: 85%;
+  margin-top: -3%;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
