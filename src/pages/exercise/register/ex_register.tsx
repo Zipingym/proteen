@@ -9,6 +9,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import upload_icon from '../../../assets/img/upload_icon.svg';
 import { title } from '../detailedRoutine/ex_detailedRoutine.style';
+import { MarginTop } from '$/components/mypage/mypage.style';
 interface Post {
   title: string;
   body: string;
@@ -140,7 +141,16 @@ const Ex_register = () => {
                 ></S.VideoSubmit>
               </>
             ) : (
-              <video src={fileUrl} controls width="450px" />
+              <video
+                src={fileUrl}
+                controls
+                style={{
+                  width: '450px',
+                  marginTop: '-15%',
+                  marginBottom: '0.5%',
+                  marginLeft: '1%',
+                }}
+              />
             )}
 
             <S.Write>
@@ -211,7 +221,7 @@ const Ex_register = () => {
                 </S.Record>
               </S.InputWrapper>
               <S.submit>
-                <S.submitU onClick={onSubmit}>업로드</S.submitU>
+                <S.submitU onClick={onSubmit}>upload</S.submitU>
               </S.submit>
             </S.Write>
           </S.MainContainer>

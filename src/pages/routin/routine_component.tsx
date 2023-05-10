@@ -100,10 +100,10 @@ const ComponentWrap = styled.div`
     transition: 0.3s;
   }
 `;
-const RoutineDate = styled.div``;
-const RoutineTitle = styled.div`
-  margin-left: 40%;
+const RoutineDate = styled.div`
+  margin-right: 35%;
 `;
+const RoutineTitle = styled.div``;
 const RoutineSet = styled.div`
   margin-left: 3%;
 `;

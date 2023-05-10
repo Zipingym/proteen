@@ -62,7 +62,6 @@ export const exAvg = styled.h3`
 `;
 export const exAvgPoint = styled.h5`
   padding-bottom: 2%;
-  padding-top: 20%;
   height: 30px;
   font-family: 'Pretendard';
   font-style: normal;

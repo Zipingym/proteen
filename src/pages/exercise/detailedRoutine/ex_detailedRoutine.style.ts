@@ -10,8 +10,9 @@ export const topContent = styled.div`
   padding-right: 3%;
   margin-left: 7%;
   margin-top: 10%;
-  display: flex;
-  height: 60%;
+  display: block;
+  align-text: center
+  height: 100%;
   width: 70%;
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
@@ -31,7 +32,7 @@ export const exTitle = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-left: -4%;
+  margin-left: -5%;
 `;
 
 export const routine = styled.h5`
@@ -65,12 +66,12 @@ export const IFrameContainer = styled.div`
 `;
 
 export const topVideo = styled.iframe`
-  margin-top: 2%;
+  margin-top: -0.5%;
   display: flex;
   align-items: center;
   float: right;
   width: 100%;
-  height: 60%;
+  height: 25vh;
 `;
 
 export const topBar = styled.div`

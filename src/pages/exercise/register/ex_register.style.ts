@@ -145,7 +145,7 @@ export const inputInfo = styled.textarea`
 export const ChoseBtn = styled.div`
   display: flex;
   margin-top: 3%;
-  margin-left: -3%;
+  margin-left: -1%;
 `;
 
 export const CB = styled.button`
@@ -155,7 +155,7 @@ export const CB = styled.button`
   border-radius: 50px;
   background: #454545;
   color: white;
-  margin-left: 3.3%;
+  margin-left: 4%;
   margin-bottom: 5%;
 
   font-family: 'Pretendard';
@@ -246,13 +246,14 @@ export const submitU = styled.button`
 cursor:pointer;
 padding: 6px 25px 6px 25px;
 width: 100%;
+height:120%;
 background: #252523;
 border: 1px solid #1DF659;
 border-radius: 5px;
 color: #1DF659;
 font-style: normal;
 font-weight: 500;
-font-size: 10px;
+font-size: 17px;
 
 &:hover{
     box-shadow : 1px 1px 1px 1px #252523;
