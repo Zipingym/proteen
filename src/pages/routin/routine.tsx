@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import * as R from './routine.style';
 import routinProfile from '../../assets/img/routinprofile.svg';
 import RoutinComponent from './routine_component';
@@ -13,9 +13,7 @@ function Routin() {
       <R.RoutinWrap>
         <R.RoutinProfile src={routinProfile}></R.RoutinProfile>
         <R.Routins>
-          {data.routine.map((data, idx) => {
-            return <RoutinComponent></RoutinComponent>;
-          })}
+            <RoutinComponent></RoutinComponent>;
         </R.Routins>
       </R.RoutinWrap>
     </R.Body>
