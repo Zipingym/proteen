@@ -8,14 +8,53 @@ import { useNavigate } from 'react-router-dom';
 function RoutinComponent() {
   const navigate = useNavigate();
   const [hover, setHover] = useState(false);
+  const [routine,setRoutine] = useState([{
+    date : "2023.04.13",
+    title : "플랭크 (plank)",
+    set : "10개 / 2set"
+  },{
+    date : "2023.04.12",
+    title : "풀업 (pull-up)",
+    set : "30개 / 3set"
+  },{
+    date : "2023.04.11",
+    title : "플랭크 (plank)",
+    set : "10개 / 2set"
+  },{
+    date : "2023.04.10",
+    title : "런지 (lunge)",
+    set : "30개 / 1set"
+  },{
+    date : "2023.04.09",
+    title : "풀업 (pull-up)",
+    set : "30개 / 3set"
+  },{
+    date : "2023.04.08",
+    title : "플랭크 (plank)",
+    set : "10개 / 2set"
+  },{
+    date : "2023.04.07",
+    title : "런지 (lunge)",
+    set : "30개 / 2set"
+  },{
+    date : "2023.04.06",
+    title : "풀업 (pull-up)",
+    set : "20개 / 2 set"
+  },{
+    date : "2023.04.05",
+    title : "크런치 (crunch)",
+    set : "30개 / 2 set"
+  },]);
+
   return (
+    routine.map((data,index) => (
     <ComponentWrap
       onMouseOver={() => setHover(true)}
       onMouseOut={() => setHover(false)}
-    >
-      <RoutineDate>2023.04.05</RoutineDate>
-      <RoutineTitle>크런치 (crunch)</RoutineTitle>
-      <RoutineSet>30개 / 2 set</RoutineSet>
+      key={index}>
+      <RoutineDate>{data.date}</RoutineDate>
+      <RoutineTitle>{data.title}</RoutineTitle>
+      <RoutineSet>{data.set}</RoutineSet>
       {hover ? (
         <RoutineBtn
           src={OnBtn}
@@ -26,8 +65,8 @@ function RoutinComponent() {
       ) : (
         <RoutineBtn src={OffBtn} />
       )}
-    </ComponentWrap>
-  );
+    </ComponentWrap>)
+  ));
 }
 export default RoutinComponent;
 const ComponentWrap = styled.div`
