@@ -7,11 +7,12 @@ export const Body = styled.body`
   display: flex;
 `;
 export const topContent = styled.div`
+  padding-right: 3%;
   margin-left: 7%;
   margin-top: 10%;
   display: flex;
   height: 60%;
-  width: 72%;
+  width: 70%;
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
 `;
@@ -58,6 +59,8 @@ export const info = styled.h3`
 `;
 
 export const topVideo = styled.iframe`
+  margin-top: 2%;
+  margin-left: 18%;
   display: flex;
   align-items: center;
   float: right;

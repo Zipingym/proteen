@@ -8,7 +8,7 @@ export const bottomContent = styled.div`
   margin-left: 4%;
 `;
 export const btmTitle = styled.h3`
-  margin-top: -1%;
+  margin-top: 3%;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;
@@ -106,12 +106,12 @@ export const pointCheckScore = styled.h3`
 
 export const EndButton = styled.button`
   margin-left: 72%;
-  margin-top: -13%;
+  margin-top: -18%;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
-  width: 8vw;
-  height: 5vh;
+  width: 5vw;
+  height: 4vh;
   transform: translateX(-50%);
   background-color: #3b3b3b;
   border-radius: 5px;
@@ -119,7 +119,7 @@ export const EndButton = styled.button`
   align-items: center;
   justify-content: center;
   color: #ddd;
-  font-size: 20px;
+  font-size: 15px;
   cursor: pointer;
 
   &:before,

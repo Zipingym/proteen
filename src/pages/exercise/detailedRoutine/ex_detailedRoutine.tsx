@@ -110,11 +110,10 @@ const ex_detailedRoutine = () => {
               </S.routine>
               <S.title>스쿼트</S.title>
               <S.info>
-                하체 하반신의 대퇴사두근과 하퇴삼두근, 대둔근, 중전근 등의
-                근육을 성장시키는 운동이다.
+                대퇴사두근,하퇴삼두근,대둔근, 중전근 등의 하체 근력 운동이다.
               </S.info>
               <S.topVideo
-                src="https://www.youtube.com/embed/uxiSkR-oqqs"
+                src="https://www.youtube.com/embed/fy9URmTqNio"
                 title="YouTube video player"
               />
             </S.exTitle>
