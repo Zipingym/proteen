@@ -112,9 +112,6 @@ export const pointCheckScore = styled.h3`
 `;
 
 export const EndButton = styled.button`
-  position: absolute;
-  right: 50px;
-  top: 170px;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;

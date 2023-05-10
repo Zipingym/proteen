@@ -30,7 +30,7 @@ const ex_detailedRoutine = () => {
   }, [init]);
   const [isPlay, setIsPlay] = useState(false);
   const [recorder, setRecorder] = useState(
-    new MediaRecorder(videoRef.current.captureStream(30))
+    new MediaRecorder(videoRef.current.captureStream(60))
   );
 
   const onPlay = useCallback(
@@ -38,17 +38,14 @@ const ex_detailedRoutine = () => {
       if (isPlay === false) {
         setIsPlay(true);
         setMaxCount(count);
-        const record = new MediaRecorder(videoRef.current.captureStream(30), {
-          audioBitsPerSecond: 128000,
-          videoBitsPerSecond: 2500000,
-        });
+        const record = new MediaRecorder(videoRef.current.captureStream(60));
 
         const result: Array<Blob> = [];
         record.ondataavailable = (event: BlobEvent) => {
           result.push(event.data);
         };
         setRecorder(record);
-        record.onstop = () => {
+        record.onstop = (event) => {
           const blob = new Blob(result, {
             type: 'video/webm',
           });
