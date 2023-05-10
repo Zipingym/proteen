@@ -5,12 +5,14 @@ export const bottomContent = styled.div`
   height: 40%;
   padding: 1.5rem;
   position: relative;
+  margin-left: 4%;
 `;
 export const btmTitle = styled.h3`
+  margin-top: -1%;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;
-  font-size: 100%;
+  font-size: 130%;
   color: #ffffff;
   padding-bottom: 2%;
 `;
@@ -27,6 +29,7 @@ export const btmInfo = styled.h5`
 
 export const exPoint = styled.div`
   display: flex;
+  margin-top: 2%;
 `;
 export const exPoint1 = styled.div`
   display: block;
@@ -40,10 +43,8 @@ export const exCount = styled.h3`
   padding-bottom: 2%;
   font-family: 'Pretendard';
   font-style: normal;
-  font-weight: 300;
-  font-size: 80%;
-
-  color: #ffffff;
+  font-weight: 400;
+  font-size: 90%;
 `;
 export const exCounter = styled.h5`
   padding-bottom: 2%;
@@ -51,52 +52,44 @@ export const exCounter = styled.h5`
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
-  font-size: 200%;
-
-  color: #ffffff;
+  font-size: 250%;
+  margin-top: 10%;
 `;
 export const exAvg = styled.h3`
   padding-bottom: 2%;
-
   font-family: 'Pretendard';
   font-style: normal;
-  font-weight: 300;
-  font-size: 80%;
-
-  color: #ffffff;
 `;
 export const exAvgPoint = styled.h5`
   padding-bottom: 2%;
-  padding-top: 10%;
+  padding-top: 20%;
   height: 30px;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
-  font-size: 200%;
-
-  color: #ffffff;
+  font-size: 250%;
+  margin-top: 25%;
 `;
 
 export const exBar = styled.div`
-  width: 70%;
+  width: 80%;
   height: 35px;
-  margin-top: 3%;
+  margin-top: 5%;
   background: linear-gradient(90deg, #1df659 0%, #9fadfe 100%);
   border-radius: 10px;
-  position:relative;
+  position: relative;
 `;
 
-
-interface pointerCheckBar{
-  score:number
+interface pointerCheckBar {
+  score: number;
 }
 export const pointCheckBar = styled.div<pointerCheckBar>`
   position: absolute;
-  height:60px;
-  width:3px;
-  background-color:white;
+  height: 60px;
+  width: 3px;
+  background-color: white;
   top: -30%;
-  left:${(props) => props.score + "%"};
+  left: ${(props) => props.score + '%'};
   /* transform: rotate(-90deg); */
 `;
 export const pointCheckScore = styled.h3`
@@ -112,6 +105,8 @@ export const pointCheckScore = styled.h3`
 `;
 
 export const EndButton = styled.button`
+  margin-left: 72%;
+  margin-top: -13%;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;

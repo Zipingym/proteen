@@ -57,7 +57,7 @@ const Webcam = (props: {
       }}
     >
       {isPlaying ? null : (
-        <div style={{ width: '700px' }}>
+        <div style={{ width: '700px', marginTop: '7%', marginLeft: '12%' }}>
           <Title>Camera</Title>
           {devideList.map((deviceInfo, idx) => {
             return (
@@ -122,7 +122,7 @@ const Webcam = (props: {
 export default Webcam;
 
 const Title = styled.div`
-  margin-top: 15px;
+  margin-top: 13%;
   margin-left: 15px;
   color: #ffffff;
   font-size: 25px;
@@ -136,7 +136,7 @@ const Button = styled.button`
   width: 500px;
   height: 80px;
   position: absolute;
-  bottom: 50px;
+  bottom: 14%;
   left: 50%;
   transform: translateX(-50%);
   background-color: #3b3b3b;
@@ -182,19 +182,19 @@ const Button = styled.button`
 `;
 
 const Input = styled.input`
+  bottom: 25%;
   width: 500px;
   height: 80px;
   position: absolute;
-  bottom: 150px;
-  left: 50px;
+  left: 15%;
 `;
 
 const InputVal = styled.div`
   width: 100px;
   height: 80px;
   position: absolute;
-  bottom: 150px;
-  right: 50px;
+  bottom: 30%;
+  left: 11%;
   color: #ddd;
   display: flex;
   align-items: center;

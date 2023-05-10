@@ -7,8 +7,11 @@ export const Body = styled.body`
   display: flex;
 `;
 export const topContent = styled.div`
+  margin-left: 7%;
+  margin-top: 10%;
   display: flex;
-  height: 100%;
+  height: 60%;
+  width: 72%;
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
 `;
@@ -27,6 +30,7 @@ export const exTitle = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-left: -4%;
 `;
 
 export const routine = styled.h5`
@@ -37,7 +41,7 @@ export const routine = styled.h5`
 
 export const topImg2 = styled.img`
   padding-right: 2%;
-  width: 2.5%;
+  width: 2%;
 `;
 
 export const title = styled.h1`
@@ -57,8 +61,8 @@ export const topVideo = styled.iframe`
   display: flex;
   align-items: center;
   float: right;
-  width: 100%;
-  height: 70%;
+  width: 95%;
+  height: 60%;
 `;
 
 export const topBar = styled.div`
@@ -82,13 +86,13 @@ export const topBar2 = styled.div`
 export const BottomImg1 = styled.img`
   width: 28%;
   margin-top: 1.5%;
-  margin-left: 15%;
 `;
 
 export const WebcamWrapper = styled.div`
   position: relative;
   height: calc(100% - 5rem);
   top: 5rem;
+  margin-left: 5%;
 `;
 
 export const Contents = styled.div`

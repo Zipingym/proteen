@@ -60,8 +60,8 @@ export const Reels_view = styled.img`
 `;
 
 export const Write = styled.div`
-  width: 18vw;
-  margin-left: 4.1%;
+  width: 25%;
+  margin-left: 4%;
   margin-top: 7.5%;
 `;
 
@@ -85,6 +85,7 @@ export const cTime = styled.h6`
 `;
 
 export const cTitle = styled.h1`
+  margin-top: 10%;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;

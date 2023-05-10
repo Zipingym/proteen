@@ -90,20 +90,35 @@ const ex_detailedRoutine = () => {
 
       <S.Contents>
         <S.topContent>
-          <S.exTitle>
-            <S.routine>
-              <S.topImg2 src={DetailedImg2} alt="Error" />
-              복근 루틴 1/12
-            </S.routine>
-            <S.title>크런치</S.title>
-            <S.info>
-              복근 중 상부를 강화하는 운동으로 윗몸 일으키기의 변형 동작
-            </S.info>
-            <S.topVideo
-              src="https://www.youtube.com/embed/uxiSkR-oqqs"
-              title="YouTube video player"
-            />
-          </S.exTitle>
+          <div
+            style={{
+              marginLeft: '5%',
+              marginTop: '2%',
+            }}
+          >
+            <S.exTitle>
+              <S.routine>
+                <S.topImg2 src={DetailedImg2} alt="Error" />
+                <div
+                  style={{
+                    marginTop: '-1.5%',
+                    marginLeft: '3.5%',
+                  }}
+                >
+                  하체 루틴 1/12
+                </div>
+              </S.routine>
+              <S.title>스쿼트</S.title>
+              <S.info>
+                하체 하반신의 대퇴사두근과 하퇴삼두근, 대둔근, 중전근 등의
+                근육을 성장시키는 운동이다.
+              </S.info>
+              <S.topVideo
+                src="https://www.youtube.com/embed/uxiSkR-oqqs"
+                title="YouTube video player"
+              />
+            </S.exTitle>
+          </div>
         </S.topContent>
         <FeedBack
           maxCount={maxCount}
