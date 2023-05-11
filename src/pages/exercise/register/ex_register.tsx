@@ -37,7 +37,6 @@ const Ex_register = () => {
     'PLANK',
     'CRUNCH',
   ]);
-  const [btnActive, setBtnActive] = useState('');
   const [fileUrl, setFileUrl] = useState<string>('');
 
   useEffect(() => {
@@ -53,12 +52,12 @@ const Ex_register = () => {
   const onSubmit = (data: any) => {
     console.log(post);
     api
-      .post('/exercise', post, {
+      .post<{
+        exercise_id: number;
+      }>('/exercise', post, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then(() => {
-        console.log('success');
-        alert('운동 기록 업로드에 성공하였습니다');
+      .then((res) => {
         setPost({
           title: '',
           body: '',
@@ -67,36 +66,37 @@ const Ex_register = () => {
           time: 0,
           calorie: 0,
         });
+        const formData = new FormData();
+        console.log(res);
+        fetch(fileUrl).then((r) => {
+          r.blob().then((blob) => {
+            console.log(blob);
+            formData.append('file', blob); // 이미지 파일 값 할당
+            const config = {
+              headers: {
+                'Content-Type': 'multipart/form-data', // 데이터 형식 지정
+              },
+            };
+            api
+              .post(
+                `/exercise/upload/video/${res.data.exercise_id}`,
+                formData,
+                config
+              )
+              .then(() => {
+                console.log('video_success');
+              })
+              .catch((err) => {
+                console.log('어림도없다');
+                console.log(err);
+              });
+          });
+        });
       })
       .catch((err) => {
+        console.log('어림도없다없다');
         console.log(err);
-        // console.log()
       });
-  };
-  const thumbnailInput = useRef();
-  const VideoUpload = (e: any) => {
-    setFileUrl(URL.createObjectURL(e.target.files[0]));
-    try {
-      const formData = new FormData(); // formData 생성
-      console;
-      formData.append('file', e.target.files[0]); // 이미지 파일 값 할당
-      const config = {
-        headers: {
-          'Authorization': `Bearer ${'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODM2MzU4NTQsInVzZXJJZCI6MTV9.2NP_IdcAAKdesbnLhtTVjvQ5JrAnH3JJGrFv1GU7J-8'}`, // 토큰 넣어주기
-          'Content-Type': 'multipart/form-data', // 데이터 형식 지정
-        },
-      };
-      // 이미지 업로드 중
-      api
-        .post(`/exercise/upload/video/12`, formData, config)
-        .then(() => {
-          console.log('video_success');
-        })
-        .catch((err) => {
-          console.log('어림도없다');
-          console.log(err);
-        }); // api 통신
-    } catch (error) {}
   };
   const videoInput = useRef();
 
@@ -135,9 +135,7 @@ const Ex_register = () => {
                   type="file"
                   style={{ display: 'none' }}
                   accept="video/*"
-                  onChange={VideoUpload}
                   multiple
-                  ref={videoInput}
                 ></S.VideoSubmit>
               </>
             ) : (
