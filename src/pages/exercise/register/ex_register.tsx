@@ -78,7 +78,7 @@ const Ex_register = () => {
     setFileUrl(URL.createObjectURL(e.target.files[0]));
     try {
       const formData = new FormData(); // formData 생성
-      console;
+      console.log(fileUrl);
       formData.append('file', e.target.files[0]); // 이미지 파일 값 할당
       const config = {
         headers: {
