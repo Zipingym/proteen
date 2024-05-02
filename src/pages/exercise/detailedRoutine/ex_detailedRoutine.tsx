@@ -30,6 +30,7 @@ const ex_detailedRoutine = () => {
   }, [init]);
   const [isPlay, setIsPlay] = useState(false);
   const [recorder, setRecorder] = useState(
+    //@ts-expect-error
     new MediaRecorder(videoRef.current.captureStream(60))
   );
 
@@ -38,6 +39,7 @@ const ex_detailedRoutine = () => {
       if (isPlay === false) {
         setIsPlay(true);
         setMaxCount(count);
+        //@ts-expect-error
         const record = new MediaRecorder(videoRef.current.captureStream(60));
 
         const result: Array<Blob> = [];

@@ -5,7 +5,7 @@ import OnBtn from '../../assets/img/onBtn.svg';
 import OffBtn from '../../assets/img/offBtn.svg';
 import { useNavigate } from 'react-router-dom';
 
-function RoutinComponent() {
+const RoutinComponent = () => {
   const navigate = useNavigate();
   const [hover, setHover] = useState(false);
   const [routine, setRoutine] = useState([
@@ -78,7 +78,7 @@ function RoutinComponent() {
       )}
     </ComponentWrap>
   ));
-}
+};
 export default RoutinComponent;
 const ComponentWrap = styled.div`
   width: 40vw;

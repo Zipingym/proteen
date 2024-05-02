@@ -137,6 +137,7 @@ const Ex_register = () => {
                   accept="video/*"
                   onChange={VideoUpload}
                   multiple
+                  //@ts-expect-error
                   ref={videoInput}
                 ></S.VideoSubmit>
               </>

@@ -13,7 +13,10 @@ function Routin() {
       <R.RoutinWrap>
         <R.RoutinProfile src={routinProfile}></R.RoutinProfile>
         <R.Routins>
-          <RoutinComponent></RoutinComponent>;
+          {
+            //@ts-expect-error
+            <RoutinComponent></RoutinComponent>
+          }
         </R.Routins>
       </R.RoutinWrap>
     </R.Body>
