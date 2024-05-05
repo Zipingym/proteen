@@ -40,6 +40,7 @@ const Ex_bulletin = () => {
       },
     },
   ]);
+  const [fileUrl, setFileUrl] = useState<string>('');
 
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
@@ -54,10 +55,6 @@ const Ex_bulletin = () => {
       });
   }, []);
 
-  useEffect(() => {
-    console.log(getItem);
-  }, [getItem]);
-
   return (
     <S.Body>
       <S.AllContainer>
@@ -68,16 +65,30 @@ const Ex_bulletin = () => {
             getItem.map((data: any, idx: number) => {
               return (
                 <S.MainContainer key={idx}>
-                  <iframe
-                    width="560"
-                    height="620"
-                    src="https://www.youtube.com/embed/kL88ldYiMkM"
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  ></iframe>
-
+                  {fileUrl == '' ? (
+                    <>
+                      <iframe
+                        width="560"
+                        height="620"
+                        src="https://www.youtube.com/embed/kL88ldYiMkM"
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      ></iframe>
+                    </>
+                  ) : (
+                    <video
+                      src={fileUrl}
+                      controls
+                      style={{
+                        width: '450px',
+                        marginTop: '-15%',
+                        marginBottom: '0.5%',
+                        marginLeft: '1%',
+                      }}
+                    />
+                  )}
                   <S.Write>
                     <S.Date>
                       <S.cDate>날짜 : {data.createDate}</S.cDate>
