@@ -12,8 +12,10 @@ const Webcam = (props: {
   canvasRef: MutableRefObject<HTMLCanvasElement>;
   skeleton: NormalizedLandmarkList;
   onPlay: (count: number) => void;
+  device: number;
+  setDevice: (n: number) => void;
 }) => {
-  const [device, setDevice] = useState<number>(-2);
+  const { device, setDevice } = props;
   const [isPlaying, setIsPlaying] = useState(false);
   const [countVal, setCountVal] = useState(10);
   const canvasRef = useRef<HTMLCanvasElement>(document.createElement('canvas'));

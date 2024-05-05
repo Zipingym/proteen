@@ -39,24 +39,24 @@ const Ex_register = () => {
   ]);
   const [fileUrl, setFileUrl] = useState<string>('');
 
-  useEffect(() => {
-    console.log(post);
-  });
-
   const handleChangerUser = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setPost({ ...post, [name]: value });
-    console.log(name + value);
+    console.log({ ...post, [name]: value });
   };
 
   const onSubmit = (data: any) => {
-    console.log(post);
+    console.log(token);
     api
       .post<{
         exercise_id: number;
-      }>('/exercise', post, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      }>(
+        '/exercise',
+        { ...post, exerciseType: 'SQUAT' },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       .then((res) => {
         setPost({
           title: '',
@@ -98,31 +98,31 @@ const Ex_register = () => {
         console.log(err);
       });
   };
-  const thumbnailInput = useRef();
-  const VideoUpload = (e: any) => {
-    setFileUrl(URL.createObjectURL(e.target.files[0]));
-    try {
-      const formData = new FormData(); // formData 생성
-      console.log(fileUrl);
-      formData.append('file', e.target.files[0]); // 이미지 파일 값 할당
-      const config = {
-        headers: {
-          'Authorization': `Bearer ${'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODM2MzU4NTQsInVzZXJJZCI6MTV9.2NP_IdcAAKdesbnLhtTVjvQ5JrAnH3JJGrFv1GU7J-8'}`, // 토큰 넣어주기
-          'Content-Type': 'multipart/form-data', // 데이터 형식 지정
-        },
-      };
-      // 이미지 업로드 중
-      api
-        .post(`/exercise/upload/video/12`, formData, config)
-        .then(() => {
-          console.log('video_success');
-        })
-        .catch((err) => {
-          console.log('어림도없다');
-          console.log(err);
-        }); // api 통신
-    } catch (error) {}
-  };
+  // const thumbnailInput = useRef();
+  // const VideoUpload = (e: any) => {
+  //   setFileUrl(URL.createObjectURL(e.target.files[0]));
+  //   try {
+  //     const formData = new FormData(); // formData 생성
+  //     console.log(fileUrl);
+  //     formData.append('file', e.target.files[0]); // 이미지 파일 값 할당
+  //     const config = {
+  //       headers: {
+  //         'Authorization': `Bearer ${'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODM2MzU4NTQsInVzZXJJZCI6MTV9.2NP_IdcAAKdesbnLhtTVjvQ5JrAnH3JJGrFv1GU7J-8'}`, // 토큰 넣어주기
+  //         'Content-Type': 'multipart/form-data', // 데이터 형식 지정
+  //       },
+  //     };
+  //     // 이미지 업로드 중
+  //     api
+  //       .post(`/exercise/upload/video/12`, formData, config)
+  //       .then(() => {
+  //         console.log('video_success');
+  //       })
+  //       .catch((err) => {
+  //         console.log('어림도없다');
+  //         console.log(err);
+  //       }); // api 통신
+  //   } catch (error) {}
+  // };
   const videoInput = useRef();
 
   useEffect(() => {
@@ -170,10 +170,11 @@ const Ex_register = () => {
                 src={fileUrl}
                 controls
                 style={{
+                  height: '600px',
                   width: '450px',
-                  marginTop: '-15%',
+
                   marginBottom: '0.5%',
-                  marginLeft: '1%',
+                  marginLeft: '10%',
                 }}
               />
             )}

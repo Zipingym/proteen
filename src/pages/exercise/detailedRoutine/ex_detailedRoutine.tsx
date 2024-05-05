@@ -25,6 +25,7 @@ const ex_detailedRoutine = () => {
   const [init, send] = usePipeline();
   const [input, score] = useExerciseScore();
   const [resultUrl, setResultUrl] = useState('');
+  const [device, setDevice] = useState(-2);
   useEffect(() => {
     init();
   }, [init]);
@@ -52,6 +53,10 @@ const ex_detailedRoutine = () => {
             type: 'video/webm',
           });
           setResultUrl(window.URL.createObjectURL(blob));
+          console.log(device);
+          if (device < 0) {
+            setResultUrl(videoRef.current.src);
+          }
         };
 
         setTimeout(() => {
@@ -87,6 +92,8 @@ const ex_detailedRoutine = () => {
           videoRef={videoRef}
           canvasRef={canvasRef}
           onPlay={onPlay}
+          device={device}
+          setDevice={setDevice}
         ></Webcam>
       </S.WebcamWrapper>
 

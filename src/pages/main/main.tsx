@@ -96,7 +96,7 @@ const MainPage = () => {
                 style={{ marginBottom: 17 }}
                 data-aos="fade-up"
                 onClick={() => {
-                  navigate('/exercise/register', {
+                  navigate('/exercise/detailedRoutine', {
                     state: {
                       average: 0,
                       count: 0,
@@ -113,14 +113,14 @@ const MainPage = () => {
               ></img>
             </M.Frame>
           </M.Frame2>
-          <img
+          {/* <img
             style={{ marginTop: 10, marginBottom: 50 }}
             data-aos="fade-up"
             src={rankingBtn}
             onClick={() => {
               navigate('/ranking');
             }}
-          />
+          /> */}
         </M.Main3>
         {/* <M.Main2>
                 <M.Bgimg1 src={bg2} />
